@@ -1,7 +1,7 @@
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navbar.css';
-import Search from "./Search";
+import Search from "../search/Search";
 
 function NavBar() {
     return (

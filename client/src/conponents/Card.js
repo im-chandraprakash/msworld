@@ -3,7 +3,8 @@ import './Card.css'
 function Card() {
   return (
       <div className="card-container">
-          <h2 className='subject-name'>Data Structure & Algorithm</h2>
+         <a href="/Dsa"className='subject-name'>Data Structure & Algorithm</a>
+        
           <h3 className='topic-name'>Introduction to DSA</h3>
           <p className='topic-intro'>
               Data structure and Algorithm (DSA) is applied in all disciplines

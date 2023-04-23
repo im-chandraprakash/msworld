@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const dbConnect = require("./dbConnect");
 const authRouter = require("./routers/authRouters");
 const postRouter = require("./routers/postRouter");
+const adminRouter = require("./routers/adminRouters");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
@@ -24,6 +25,7 @@ app.use(
 
 app.use("/auth", authRouter);
 app.use("/post", postRouter);
+app.use("/admin" ,adminRouter);
 
 const PORT = process.env.PORT || 4001;
 dbConnect();

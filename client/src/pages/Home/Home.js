@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNote } from "../../store/slices/UserSlice";
 import { axiosClient } from "../../utils/axiosClient";
-import NavBar from "../../conponents/NavBar";
-import Search from "../../conponents/Search";
-import Courses from "../../conponents/Courses";
+import NavBar from "../../conponents/navbar/NavBar";
+import Search from "../../conponents/search/Search";
+import Courses from "../../conponents/courses/Courses";
+import { Outlet } from "react-router-dom";
 
 function Home() {
     // const [notes, setNotes] = useState();
@@ -52,8 +53,11 @@ function Home() {
         // </div>
         <div className="home-container">
             <NavBar/>
-            <Search/>
-            <Courses/>
+            <div>
+                <Outlet/>
+            </div>
+            {/* <Search/> */}
+            {/* <Courses/> */}
         </div>
     );
 }
