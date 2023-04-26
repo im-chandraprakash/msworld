@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./aLogin.scss";
+import "./Login.scss";
 import { axiosClient } from "../utils/axiosClient";
 import { KEY_ACCESS_TOKEN, setItem } from "../utils/localStorageManager";
 
-function ALogin() {
+function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -17,7 +18,7 @@ function ALogin() {
                 password,
             });
             setItem(KEY_ACCESS_TOKEN, response.result.accessToken);
-            navigate("/aDashboard");
+            navigate("/profile");
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -60,4 +61,4 @@ function ALogin() {
     );
 }
 
-export default ALogin;
+export default Login;

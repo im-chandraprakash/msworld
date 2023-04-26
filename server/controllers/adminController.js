@@ -4,8 +4,33 @@ const jwt = require("jsonwebtoken");
 const { success, error } = require("../utils/responseWrapper");
 
 
+// const adminSignUpController = async (req, res) => {
+//     try {
+//         const { name, email, password } = req.body;
 
-const adminloginController = async (req, res) => {
+//         if (!email || !password || !name) {
+//             return res.send(error(400, "All fields are required"));
+//         }
+
+//         const oldUser = await Admin.findOne({ email });
+//         if (oldUser) {
+//             return res.send(error(409, "Admin is alredy registered"));
+//         }
+
+//         const user = await Admin.create({
+//             name,
+//             email,
+//             password,
+//         });
+
+//         return res.send(success(201, "Admin created successfully"));
+//     } catch (e) {
+//         return res.send(error(500, e.message));
+//     }
+// };
+
+
+const adminLoginController = async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -97,6 +122,7 @@ const generateRefreshToken = (data) => {
 };
 
 module.exports = {
-    adminloginController,
+    adminLoginController,
+    // adminSignUpController,
     refreshAccessTokenController,
 };

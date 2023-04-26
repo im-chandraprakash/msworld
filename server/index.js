@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const dbConnect = require("./dbConnect");
 const authRouter = require("./routers/authRouters");
-const postRouter = require("./routers/postRouter");
+const subjectRouter = require("./routers/subjectRouter");
 const adminRouter = require("./routers/adminRouters");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -24,7 +24,7 @@ app.use(
 );
 
 app.use("/auth", authRouter);
-app.use("/post", postRouter);
+app.use("/sub", subjectRouter);
 app.use("/admin" ,adminRouter);
 
 const PORT = process.env.PORT || 4001;
