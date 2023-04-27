@@ -1,27 +1,30 @@
 const mongoose = require("mongoose");
 
 const contentSchema = new mongoose.Schema({
-    id: Number,
-    name:{
-        type: String,
-        required: true
-    },
-    topic_id : {
+    id: {
         type: Number,
-        required: true
+        required: true,
     },
-    author:{
+    name: {
         type: String,
-        required: true
+        required: true,
+    },
+    topic_id: {
+        type: Number,
+        required: true,
+    },
+    author: {
+        type: String,
+        required: true,
     },
     description: {
         type: String,
-        required: true
+        required: true,
     },
-    date : {
+    date: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now(),
+    },
 });
 
 module.exports = mongoose.module("Content", contentSchema);

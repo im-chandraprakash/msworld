@@ -5,13 +5,13 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import RequireUser from "./RequireUser";
 import OnlyIfNotLoggedIn from "./conponents/OnlyIfNotLoggedIn";
-import NavBar from "./conponents/navbar/NavBar";
 import List from "./conponents/List";
 import Dashboard from "./conponents/dashboard/Dashboard";
-import AdminLogin from "./admin/Login";
 import AdminDashboard from "./admin/adminDashBoard/Dashboard";
 import Courses from "./conponents/courses/Courses";
-import Subjects from "./admin/adminDashBoard/Subjects";
+import Subjects from "./admin/subjects/Subjects";
+import Topic from "./conponents/topics/Topic";
+
 
 function App() {
     // const [inputValue , setInputValue] = useState('');
@@ -42,6 +42,10 @@ function App() {
                         <Route
                             path="/subjects"
                             element={<Subjects/>}
+                        ></Route>
+                        <Route
+                            path="/topics"
+                            element={<Topic/>}
                         ></Route>
                     </Route>
                 {/* </Route> */}

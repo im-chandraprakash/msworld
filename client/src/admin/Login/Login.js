@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
-import { axiosClient } from "../utils/axiosClient";
-import { KEY_ACCESS_TOKEN, setItem } from "../utils/localStorageManager";
+import { axiosClient } from "../../utils/axiosClient";
+import { KEY_ACCESS_TOKEN, setItem } from "../../utils/localStorageManager";
 
 function Login() {
     const [email, setEmail] = useState("");

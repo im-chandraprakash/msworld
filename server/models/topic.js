@@ -1,19 +1,22 @@
 const mongoose = require("mongoose");
 
 const topicSchema = new mongoose.Schema({
-    id: Number,
-    name:{
-        type: String,
-        required: true
-    },
-    subject_id : {
+    id: {
         type: Number,
-        required: true
+        required: true,
     },
-    date : {
+    name: {
+        type: String,
+        required: true,
+    },
+    subject: {
+        type: Number,
+        required: true,
+    },
+    date: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now(),
+    },
 });
 
 module.exports = mongoose.module("Topic", topicSchema);

@@ -1,0 +1,17 @@
+.subject-container{
+   width: 40%;
+   display: flex;
+   flex-direction: column;
+   /* align-items: center; */
+}
+.font-size{
+    font-size: 1.3rem;
+}
+.card{
+    width: 50%;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 30px;
+}
