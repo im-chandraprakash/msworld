@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSubjects } from "../../store/slices/SubjectSlice";
 import { Button, Card, Form, Input } from "antd";
 import { axiosClient } from "../../utils/axiosClient";
+
+
 function Subjects() {
     const [subject, setSubject] = useState();
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
-
+    const [refreshData, setRefreshData] = useState(false);
+    
     useEffect(() => {
         dispatch(fetchSubjects());
-    }, [dispatch]);
+    }, [dispatch, refreshData]);
 
      async function OnClick(key) {
 
@@ -19,7 +22,8 @@ function Subjects() {
             const response = await axiosClient.post("/sub/createSubject", {
                 subject:key.subjectName,
             });
-
+            
+            setRefreshData(true);
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -52,9 +56,7 @@ function Subjects() {
                 </Form>
             </Card>
 
-            <Card>
-                <p>{subject}</p>
-            </Card>
+           
 
             {data.map((sub, id) => {
                 return <Card key={id}>{sub.subject}</Card>;
