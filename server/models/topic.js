@@ -9,7 +9,7 @@ const topicSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    subject: {
+    subject_id: {
         type: Number,
         required: true,
     },
@@ -19,4 +19,4 @@ const topicSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.module("Topic", topicSchema);
+module.exports = mongoose.model("Topic", topicSchema);

@@ -1,5 +1,6 @@
 const { error, success } = require("../utils/responseWrapper");
 const Subject = require("../models/subject");
+const Topic = require("../models/topic")
 
 const getAllSubjectController = async (req, res) => {
     try {
@@ -36,7 +37,45 @@ const createSubjectController = async (req, res) => {
     }
 };
 
+const createTopicController = async (req, res) => {
+    try {
+        const { name, id, subject_id } = req.body;
+
+        if (!name || !id || !subject_id) {
+            return res.send(error(400, "All fields are required"));
+        }
+
+        const check = await Topic.findOne({ id });
+
+        if (check) {
+            return res.send(error(409, "Topic id already exist"));
+        }
+
+        const data = await Topic.create({
+            id,
+            name,
+            subject_id,
+        });
+
+        return res.send(success(200, { data }));
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const getTopicController = async (req , res)=>{
+ try {
+    const {subject_id} = req.body;
+    const data = await Topic.find({subject_id});
+    return res.send(success(200 , {data}));
+ } catch (e) {
+    console.log(e);
+ }
+}
+
 module.exports = {
     getAllSubjectController,
     createSubjectController,
+    createTopicController,
+    getTopicController,
 };

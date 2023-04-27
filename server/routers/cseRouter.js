@@ -1,8 +1,10 @@
 const router = require("express").Router();
 
-const subjectController = require("../controllers/cseController");
+const cseController = require("../controllers/cseController");
 
-router.post("/createSubject", subjectController.createSubjectController);
-router.get("/getAllSubject", subjectController.getAllSubjectController);
+router.post("/createSubject", cseController.createSubjectController);
+router.get("/getAllSubject", cseController.getAllSubjectController);
+router.post("/createTopic" ,cseController.createTopicController );
+router.get("/getAllTopic", cseController.getTopicController);
 
 module.exports = router;
