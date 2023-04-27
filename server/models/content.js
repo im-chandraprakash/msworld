@@ -21,6 +21,8 @@ const contentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    advantage: String,
+    disadvantage: String,
     date: {
         type: Date,
         default: Date.now(),
