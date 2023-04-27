@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 
 const courseSchema = new mongoose.Schema({
-    id: Number,
+    id: {
+        typer: Number,
+        required: true
+    },
     name:{
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     date:{
         type: Date,
