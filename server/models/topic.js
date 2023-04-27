@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
 const topicSchema = new mongoose.Schema({
-    id: Number,
+    id: {
+        typer: Number,
+        required: true
+    },
     name:{
         type: String,
         required: true
