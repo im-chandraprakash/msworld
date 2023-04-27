@@ -7,7 +7,8 @@ const semesterSchema = new mongoose.Schema({
     },
     name:{
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     course_id : {
         type: Number,

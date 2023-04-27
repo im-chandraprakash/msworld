@@ -4,7 +4,8 @@ const contentSchema = new mongoose.Schema({
     id: Number,
     name:{
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     topic_id : {
         type: Number,

@@ -7,7 +7,8 @@ const subject = mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     semester_id: {
         type: Number,

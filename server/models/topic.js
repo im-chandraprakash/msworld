@@ -7,7 +7,8 @@ const topicSchema = new mongoose.Schema({
     },
     name:{
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     subject_id : {
         type: Number,
