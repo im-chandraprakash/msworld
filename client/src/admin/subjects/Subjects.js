@@ -6,25 +6,28 @@ import { Col, Divider, Row } from "antd";
 import { axiosClient } from "../../utils/axiosClient";
 // import Typography from "antd/es/typography/Typography";
 import "./Subjects.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 function Subjects() {
-    const [subject, setSubject] = useState();
+    const [subject, setSubject] = useState(0);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
 
     useEffect(() => {
         dispatch(fetchSubjects());
         console.log(data);
-    }, [dispatch]);
-
+    }, [dispatch, subject]);
 
     async function OnClick(key) {
         try {
-            setSubject(key.subjectName);
+           
+            setSubject(subject + 1);
             const response = await axiosClient.post("/sub/createSubject", {
+                id: key.id,
                 subject: key.subjectName,
+                semester: key.sem,
             });
 
             console.log(response);
@@ -32,6 +35,11 @@ function Subjects() {
             console.log(error);
         }
     }
+
+    // function ButtonClicked(data){
+    //     console.log(data);
+    //     navigate('/topics',{state:{id:1234 , color:"blue"}});
+    // }
     return (
         <div className="subject-container">
             <Title>Subjects</Title>
@@ -44,18 +52,45 @@ function Subjects() {
                 <Form
                     name="basic"
                     size="large"
+
                     className="font-size"
                     onFinish={OnClick}
                     style={{ fontSize: "5rem" }}
                 >
                     <Form.Item
-                        label="Enter Subject Name :"
+                        label="Subject ID"
+                        name="id"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please enter Subject Id",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Semester "
+                        name="sem"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please enter Semester No.",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Subject Name :"
                         name="subjectName"
                         className="font-size"
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your username!",
+                                message: "Please enter your Subject Name!",
                             },
                         ]}
                     >
@@ -78,17 +113,19 @@ function Subjects() {
 
             <div className="grid-container">
                 {data.map((sub, id) => {
-                    return <Card className="card-course">
-                        <div>
-                            <Link to={{
-                                pathname:"/topics",
-                                state:sub.subject,
-                            }}><h2>{sub.subject} </h2></Link>
-                        </div>
-                        <div>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
-                        </div>
-                    </Card>;
+                    return (
+                        <Card key={id} className="card-course">
+                            <div>
+                                    <Link to= {`/topics/${sub.id}`}>
+                                        <h2>{sub.subject} </h2>
+                                    </Link>
+                            </div>
+                            <div>
+                                Lorem ipsum, dolor sit amet consectetur
+                                adipisicing elit. Nemo
+                            </div>
+                        </Card>
+                    );
                 })}
             </div>
         </div>

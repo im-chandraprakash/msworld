@@ -2,6 +2,8 @@ const { error, success } = require("../utils/responseWrapper");
 const Subject = require("../models/subject");
 const Topic = require("../models/topic");
 const content = require("../models/content");
+const topic = require("../models/topic");
+const Content = require("../models/content");
 
 const getAllSubjectController = async (req, res) => {
     try {
@@ -64,21 +66,35 @@ const createTopicController = async (req, res) => {
     }
 };
 
-const getTopicController = async (req , res)=>{
- try {
-    const {subject_id} = req.body;
-    const data = await Topic.find({subject_id});
-    return res.send(success(200 , {data}));
- } catch (e) {
-    console.log(e);
- }
-}
+const getTopicController = async (req, res) => {
+    try {
+        const { subject_id } = req.params;
+        const data = await Topic.find({ subject_id });
+        return res.send(success(200, { data }));
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const getLengthOfTopicController = async (req, res) => {
+    const length = await topic.find();
+    res.send(success(200, length));
+};
 
 const createContentController = async (req, res) => {
     try {
-        const { name, id, topic_id, author, description, advantage, disadvantage } = req.body;
+        const {
+            intro,
+            id,
+            topic_id,
+            author,
+            content,
+            details,
+            advantage,
+            disadvantage,
+        } = req.body;
 
-        if (!name || !id || !topic_id || !author || !description) {
+        if (!intro || !id || !topic_id || !author || !details) {
             return res.send(error(400, "All fields are required"));
         }
 
@@ -90,35 +106,57 @@ const createContentController = async (req, res) => {
 
         const data = await Content.create({
             id,
-            name,
+            intro,
             topic_id,
             author,
-            description,
+            content,
+            details,
             advantage,
-            disadvantage
+            disadvantage,
         });
 
+        return res.send(success(200, { data }));
+    } catch (e) {
+        res.send(error(400, e.message));
+    }
+};
+
+const getContentLengthController = async (req, res) => {
+    try {
+        const data = await Content.find();
+        return res.send(success(200, data));
+    } catch (e) {
+        return res.send(error(400, e.message));
+    }
+};
+
+// const getContentController = async (req, res) => {
+//     try {
+//         const { topic_id } = req.body;
+//         const data = await Content.find({ topic_id });
+//         return res.send(success(200, { data }));
+//     } catch (e) {
+//         console.log(e);
+//     }
+// };
+
+const findTopicController = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await topic.findOne({ id });
         return res.send(success(200, { data }));
     } catch (e) {
         console.log(e);
     }
 };
-
-const getContentController = async (req, res) =>{
-    try{
-        const {topic_id} = req.body;
-        const data = await Content.find({topic_id});
-        return res.send(success(200, {data}));
-    } catch(e){
-        console.log(e);
-    }
-}
-
 module.exports = {
     getAllSubjectController,
     createSubjectController,
     createTopicController,
     getTopicController,
     createContentController,
-    getContentController
+    // getContentController,
+    getLengthOfTopicController,
+    findTopicController,
+    getContentLengthController,
 };

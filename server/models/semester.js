@@ -20,4 +20,4 @@ const semesterSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.module("Semester", semesterSchema);
+module.exports = mongoose.model("Semester", semesterSchema);

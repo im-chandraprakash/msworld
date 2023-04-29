@@ -11,6 +11,7 @@ import AdminDashboard from "./admin/adminDashBoard/Dashboard";
 import Courses from "./conponents/courses/Courses";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
+import AddContent from "./admin/addContent/AddContent";
 
 
 function App() {
@@ -44,8 +45,12 @@ function App() {
                             element={<Subjects/>}
                         ></Route>
                         <Route
-                            path="/topics"
+                            path="/topics/:subject_id"
                             element={<Topic/>}
+                        ></Route>
+                        <Route
+                            path="/topics/:subject_id/:topic_id"
+                            element={<AddContent/>}
                         ></Route>
                     </Route>
                 {/* </Route> */}

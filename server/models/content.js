@@ -5,19 +5,31 @@ const contentSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    name: {
-        type: String,
-        required: true,
-    },
     topic_id: {
         type: Number,
         required: true,
     },
+    intro: {
+        type: String,
+        required: true,
+    },
+    content: [
+        {
+            header: {
+                type: String,
+                required: true,
+            },
+            about: {
+                type: String,
+                required: true,
+            },
+        },
+    ],
     author: {
         type: String,
         required: true,
     },
-    description: {
+    details: {
         type: String,
         required: true,
     },
@@ -29,4 +41,4 @@ const contentSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.module("Content", contentSchema);
+module.exports = mongoose.model("Content", contentSchema);
