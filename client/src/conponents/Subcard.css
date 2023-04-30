@@ -1,0 +1,9 @@
+.content-container{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.subContainer{
+    width: 50%;
+}

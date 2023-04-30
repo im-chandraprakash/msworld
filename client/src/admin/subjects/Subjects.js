@@ -7,6 +7,7 @@ import { axiosClient } from "../../utils/axiosClient";
 // import Typography from "antd/es/typography/Typography";
 import "./Subjects.css";
 import { Link, useNavigate } from "react-router-dom";
+import Subcard from "../../conponents/Subcard";
 
 const { Title } = Typography;
 function Subjects() {
@@ -47,15 +48,15 @@ function Subjects() {
             <Card
                 title="Add Subject"
                 bordered="true"
-                headStyle={{ fontSize: "2rem" }}
+                className="card-subject"
+                headStyle={{ fontSize: "2rem", width:"900px" }}
             >
                 <Form
                     name="basic"
                     size="large"
-
                     className="font-size"
                     onFinish={OnClick}
-                    style={{ fontSize: "5rem" }}
+                    style={{ fontSize: "5rem", width: "100%" }}
                 >
                     <Form.Item
                         label="Subject ID"
@@ -105,26 +106,34 @@ function Subjects() {
                 </Form>
             </Card>
 
-            <Card>
+            <Card
+            headStyle={{width:"800px"}}>
                 <p>{subject}</p>
             </Card>
 
             <Divider orientation="center"> The Courses are : </Divider>
 
-            <div className="grid-container">
+            <div className="grid-container" style={{paddingInline:"200px"}}>
                 {data.map((sub, id) => {
                     return (
-                        <Card key={id} className="card-course">
-                            <div>
-                                    <Link to= {`/topics/${sub.id}`}>
-                                        <h2>{sub.subject} </h2>
-                                    </Link>
-                            </div>
-                            <div>
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Nemo
-                            </div>
-                        </Card>
+                        <Subcard
+                            subjectName={sub.subject}
+                            key={id}
+                            className="card-course"
+                            to={`/topics/${sub.id}`}
+                        ></Subcard>
+                        // <Card key={id} className="card-course">
+                        //     <div>
+                        //             <Link to= {`/topics/${sub.id}`}>
+                        //                 <h2>{sub.subject} </h2>
+                        //                 <h2>{sub.subject} </h2>
+                        //             </Link>
+                        //     </div>
+                        //     <div>
+                        //         Lorem ipsum, dolor sit amet consectetur
+                        //         adipisicing elit. Nemo
+                        //     </div>
+                        // </Card>
                     );
                 })}
             </div>

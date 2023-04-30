@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card';
+import Subcard from "../Subcard";
 import './Courses.css';
 
 function Courses() {
@@ -7,9 +7,9 @@ function Courses() {
   return (
     <div className='course-container'>
          <div className='card-courses'>
-            <Card/>
-            <Card/>
-            <Card/>
+            <Subcard/>
+            <Subcard/>
+            <Subcard/>
          </div>
     </div>
   )

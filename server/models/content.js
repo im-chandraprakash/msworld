@@ -15,7 +15,7 @@ const contentSchema = new mongoose.Schema({
     },
     content: [
         {
-            header: {
+            heading: {
                 type: String,
                 required: true,
             },
