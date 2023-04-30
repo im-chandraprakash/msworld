@@ -1,27 +1,30 @@
 import React from 'react'
 import './Search.css'
+import Typography from 'antd/es/typography/Typography';
+import { Button, Form, Input, Tooltip } from 'antd';
+import { SearchOutlined } from "@ant-design/icons";
 
 function Search() {
   return (
-      <div className="search-container">
-          <h1>Hello, What Do you Want to Learn?</h1>
-
-          <div className="search-box">
+      <div className="search-container" >
+          <Typography.Title>Hello, What Do you Want to Learn?</Typography.Title>
+          <div className="search-box" >
               <div className="search">
-                  <form action="#">
-                      <input
-                          className="input-box"
-                          type="text"
-                          placeholder="Search Courses"
-                          name="search"
-                      />
-                      <button>search</button>
-                  </form>
-              </div>
-              <div className="courses">
-                  <button className="course-btn">Data Scientist</button>
-                  <button className="course-btn">Data Structure</button>
-                  <button className="course-btn">machine learning </button>
+                  <Form size="large" style={{display:"flex"}}>
+                      <Form.Item>
+                          <Input placeholder="Type something here .... " />
+                      </Form.Item>
+                      <Form.Item>
+                        
+                          <Tooltip title="search">
+                              <Button
+                                //   type="primary"
+                                //   shape="circle"
+                                  icon={<SearchOutlined />}
+                              >Search</Button>
+                          </Tooltip>
+                      </Form.Item>
+                  </Form>
               </div>
           </div>
       </div>

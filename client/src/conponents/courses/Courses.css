@@ -1,7 +1,8 @@
 .card-courses{
     display: grid;
     grid-template-columns: repeat(3 , 1fr);
-    column-gap: 30px;
+    gap: 30px;
+    row-gap: 40px;
     width: 65%;
 
 }
