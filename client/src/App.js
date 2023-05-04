@@ -12,6 +12,8 @@ import Courses from "./conponents/courses/Courses";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
 import AddContent from "./admin/addContent/AddContent";
+import ImageTest from "./ImageTest";
+import CreatePost from "./conponents/createPost/CreatePost";
 
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
                 {/* <Route path="/admin" element={<AdminLogin />} /> */}
 
                 {/* </Route> */}
+                {/* <Route path="/image" element = {<ImageTest/>}></Route> */}
+                <Route path="/form" element={<CreatePost/>} />
             </Routes>
         </div>
     );
