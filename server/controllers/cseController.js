@@ -4,6 +4,11 @@ const Topic = require("../models/topic");
 const content = require("../models/content");
 const topic = require("../models/topic");
 const Content = require("../models/content");
+const Exclude = require('express-fileupload')
+const cloudinary = require("cloudinary").v2;
+const uploaderExpress = require('express-fileupload');
+const fs = require("fs");
+
 
 const getAllSubjectController = async (req, res) => {
     try {
@@ -82,7 +87,7 @@ const getLengthOfTopicController = async (req, res) => {
 };
 
 const createContentController = async (req, res) => {
-    try {
+    try {            
         const {
             intro,
             id,
@@ -90,10 +95,18 @@ const createContentController = async (req, res) => {
             author,
             content,
             details,
-            advantage,
-            disadvantage,
+            advantages,
+            disadvantages,
+            image,
         } = req.body;
 
+          const result = await cloudinary.uploader.upload(image, {
+              public_id: `${Date.now()}`,
+              resource_type: "auto",
+              folder: "images",
+          });
+
+          console.log("result is : " , result);
         if (!intro || !id || !topic_id || !author || !details) {
             return res.send(error(400, "All fields are required"));
         }
@@ -104,6 +117,7 @@ const createContentController = async (req, res) => {
             return res.send(error(409, "Content id already exist"));
         }
 
+
         const data = await Content.create({
             id,
             intro,
@@ -111,8 +125,12 @@ const createContentController = async (req, res) => {
             author,
             content,
             details,
-            advantage,
-            disadvantage,
+            advantages,
+            disadvantages,
+            image : {
+                publicId: result.public_id,
+                url:result.url,
+            }
         });
 
         return res.send(success(200, { data }));
@@ -120,6 +138,28 @@ const createContentController = async (req, res) => {
         res.send(error(400, e.message));
     }
 };
+
+const imageController = async (req ,res) =>{
+
+    try {
+
+        const {image} = req.body;
+
+        // console.log(image);
+
+        const cloudImg = await cloudinary.uploader.upload( image,  {
+            public_id: `${Date.now()}`,
+            resource_type: "auto",
+            folder: "images",
+        });
+
+       res.send(success(200 , {cloudImg}));
+        
+    } catch (e) {
+        res.send(error(400, e.message))
+    }
+
+}
 
 const getContentLengthController = async (req, res) => {
     try {
@@ -159,4 +199,5 @@ module.exports = {
     getLengthOfTopicController,
     findTopicController,
     getContentLengthController,
+    imageController,
 };
