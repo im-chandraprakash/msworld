@@ -2,24 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSubjects } from "../../store/slices/SubjectSlice";
 import { Button, Card, Form, Input, Typography } from "antd";
-import { Col, Divider, Row } from "antd";
+import { Divider} from "antd";
 import { axiosClient } from "../../utils/axiosClient";
-// import Typography from "antd/es/typography/Typography";
 import "./Subjects.css";
-import { Link, useNavigate } from "react-router-dom";
 import Subcard from "../../conponents/Subcard";
+import Spinner from "../../crucial/Spinner";
 
 const { Title } = Typography;
 function Subjects() {
     const [subject, setSubject] = useState(0);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
+    const status = useSelector((state) => state.subjectReducer.subjectStatus);
 
     useEffect(() => {
         dispatch(fetchSubjects());
         console.log(data);
     }, [dispatch, subject]);
+
+
+    if(status === "loading"){
+        return <Spinner/>
+    }
 
     async function OnClick(key) {
         try {

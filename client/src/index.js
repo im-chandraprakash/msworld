@@ -6,12 +6,27 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter } from "react-router-dom";
+import { ConfigProvider } from "antd";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
         <Provider store={store}>
-            <App />
+            <ConfigProvider
+                theme={{
+                    token: {
+                        // fontSizeHeading1: "rem",
+                        //  fontSizeLG
+                        // fontSizeSM
+                        // fontSizeLG:'5rem'
+                        // fontSizeHeading5:'5rem'
+                        // fontSize:'2rem'
+                      
+                    },
+                }}
+            >
+                <App />
+            </ConfigProvider>
         </Provider>
     </BrowserRouter>
 );

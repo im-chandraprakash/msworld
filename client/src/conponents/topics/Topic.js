@@ -6,6 +6,7 @@ import { fetchTopics, getTopicLength } from "../../store/slices/SubjectSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosClient } from "../../utils/axiosClient";
 import "./Topic.scss";
+import Spinner from "../../crucial/Spinner";
 const { Title } = Typography;
 
 function Topic() {
@@ -13,6 +14,7 @@ function Topic() {
     const dispatch = useDispatch();
 
     const data = useSelector((state) => state.subjectReducer.topics);
+    const status = useSelector((state) => state.subjectReducer.topicStatus);
     const topicLength = useSelector(
         (state) => state.subjectReducer.topicLength
     );
@@ -33,6 +35,11 @@ function Topic() {
             console.log(e);
         }
     }, [dispatch, topicNo, topicLength]);
+
+
+    if(status === "loading"){
+        return <Spinner/>
+    }
 
     async function OnClick(key) {
         try {

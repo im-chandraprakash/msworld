@@ -16,6 +16,7 @@ import Content from "antd/es/layout/layout";
 import Contents from "./pages/content/Contents";
 import ImageTest from "./ImageTest";
 import CreatePost from "./conponents/createPost/CreatePost";
+import NotFound from "./crucial/NotFound";
 
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
                 {/* </Route> */}
                 {/* <Route path="/image" element = {<ImageTest/>}></Route> */}
                 <Route path="/form" element={<CreatePost/>} />
+                <Route path="*" element={<NotFound/>}></Route>
             </Routes>
         </div>
     );
