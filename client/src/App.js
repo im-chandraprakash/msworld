@@ -12,6 +12,8 @@ import Courses from "./conponents/courses/Courses";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
 import AddContent from "./admin/addContent/AddContent";
+import Content from "antd/es/layout/layout";
+import Contents from "./pages/content/Contents";
 
 
 function App() {
@@ -25,7 +27,13 @@ function App() {
                         <Route path="/Dsa" element={<List />} />
                     </Route>
                 </Route>
-
+                
+                {/* Route for content page */}
+                <Route element={<Contents />}>
+                    <Route path="/contents" element={<Contents />} />
+                </Route>
+                
+                {/* Route for admin page */}
                 {/* <Route element={<AdminLogin />}> */}
                     <Route  element={<AdminDashboard />}>
                         <Route
