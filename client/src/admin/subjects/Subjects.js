@@ -134,18 +134,6 @@ function Subjects() {
                             className="card-course"
                             to={`/topics/${sub.id}`}
                         ></Subcard>
-                        // <Card key={id} className="card-course">
-                        //     <div>
-                        //             <Link to= {`/topics/${sub.id}`}>
-                        //                 <h2>{sub.subject} </h2>
-                        //                 <h2>{sub.subject} </h2>
-                        //             </Link>
-                        //     </div>
-                        //     <div>
-                        //         Lorem ipsum, dolor sit amet consectetur
-                        //         adipisicing elit. Nemo
-                        //     </div>
-                        // </Card>
 
                         
                     );

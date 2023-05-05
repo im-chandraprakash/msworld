@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { fetchTopics, getTopicLength } from "../../store/slices/SubjectSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,13 +8,15 @@ import { axiosClient } from "../../utils/axiosClient";
 import "./Topic.scss";
 import Spinner from "../../crucial/Spinner";
 import {toast} from 'react-toastify';
+import Typography from "antd/es/typography/Typography";
 
 
 
 function Topic() {
     const { subject_id } = useParams();
     const dispatch = useDispatch();
-
+    const location = useLocation();
+    const {subjectName} = location.state ? location.state : "";
     const data = useSelector((state) => state.subjectReducer.topics);
     const status = useSelector((state) => state.subjectReducer.topicStatus);
     const topicLength = useSelector(
@@ -68,7 +70,7 @@ function Topic() {
     }
     return (
         <div className="topic-container">
-            {/* <Title>{queryParams.name}</Title> */}
+            <Typography.Title>Subject : {subjectName} </Typography.Title>
 
             <div className="topic-subContainer">
                 <h1 className="items">{}</h1>
@@ -109,7 +111,12 @@ function Topic() {
                 {data.map((topic, id) => {
                     return (
                         <Card key={id} className="topics">
-                            <Link to={`${topic.id}`}>{topic.name}</Link>
+                            <Link
+                                to={`${topic.id}`}
+                                state={{ topicName: topic.name }}
+                            >
+                                {topic.name}
+                            </Link>
                         </Card>
                     );
                 })}
