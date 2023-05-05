@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Form, Input, Typography } from "antd";
-import { Link, useLocation } from "react-router-dom";
+import { Button, Card, Form, Input } from "antd";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { fetchTopics, getTopicLength } from "../../store/slices/SubjectSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosClient } from "../../utils/axiosClient";
 import "./Topic.scss";
 import Spinner from "../../crucial/Spinner";
-const { Title } = Typography;
+import {toast} from 'react-toastify';
+
+
 
 function Topic() {
     const { subject_id } = useParams();
@@ -53,10 +55,15 @@ function Topic() {
                 // subject_id: "400",
                 // name: "second program",
             });
-
+            toast.success(`${key.topicName} Added Successfully`,{
+                position:'top-right'
+            })
             setTopicNo(topicLength + 1);
         } catch (e) {
             console.log(e);
+             toast.error("something went wrong", {
+                 position: "top-right",
+             });
         }
     }
     return (

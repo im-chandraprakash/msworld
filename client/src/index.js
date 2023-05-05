@@ -21,6 +21,8 @@ root.render(
                         // fontSizeLG:'5rem'
                         // fontSizeHeading5:'5rem'
                         // fontSize:'2rem'
+                        // colorBorderSecondary:"black"
+                        // colorText:'black'
                       
                     },
                 }}

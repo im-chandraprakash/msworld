@@ -7,6 +7,8 @@ import { axiosClient } from "../../utils/axiosClient";
 import "./Subjects.css";
 import Subcard from "../../conponents/Subcard";
 import Spinner from "../../crucial/Spinner";
+import {toast} from 'react-toastify';
+
 
 const { Title } = Typography;
 function Subjects() {
@@ -28,16 +30,22 @@ function Subjects() {
     async function OnClick(key) {
         try {
            
-            setSubject(subject + 1);
             const response = await axiosClient.post("/sub/createSubject", {
                 id: key.id,
                 subject: key.subjectName,
                 semester: key.sem,
             });
-
+            
             console.log(response);
+            toast.success("Subject Added SuccessFully" , {
+                position:'top-right'
+            });
+            setSubject(subject + 1);
         } catch (error) {
             console.log(error);
+            toast.error("something went wrong", {
+                position: "top-right",
+            });
         }
     }
 

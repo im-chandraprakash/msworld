@@ -1,4 +1,4 @@
-import { Button, Card, Form, Input, Space, Upload } from "antd";
+import { Button, Card, Form, Input, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import React, { useEffect, useState } from "react";
 import {BsCardImage} from 'react-icons/bs'
@@ -15,6 +15,7 @@ import {
     PlusOutlined,
     MinusCircleOutlined,
 } from "@ant-design/icons";
+import {toast} from 'react-toastify';
 
 function AddContent() {
     const dispatch = useDispatch();
@@ -61,10 +62,15 @@ function AddContent() {
                 disadvantages: key.disadvantages,
                 author: key.author,
             });
-
+            toast.success("Content Added SuccessFully" , {
+                position:'top-right',
+            })
             console.log("the api :", response);
         } catch (e) {
             console.log(e);
+            toast.error("something went wrong" , {
+                position:'top-right',
+            })
         }
     }
     return (
