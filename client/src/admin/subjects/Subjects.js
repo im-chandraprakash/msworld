@@ -2,38 +2,50 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSubjects } from "../../store/slices/SubjectSlice";
 import { Button, Card, Form, Input, Typography } from "antd";
-import { Col, Divider, Row } from "antd";
+import { Divider} from "antd";
 import { axiosClient } from "../../utils/axiosClient";
-// import Typography from "antd/es/typography/Typography";
 import "./Subjects.css";
-import { Link, useNavigate } from "react-router-dom";
 import Subcard from "../../conponents/Subcard";
+import Spinner from "../../crucial/Spinner";
+import {toast} from 'react-toastify';
+
 
 const { Title } = Typography;
 function Subjects() {
     const [subject, setSubject] = useState(0);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
+    const status = useSelector((state) => state.subjectReducer.subjectStatus);
 
     useEffect(() => {
         dispatch(fetchSubjects());
         console.log(data);
     }, [dispatch, subject]);
 
+
+    if(status === "loading"){
+        return <Spinner/>
+    }
+
     async function OnClick(key) {
         try {
            
-            setSubject(subject + 1);
             const response = await axiosClient.post("/sub/createSubject", {
                 id: key.id,
                 subject: key.subjectName,
                 semester: key.sem,
             });
-
+            
             console.log(response);
+            toast.success("Subject Added SuccessFully" , {
+                position:'top-right'
+            });
+            setSubject(subject + 1);
         } catch (error) {
             console.log(error);
+            toast.error("something went wrong", {
+                position: "top-right",
+            });
         }
     }
 
@@ -122,18 +134,6 @@ function Subjects() {
                             className="card-course"
                             to={`/topics/${sub.id}`}
                         ></Subcard>
-                        // <Card key={id} className="card-course">
-                        //     <div>
-                        //             <Link to= {`/topics/${sub.id}`}>
-                        //                 <h2>{sub.subject} </h2>
-                        //                 <h2>{sub.subject} </h2>
-                        //             </Link>
-                        //     </div>
-                        //     <div>
-                        //         Lorem ipsum, dolor sit amet consectetur
-                        //         adipisicing elit. Nemo
-                        //     </div>
-                        // </Card>
 
                         
                     );

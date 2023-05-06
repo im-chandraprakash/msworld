@@ -25,7 +25,7 @@ function Subcard({subjectName , topicName , url , to}) {
                     avatar={
                         <Avatar size={70} src="https://shorturl.at/tERWZ" />
                     }
-                    title={<Link to={to}>Introduction of {subjectName}</Link>}
+                    title={<Link to={to} state={{subjectName,}}>{subjectName}</Link>}
                     description="welcome to the introduction of a data structurea and algorithm here we deep dive into the the new world"
                 ></Meta>
             </Card>

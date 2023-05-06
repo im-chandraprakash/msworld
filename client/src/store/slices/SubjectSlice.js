@@ -85,6 +85,8 @@ export const fetchContents = createAsyncThunk("sub/getContents", async ({topic_i
 const subjectSlice = createSlice({
     name:"subjectSlice",
     initialState:{
+        subjectStatus:'idle',
+        topicStatus:'idle',
         subjects:[],
         topics:[],
         topicLength:0,
@@ -96,9 +98,23 @@ const subjectSlice = createSlice({
 
         builder.addCase(fetchSubjects.fulfilled , (state , action) =>{
             state.subjects = action.payload;
+            state.subjectStatus="success"
+        })
+        .addCase(fetchSubjects.pending , (state,action) =>{
+            state.subjectStatus = "loading";
+        })
+        .addCase(fetchSubjects.rejected , (state , action) =>{
+            state.subjectStatus = "failed"
         })
         .addCase(fetchTopics.fulfilled , (state , action) =>{
             state.topics = action.payload;
+            state.topicStatus="success";
+        })
+        .addCase(fetchTopics.pending , (state , action) =>{
+            state.topicStatus = "loading";
+        })
+        .addCase(fetchTopics.rejected , (state , action) =>{
+            state.topicStatus = "failed";
         })
         .addCase(getTopicLength.fulfilled , (state , action) =>{
             state.topicLength = action.payload;

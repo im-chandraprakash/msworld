@@ -1,10 +1,10 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import RequireUser from "./RequireUser";
-import OnlyIfNotLoggedIn from "./conponents/OnlyIfNotLoggedIn";
+// import OnlyIfNotLoggedIn from "./conponents/OnlyIfNotLoggedIn";
 import List from "./conponents/List";
 import Dashboard from "./conponents/dashboard/Dashboard";
 import AdminDashboard from "./admin/adminDashBoard/Dashboard";
@@ -12,16 +12,21 @@ import Courses from "./conponents/courses/Courses";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
 import AddContent from "./admin/addContent/AddContent";
-import Content from "antd/es/layout/layout";
 import Contents from "./pages/content/Contents";
-import ImageTest from "./ImageTest";
+// import ImageTest from "./ImageTest";
 import CreatePost from "./conponents/createPost/CreatePost";
+import NotFound from "./crucial/NotFound";
+import {ToastContainer} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 function App() {
     // const [inputValue , setInputValue] = useState('');
+
     return (
         <div className="App">
+            <ToastContainer/>
             <Routes>
                 <Route element={<RequireUser />}>
                     <Route element={<Home />}>
@@ -73,6 +78,7 @@ function App() {
                 {/* </Route> */}
                 {/* <Route path="/image" element = {<ImageTest/>}></Route> */}
                 <Route path="/form" element={<CreatePost/>} />
+                <Route path="*" element={<NotFound/>}></Route>
             </Routes>
         </div>
     );

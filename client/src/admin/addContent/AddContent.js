@@ -1,9 +1,9 @@
-import { Button, Card, Form, Input, Space, Upload } from "antd";
+import { Button, Card, Form, Input, Space, Typography } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import React, { useEffect, useState } from "react";
 import {BsCardImage} from 'react-icons/bs'
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import {
     findTopicName,
     getContentLength,
@@ -15,17 +15,21 @@ import {
     PlusOutlined,
     MinusCircleOutlined,
 } from "@ant-design/icons";
+import {toast} from 'react-toastify';
 
 function AddContent() {
     const dispatch = useDispatch();
     const [image ,setImage] = useState("");
     const { topic_id } = useParams();
+    const location = useLocation();
+    const { topicName } = location.state ? location.state : "";
     const data = useSelector((state) => state.subjectReducer.topicName);
     const contentNo = useSelector(
         (state) => state.subjectReducer.contentLength
     );
 
     console.log(data);
+    console.log("Link props is : " , topicName);
 
     useEffect(() => {
         dispatch(findTopicName({ id: topic_id }));
@@ -61,22 +65,30 @@ function AddContent() {
                 disadvantages: key.disadvantages,
                 author: key.author,
             });
-
+            toast.success("Content Added SuccessFully" , {
+                position:'top-right',
+            })
             console.log("the api :", response);
         } catch (e) {
             console.log(e);
+            toast.error("something went wrong" , {
+                position:'top-right',
+            })
         }
     }
     return (
         <div className="content-container">
             <div className="subContainer">
-                <h1>{topic_id}</h1>
-                <h2>Write your Content here : </h2>
-                <Card title={data}>
+                <Typography.Title>Topic Name : {topicName}</Typography.Title>
+                <Typography.Title level={2}>Write your Content here : </Typography.Title>
+               
                     <Form onFinish={onSubmit} size="large">
                         <Card>
+                            <Typography.Title level={4}>
+                                Introduction
+                            </Typography.Title>
                             <Form.Item
-                                label="Introduction"
+                                // label="Introduction"
                                 name="intro"
                                 rules={[
                                     {
@@ -91,6 +103,9 @@ function AddContent() {
                         </Card>
 
                         <Card>
+                            <Typography.Title level={4}>
+                                Extra Field
+                            </Typography.Title>
                             <Form.List name="content">
                                 {(fields, { add, remove }) => (
                                     <>
@@ -166,22 +181,29 @@ function AddContent() {
                             </Form.List>
                         </Card>
 
-                        <div className="input-post-img">
-                            <label htmlFor="inputImg" className="labelImg">
-                                <BsCardImage />
-                            </label>
-                            <input
-                                className="inputImg"
-                                id="inputImg"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageChange}
-                            />
-                        </div>
+                        <Card size="large">
+                            <Typography.Title level={4}>
+                                Add image
+                            </Typography.Title>
+                            <div className="input-post-img">
+                                <label htmlFor="inputImg" className="labelImg">
+                                    <BsCardImage />
+                                </label>
+                                <input
+                                    className="inputImg"
+                                    id="inputImg"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                />
+                            </div>
+                        </Card>
 
                         <Card>
+                            <Typography.Title level={4}>
+                                Add Details
+                            </Typography.Title>
                             <Form.Item
-                                label="Details About Topic "
                                 name="details"
                                 rules={[
                                     {
@@ -195,6 +217,9 @@ function AddContent() {
                         </Card>
 
                         <Card>
+                            <Typography.Title level={4}>
+                                Advantages
+                            </Typography.Title>
                             <Form.List name="advantages">
                                 {(fields, { add, remove }) => (
                                     <>
@@ -246,6 +271,9 @@ function AddContent() {
                         </Card>
 
                         <Card>
+                            <Typography.Title level={4}>
+                                Disadvantages
+                            </Typography.Title>
                             <Form.List name="disadvantages">
                                 {(fields, { add, remove }) => (
                                     <>
@@ -297,29 +325,13 @@ function AddContent() {
                         </Card>
 
                         <Card>
-                            <Form.Item label="Author name" name="author">
+                            <Typography.Title level={4}>
+                                Author Name
+                            </Typography.Title>
+                            <Form.Item name="author">
                                 <Input />
                             </Form.Item>
                         </Card>
-
-                        {/* <Form.Item
-                            name="upload"
-                            label="Upload"
-                            valuePropName="fileList"
-                            getValueFromEvent={normFile}
-                            extra="longgggggggggggggggggggggggggggggggggg"
-                        >
-                            <Upload
-                                name="logo"
-                                action="/upload.do"
-                                listType="picture"
-                            >
-                                <Button icon={<UploadOutlined />}>
-                                    Click to upload
-                                </Button>
-                            </Upload>
-                        </Form.Item> */}
-
                         <Form.Item>
                             <Button
                                 type="primary"
@@ -330,7 +342,6 @@ function AddContent() {
                             </Button>
                         </Form.Item>
                     </Form>
-                </Card>
             </div>
         </div>
     );
