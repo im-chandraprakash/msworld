@@ -2,6 +2,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, DashboardOutlined, 
 import React, { useState } from "react";
 import { Button, Layout, Menu, Slider } from "antd";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import Item from "antd/es/list/Item";
 
 function Dashboard() {
     const [current, setCurrent] = useState("mail");
@@ -17,35 +18,39 @@ function Dashboard() {
                 theme="light"
                 style={{ fontSize: "1.5rem", padding: "8px 12px" }}
                 onClick={OnClick}
+                defaultSelectedKeys={"profile"}
+                defaultOpenKeys={"profile"}
                 items={[
                     {
                         label: "Home",
                         // key:"/",
                         icon: <HomeOutlined style={{ fontSize: "1.3rem" }} />,
+                        key:'home'
+                        
                     },
                     {
                         label: "Subjects",
                         icon: (
                             <DashboardOutlined style={{ fontSize: "1.3rem" }} />
                         ),
-                        key:"/subjects",
+                        key:"subjects",
                     },
                     {
                         label: "Add content",
                         icon: <UserAddOutlined style={{ fontSize: "1.3rem" }} />,
-                        key:"/addContent",
+                        key:"addContent",
                     },
                     {
-                        label: "Profile",
+                        label:"Profile",
                         icon: <ProfileOutlined style={{ fontSize: "1.3rem" }} />,
-                        key:"/profile",
+                        key:"profile",
                     },
                     {
                         label: "Signout",
                         icon: (
                             <PoweroffOutlined style={{ fontSize: "1.3rem" }} />
                         ),
-                        key:"/signOut"
+                        key:"signOut"
                     },
 
                 ]}

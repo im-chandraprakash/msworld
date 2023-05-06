@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import './Signup.scss';
 import { useState } from 'react';
 import { axiosClient } from '../../utils/axiosClient';
+// import {Login} from '../login/Login.js';
 
 function Signup() {
 
@@ -10,6 +11,7 @@ function Signup() {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const navigate = useNavigate();
+
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -20,9 +22,7 @@ function Signup() {
                 password,
             })
             console.log(response);
-            navigate('/login');
-        } catch (error) {
-            
+        } catch (error) {           
         }
      }
 

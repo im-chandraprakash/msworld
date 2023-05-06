@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './Login.scss'
 import { axiosClient } from '../../utils/axiosClient';
 import { KEY_ACCESS_TOKEN, setItem } from '../../utils/localStorageManager';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 
 
 function Login() {
 
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
-    const navigate = useNavigate();
+
 
 
    async function handleSubmit(e){
@@ -22,8 +22,6 @@ function Login() {
               password,
           });
           setItem( KEY_ACCESS_TOKEN , response.result.accessToken);
-          navigate('/');
-          console.log(response);
      } catch (error) {
         console.log(error);
      }

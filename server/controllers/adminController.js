@@ -52,14 +52,14 @@ const adminLoginController = async (req, res) => {
         const accessToken = generateAccessToken({
             _id: user._id,
         });
-        const refreshToken = generateRefreshToken({
-            _id: user._id,
-        });
+        // const refreshToken = generateRefreshToken({
+        //     _id: user._id,
+        // });
 
-        res.cookie("jwt", refreshToken, {
-            httpOnly: true,
-            secure: true,
-        });
+        // res.cookie("jwt", refreshToken, {
+        //     httpOnly: true,
+        //     secure: true,
+        // });
 
         // res.cookie("jwt" , refreshToken , {
         //     httpOnly:true,
@@ -99,9 +99,13 @@ const refreshAccessTokenController = (req, res) => {
 
 const generateAccessToken = (data) => {
     try {
-        const token = jwt.sign(data, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-            expiresIn: "1d",
-        });
+        const token = jwt.sign(
+            data,
+            process.env.ADMIN_ACCESS_TOKEN_PRIVATE_KEY,
+            {
+                expiresIn: "1d",
+            }
+        );
         console.log(token);
         return token;
     } catch (e) {

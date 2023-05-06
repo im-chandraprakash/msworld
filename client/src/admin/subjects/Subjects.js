@@ -132,10 +132,8 @@ function Subjects() {
                             subjectName={sub.subject}
                             key={id}
                             className="card-course"
-                            to={`/topics/${sub.id}`}
+                            to={`${sub.id}`}
                         ></Subcard>
-
-                        
                     );
                 })}
             </div>

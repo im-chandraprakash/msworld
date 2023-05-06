@@ -1,0 +1,27 @@
+.userProfile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.userProfile-subContainer {
+    width: 60%;
+    background-color: rgb(226, 226, 226);
+    display: grid;
+    grid-template-columns: 35% 65%;
+    padding: 40px 15px;
+
+    
+    // flex-direction: row;
+    // justify-content: space-around;
+}
+.left-part {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

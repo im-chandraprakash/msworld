@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { axiosClient } from "../../utils/axiosClient";
-import { KEY_ACCESS_TOKEN, setItem } from "../../utils/localStorageManager";
+import { Admin_Key_Acess_Token, setItem } from "../../utils/localStorageManager";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -17,8 +17,8 @@ function Login() {
                 email,
                 password,
             });
-            setItem(KEY_ACCESS_TOKEN, response.result.accessToken);
-            navigate("/profile");
+            setItem(Admin_Key_Acess_Token, response.result.accessToken);
+            navigate("/admin");
             console.log(response);
         } catch (error) {
             console.log(error);
