@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import { axiosClient } from '../../utils/axiosClient';
-import create from '@ant-design/icons/lib/components/IconFont';
 
 export const fetchSubjects = createAsyncThunk("sub/getAllSubjects" , async ()=>{
 
@@ -69,6 +68,20 @@ export const getContentLength = createAsyncThunk("sub/getContentLength", async()
     
 });
 
+export const fetchContents = createAsyncThunk("sub/getContents", async ({topic_id}) => {
+    try {
+
+        console.log("topic id", topic_id);
+        const response = await axiosClient.get(`/sub/getContents/${topic_id}`);
+             
+        console.log("content data : ", response.result);
+        // return response.result.allSubjects;
+        return response.result.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+});
+
 const subjectSlice = createSlice({
     name:"subjectSlice",
     initialState:{
@@ -77,6 +90,7 @@ const subjectSlice = createSlice({
         topicLength:0,
         topicName:'',
         contentLength:0,
+        contents:[]
     },
     extraReducers:function(builder){
 
@@ -97,6 +111,11 @@ const subjectSlice = createSlice({
             state.contentLength = action.payload;
 
            console.log("action payload", action.payload);
+        })
+        .addCase(fetchContents.fulfilled , (state , action)=>{
+            state.contents = action.payload;
+
+        //    console.log("action payload", action.payload);
         })
     }
 });

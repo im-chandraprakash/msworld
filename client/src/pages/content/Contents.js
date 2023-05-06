@@ -1,83 +1,81 @@
 import "./Content.css";
-import { LaptopOutlined, NotificationOutlined, UserOutlined, RightOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import React, { useEffect } from 'react';
+import { RightOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme, Image } from 'antd';
+import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSubjects, fetchTopics } from "../../store/slices/SubjectSlice";
+import { fetchSubjects, fetchTopics, fetchContents } from "../../store/slices/SubjectSlice";
 import NavBar from "../../conponents/navbar/NavBar";
+import { Divider, Typography } from 'antd';
+import Card from "antd/es/card/Card";
+import SuggestMenu from "./SuggestMenu";
 
+// const { Title, Paragraph, Text, Link } = Typography;
 const Contents = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+  
   const dispatch = useDispatch();
   const topicData = useSelector((state) => state.subjectReducer.topics);
-  const subjectData = useSelector((state) => state.subjectReducer.subjects)
+  const subjectData = useSelector((state) => state.subjectReducer.subjects);
+  const contentData = useSelector((state) => state.subjectReducer.contents);
+  const [topicId, setTopicId] = useState(1);
+  // let topicId = 1;
+  useEffect(() => {
+    dispatch(fetchContents({ topic_id: topicId }));
+    dispatch(fetchTopics({ subject_id: 1000 }));
+    dispatch(fetchSubjects({ id: 200 }));
+  }, [dispatch, topicId]);
 
-  useEffect(()=>{
-    dispatch(fetchTopics({subject_id:400}));
-    dispatch(fetchSubjects({id:400}));
-  },[dispatch]);
-  
-  console.log("fetch :",subjectData);
-console.log("data is : " , subjectData);
+  console.log("topicName is: ", topicData)
+  console.log("subdata is : ", subjectData);
+  console.log("contentdata is : ", contentData);
 
-const { Header, Content, Sider } = Layout;
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-  return {
-    key: `sub${key}`,
-    icon: <RightOutlined />,
-    label: `subnav ${key}`,
-    children: new Array(4).fill(null).map((name, id) => {
-      const subKey = name;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
-const data = topicData;
-const items3 = subjectData.map((item, index) => {
-  const key = String(index + 1);
-  return {
-    key: item.id,
-    icon: <RightOutlined />,
-    label: item.subject,
-    children: data.map((item, index) => {
-      const key = String(index + 1);
-      return {
-        key: item.id,
-        label: item.name,
-      };
-    }),
-  };
-});
+  const { Content, Sider } = Layout;
+  const data = topicData;
 
   return (
-    <Layout 
-    style={{height: "100%"}}>
-      <Header className="header">
-        <NavBar />
-      </Header>
+    <Layout
+      style={{ height: "100%" }}>
+      <NavBar />
+      <Layout>
+        <SuggestMenu />
+      </Layout>
       <Layout>
         <Sider
-          width={200}
-          style={{
-            background: colorBgContainer,
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
           }}
         >
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
             style={{
               height: '100%',
               borderRight: 0,
             }}
-            items={items3}
+            items={subjectData.map((item, index) => {
+              return {
+                key: index,
+                icon: <RightOutlined />,
+                label: item.subject,
+                children: data.map((item, index) => {
+                  return {
+                    key: index,
+                    label: item.name,
+                    onClick: (click)=>{
+                      setTopicId(item.id);
+                      console.log("workig as hell : ", item.id);
+                    }
+                  };
+                }),
+              };
+            })}
           />
         </Sider>
         <Layout
@@ -93,11 +91,67 @@ const items3 = subjectData.map((item, index) => {
               background: colorBgContainer,
             }}
           >
-            Content
+            {/* started Fetching content here  */}
+
+            {
+              contentData.map((data, id) => {
+
+                return <Card key={id}>
+                  {/*--------------- Main Title --------------*/}
+                  {
+                    topicData.map((data, id) => {
+                      return <div key={id}>
+                        <Typography.Title>{data.name}</Typography.Title>
+                      </div>
+                    })}
+                  <Divider plain />
+                  {/*------------------ image------------------*/}
+                  <Image
+                    width={200}
+                    src={data.image.url}
+                  />
+                  {/* // -------------introduction  -----------*/}
+                  <Typography.Paragraph>{data.intro}</Typography.Paragraph>
+                  {
+                    // _--------adding subtitle and its para--------
+                    data.content.map((subData, id1) => {
+                      return <div key={id1}>
+                        <Typography.Title level={3}>{subData.heading}</Typography.Title>
+                        <Typography.Paragraph>{subData.about}</Typography.Paragraph>
+                      </div>
+                    })
+                  }
+                  {/*--------------adding Advantages-------------- */}
+                  <ul>
+                    <Typography.Title level={3}>Advantages :-</Typography.Title>
+                    {
+                      data.advantages.map((subData, id1) => {
+                        return <div key={id1}>
+                          <li key={id1}>{subData.points}</li>
+                        </div>
+                      })
+                    }
+                  </ul>
+                  {/* -------------adding Disadvantages------------- */}
+                  <ul>
+                    <Typography.Title level={3}>Disadvantages :-</Typography.Title>
+                    {
+                      data.disadvantages.map((subData, id1) => {
+                        return <div key={id1}>
+                          <li key={id1}>{subData.points}</li>
+                        </div>
+                      })
+                    }
+                  </ul>
+
+                </Card>
+
+              })
+            }
           </Content>
         </Layout>
       </Layout>
-    </Layout>
+    </Layout >
   );
 };
 export default Contents;

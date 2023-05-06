@@ -139,27 +139,6 @@ const createContentController = async (req, res) => {
     }
 };
 
-const imageController = async (req ,res) =>{
-
-    try {
-
-        const {image} = req.body;
-
-        // console.log(image);
-
-        const cloudImg = await cloudinary.uploader.upload( image,  {
-            public_id: `${Date.now()}`,
-            resource_type: "auto",
-            folder: "images",
-        });
-
-       res.send(success(200 , {cloudImg}));
-        
-    } catch (e) {
-        res.send(error(400, e.message))
-    }
-
-}
 
 const getContentLengthController = async (req, res) => {
     try {
@@ -170,15 +149,15 @@ const getContentLengthController = async (req, res) => {
     }
 };
 
-// const getContentController = async (req, res) => {
-//     try {
-//         const { topic_id } = req.body;
-//         const data = await Content.find({ topic_id });
-//         return res.send(success(200, { data }));
-//     } catch (e) {
-//         console.log(e);
-//     }
-// };
+const getContentController = async (req, res) => {
+    try {
+        const { topic_id } = req.params;
+        const data = await Content.find({ topic_id });
+        return res.send(success(200, { data }));
+    } catch (e) {
+        console.log(e);
+    }
+};
 
 const findTopicController = async (req, res) => {
     try {
@@ -195,9 +174,8 @@ module.exports = {
     createTopicController,
     getTopicController,
     createContentController,
-    // getContentController,
+    getContentController,
     getLengthOfTopicController,
     findTopicController,
     getContentLengthController,
-    imageController,
 };

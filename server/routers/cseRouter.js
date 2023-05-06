@@ -11,6 +11,6 @@ router.get("/getTopicLength", cseController.getLengthOfTopicController);
 router.get("/findTopic/:id", cseController.findTopicController);
 router.post("/createContent", cseController.createContentController);
 router.get("/getContentLength", cseController.getContentLengthController);
-router.post("/image" , cseController.imageController);
+router.get("/getContents/:topic_id" , cseController.getContentController);
 
 module.exports = router;
