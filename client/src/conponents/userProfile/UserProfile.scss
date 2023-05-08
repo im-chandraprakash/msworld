@@ -10,18 +10,23 @@
     display: grid;
     grid-template-columns: 35% 65%;
     padding: 40px 15px;
+    column-gap: 20px;
 
     
     // flex-direction: row;
     // justify-content: space-around;
 }
-.left-part {
-    border: 1px solid black;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// .profile-img{
+//     border: 1px solid black;
+//     width: 150px;
+//     height: 150px;
+//     border-radius: 50%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     justify-self: center;
+// }
+.image{
+    border-radius: 30px;
 }
+

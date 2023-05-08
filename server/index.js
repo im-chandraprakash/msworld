@@ -4,6 +4,7 @@ const dbConnect = require("./dbConnect");
 const authRouter = require("./routers/authRouters");
 const cseRouter = require("./routers/cseRouter");
 const adminRouter = require("./routers/adminRouters");
+const userRouter = require('./routers/userRouters');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
@@ -58,8 +59,9 @@ cloudinary.config({
 // });
 
 app.use("/auth", authRouter);
-app.use("/sub", cseRouter);
+app.use("/cse", cseRouter);
 app.use("/admin", adminRouter);
+app.use('/user' , userRouter);
 
 const PORT = process.env.PORT || 4001;
 dbConnect();

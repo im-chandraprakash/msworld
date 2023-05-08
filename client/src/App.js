@@ -6,7 +6,6 @@ import Signup from "./pages/signup/Signup";
 import RequireUser from "./encryption/RequireUser";
 // import OnlyIfNotLoggedIn from "./conponents/OnlyIfNotLoggedIn";
 import List from "./conponents/List";
-import Dashboard from "./conponents/dashboard/Dashboard";
 import AdminDashboard from "./admin/adminDashBoard/Dashboard";
 import Courses from "./conponents/courses/Courses";
 import Subjects from "./admin/subjects/Subjects";
@@ -19,17 +18,18 @@ import NotFound from "./crucial/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OnlyIfNotLoggedIn from "./encryption/OnlyIfNotLoggedIn";
-import UserProfile from "./conponents/profile/UserProfile";
+import UserProfile from "./conponents/userProfile/UserProfile";
 import AdminLogin from "./admin/Login/Login";
 import RequireAdmin from "./encryption/RequireAdmin";
+import NavBar from "./conponents/navbar/NavBar";
 
 function App() {
     return (
         <div className="App">
             <ToastContainer />
             <Routes>
-                <Route element={<Home />}>
-                    <Route path="/" element={<Dashboard />} />
+                <Route element={<NavBar/>}>
+                    <Route path="/" element={<Home />} />
                     <Route path="/Dsa" element={<List />} />
                     <Route path="/userProfile" element={<UserProfile />} />
                 </Route>

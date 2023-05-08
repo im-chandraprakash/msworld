@@ -1,8 +1,6 @@
 const { error, success } = require("../utils/responseWrapper");
 const Subject = require("../models/subject");
 const Topic = require("../models/topic");
-const content = require("../models/content");
-const topic = require("../models/topic");
 const Content = require("../models/content");
 const Exclude = require('express-fileupload')
 const cloudinary = require("cloudinary").v2;
@@ -81,6 +79,16 @@ const getTopicController = async (req, res) => {
     }
 };
 
+const getAllTopics = async (req ,res) =>{
+
+    try {
+        
+        const data = await Topic.find();
+        res.send(success(200 , {data}));
+    } catch (e) {
+       res.send(error(400 , e.message));
+    }
+}
 const getLengthOfTopicController = async (req, res) => {
     const length = await topic.find();
     res.send(success(200, length));
@@ -159,13 +167,23 @@ const getContentController = async (req, res) => {
     }
 };
 
+const getAllContents = async (req  , res) =>{
+
+   try {
+         const data = await Content.find();
+         res.send(success(200, data));
+   } catch (e) {
+     console.log(e.message);
+   }
+} 
+
 const findTopicController = async (req, res) => {
     try {
         const { id } = req.params;
         const data = await topic.findOne({ id });
         return res.send(success(200, { data }));
     } catch (e) {
-        console.log(e);
+         return res.send(error(400, e.message));
     }
 };
 module.exports = {
@@ -178,4 +196,6 @@ module.exports = {
     getLengthOfTopicController,
     findTopicController,
     getContentLengthController,
+    getAllContents,
+    getAllTopics,
 };

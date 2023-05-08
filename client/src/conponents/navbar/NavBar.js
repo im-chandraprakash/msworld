@@ -1,10 +1,17 @@
 import { React, useState } from "react";
 import "./Navbar.css";
-import { Button, Layout, Menu, Typography, Modal, Avatar } from "antd";
+import {
+    Button,
+    Layout,
+    Menu,
+    Typography,
+    Modal,
+    Avatar,
+    Form,
+    Input,
+    Divider,
+} from "antd";
 import { Header } from "antd/es/layout/layout";
-// import Signup from "../../pages/signup/Signup";
-// import Login from "../../pages/login/Login.scss";
-// import Profile from "../profile/Profile";
 import { UserOutlined } from "@ant-design/icons";
 import {
     Admin_Key_Acess_Token,
@@ -13,7 +20,7 @@ import {
 } from "../../utils/localStorageManager";
 import { axiosClient } from "../../utils/axiosClient";
 import { setItem } from "../../utils/localStorageManager";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function NavBar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +29,7 @@ function NavBar() {
     const admin = getItem(Admin_Key_Acess_Token);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [clgName, setClgName] = useState("");
 
     async function handleSubmit(e) {}
 
@@ -70,7 +78,6 @@ function NavBar() {
                     }}
                 >
                     <Typography.Title>Msworld</Typography.Title>
-
                     <div
                         style={{
                             display: "flex",
@@ -114,15 +121,63 @@ function NavBar() {
                                             }}
                                             onClick={showModal}
                                         >
-                                            SignIn
+                                            SignUp
                                         </Button>
                                         <Modal
-                                            title="Sign In Modal"
+                                            title="Sign Up Modal"
                                             open={isModalOpen}
                                             onOk={handleOk}
                                             onCancel={handleCancel}
                                             afterClose={handleSubmit}
-                                        ></Modal>
+                                            footer={[
+                                                <Button
+                                                    key="signUp"
+                                                    type="primary"
+                                                    onClick={handleOk}
+                                                >
+                                                    Sign Up
+                                                </Button>,
+                                            ]}
+                                        >
+                                            <form onSubmit={handleOk}>
+                                                <label htmlFor="email">
+                                                    email : </label>
+                                                <input
+                                                    type="email"
+                                                    className="email"
+                                                    id="email"
+                                                    onChange={(e) => {
+                                                        setEmail(
+                                                            e.target.value
+                                                        );
+                                                    }}
+                                                />
+                                                <Divider></Divider>
+                                                <label>password : </label>
+                                                <input
+                                                    type="password"
+                                                    className="password"
+                                                    id="password"
+                                                    onChange={(e) =>
+                                                        setPassword(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                                <Divider></Divider>
+                                                <label>collage Name : </label>
+                                                <input
+                                                    type="text"
+                                                    className="text-input"
+                                                    id="text-input"
+                                                    onChange={(e) =>
+                                                        setClgName(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </form>
+                                        </Modal>
 
                                         <Button
                                             type="primary"
@@ -141,6 +196,15 @@ function NavBar() {
                                             onOk={handleSignInOk}
                                             onCancel={handleSignInCancel}
                                             afterClose={handleSubmit}
+                                            footer={[
+                                                <Button
+                                                    key="logIn"
+                                                    type="primary"
+                                                    onClick={handleSignInOk}
+                                                >
+                                                    Log In
+                                                </Button>,
+                                            ]}
                                         >
                                             <form onSubmit={handleSignInOk}>
                                                 <label htmlFor="email">
@@ -186,12 +250,16 @@ function NavBar() {
                                 )}
                             </div>
                         ) : (
-                           <h2>Welcom Admin</h2>
+                            <h2>Welcom Admin</h2>
                         )}
                     </div>
                 </Header>
                 <hr />
             </Layout>
+
+            <div>
+                <Outlet></Outlet>
+            </div>
         </div>
     );
 }
