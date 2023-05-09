@@ -1,7 +1,7 @@
 import "./Content.css";
 import { RightOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme, Image } from 'antd';
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSubjects, fetchTopics, fetchContents } from "../../store/slices/SubjectSlice";
 import NavBar from "../../conponents/navbar/NavBar";
@@ -14,7 +14,7 @@ const Contents = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  
+
   const dispatch = useDispatch();
   const topicData = useSelector((state) => state.subjectReducer.topics);
   const subjectData = useSelector((state) => state.subjectReducer.subjects);
@@ -26,16 +26,16 @@ const Contents = () => {
   useEffect(() => {
     dispatch(fetchContents({ topic_id: topicId }));
     dispatch(fetchTopics({ subject_id: subId }));
-    dispatch(fetchSubjects({ id: 200 }));
+    dispatch(fetchSubjects());
   }, [dispatch, topicId, subId]);
 
   // console.log("topicName is: ", topicData)
-  // console.log("subdata is : ", subjectData);
+  console.log("subdata is : ", subjectData);
   // console.log("contentdata is : ", contentData);
 
   const { Content, Sider } = Layout;
   const data = topicData;
-  console.log("this id data: ",data);
+  // console.log("this id data: ",data);
 
   return (
     <Layout
@@ -63,23 +63,24 @@ const Contents = () => {
             }}
             items={subjectData.map((item, index) => {
               var temp = false;
-              if(item.id === subId){
+              if (item.id === subId) {
                 temp = true;
-              }
-              return {
-                key: index,
-                icon: <RightOutlined />,
-                label: item.subject,
-                children: data.map((item1, index1) => {
-                  return {
-                    key: index1,
-                    label: item1.name,
-                    onClick: (click)=>{
-                      setTopicId(item1.id);
-                      console.log("workig as hell : ", item1.id);
-                    }
-                  };
-                }),
+                return {
+                  key: index,
+                  icon: <RightOutlined />,
+                  label: item.subject,
+                  children: data.map((item1, index1) => {
+                    return {
+                      key: index1,
+                      label: item1.name,
+                      onClick: (click) => {
+                        setTopicId(item1.id);
+                        console.log("workig as hell : ", item1.id);
+                      }
+                    };
+                  }),
+                }
+
               };
             })}
           />
@@ -108,10 +109,10 @@ const Contents = () => {
                     topicData.map((data, id) => {
                       var temp;
                       if (topicId === data.id) {
-                          temp = data.name;
+                        temp = data.name;
                       }
                       return <div key={id}>
-                        <Typography.Title>{temp}</Typography.Title> 
+                        <Typography.Title>{temp}</Typography.Title>
                       </div>
                     })}
                   <Divider plain />
