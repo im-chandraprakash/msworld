@@ -7,12 +7,11 @@ import {
     Typography,
     Modal,
     Avatar,
-    Form,
-    Input,
     Divider,
 } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { UserOutlined } from "@ant-design/icons";
+import {toast} from 'react-toastify';
 import {
     Admin_Key_Acess_Token,
     KEY_ACCESS_TOKEN,
@@ -30,13 +29,53 @@ function NavBar() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [clgName, setClgName] = useState("");
+    const [userName , setUserName] = useState("");
 
     async function handleSubmit(e) {}
+
+    function handleLogInToSignUp(){
+    
+        
+            handleSignInCancel();
+            showModal();
+    
+    }
+
+    function handleSignUpToLogIn(val){
+
+         handleCancel();
+         showModelSignIn();
+    }
 
     const showModal = () => {
         setIsModalOpen(true);
     };
-    const handleOk = () => {
+     const handleOk = async (e) => {
+
+         e.preventDefault();
+        
+         try {
+
+             const response = await axiosClient.post("/auth/signup", {
+                 name:userName,
+                 clgName,
+                 email,
+                 password,
+             });
+
+            toast.success("Signed Up SuccessFully", {
+                position:'top-right',
+            });
+             console.log("sign up " , response);
+         } catch (e) {
+            console.log(e);
+         }finally{
+            setUserName("");
+            setClgName("")
+            setEmail("")
+            setPassword("")
+         }
+        
         setIsModalOpen(false);
     };
 
@@ -140,8 +179,41 @@ function NavBar() {
                                             ]}
                                         >
                                             <form onSubmit={handleOk}>
-                                                <label htmlFor="email">
-                                                    email : </label>
+
+                                                {/* // Sign Up Name --------------------------------------------------------- */}
+                                                <label>
+                                                    {
+                                                        <Typography.Title
+                                                            level={4}
+                                                        >
+                                                            Name :
+                                                        </Typography.Title>
+                                                    }{" "}
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    className="userName"
+                                                    onChange={(e) => {
+                                                        setUserName(
+                                                            e.target.value
+                                                        );
+                                                    }}
+                                                />
+                                                <Divider></Divider>
+
+
+                                                {/* // Sign Up Email ------------------------------------------------------ */}
+
+
+                                                <label>
+                                                    {
+                                                        <Typography.Title
+                                                            level={4}
+                                                        >
+                                                            Email :
+                                                        </Typography.Title>
+                                                    }{" "}
+                                                </label>
                                                 <input
                                                     type="email"
                                                     className="email"
@@ -153,7 +225,15 @@ function NavBar() {
                                                     }}
                                                 />
                                                 <Divider></Divider>
-                                                <label>password : </label>
+                                                <label>
+                                                    {
+                                                        <Typography.Title
+                                                            level={4}
+                                                        >
+                                                            Password :
+                                                        </Typography.Title>
+                                                    }{" "}
+                                                </label>
                                                 <input
                                                     type="password"
                                                     className="password"
@@ -165,7 +245,15 @@ function NavBar() {
                                                     }
                                                 />
                                                 <Divider></Divider>
-                                                <label>collage Name : </label>
+                                                <label>
+                                                    {
+                                                        <Typography.Title
+                                                            level={4}
+                                                        >
+                                                            Collage Name :
+                                                        </Typography.Title>
+                                                    }
+                                                </label>
                                                 <input
                                                     type="text"
                                                     className="text-input"
@@ -177,6 +265,18 @@ function NavBar() {
                                                     }
                                                 />
                                             </form>
+
+                                            <Typography.Title level={5}>
+                                                {" "}
+                                                Already have a Account
+                                                <Button
+                                                    onClick={
+                                                        handleSignUpToLogIn
+                                                    }
+                                                >
+                                                    Log in
+                                                </Button>
+                                            </Typography.Title>
                                         </Modal>
 
                                         <Button
@@ -208,7 +308,14 @@ function NavBar() {
                                         >
                                             <form onSubmit={handleSignInOk}>
                                                 <label htmlFor="email">
-                                                    email
+                                                    {
+                                                        <Typography.Title
+                                                            level={4}
+                                                        >
+                                                            {" "}
+                                                            Email
+                                                        </Typography.Title>
+                                                    }
                                                 </label>
                                                 <input
                                                     type="email"
@@ -221,8 +328,17 @@ function NavBar() {
                                                     }}
                                                 />
 
+                                                <br />
+
                                                 <label htmlFor="password">
-                                                    password
+                                                    {
+                                                        <Typography.Title
+                                                            level={4}
+                                                        >
+                                                            {" "}
+                                                            Password :
+                                                        </Typography.Title>
+                                                    }
                                                 </label>
                                                 <input
                                                     type="password"
@@ -235,6 +351,18 @@ function NavBar() {
                                                     }
                                                 />
                                             </form>
+
+                                            <Typography.Title level={5}>
+                                                {" "}
+                                                Don't have an Account
+                                                <Button
+                                                    onClick={() =>
+                                                        handleLogInToSignUp()
+                                                    }
+                                                >
+                                                    SignUp
+                                                </Button>
+                                            </Typography.Title>
                                         </Modal>
                                     </div>
                                 ) : (

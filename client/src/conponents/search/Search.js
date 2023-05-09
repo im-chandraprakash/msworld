@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Search.css'
 import Typography from 'antd/es/typography/Typography';
-import { Button, Form, Input, Tooltip } from 'antd';
+import { Button, Card, Form, Input, List, Tooltip } from 'antd';
 import { SearchOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTopics } from '../../store/slices/SubjectSlice';
@@ -50,9 +50,13 @@ function Search() {
                   <div className='searched-items'> 
                         {
                             searchItem.map((item , id) =>{
-                                return <div key={id}>
-                                    <Typography.Paragraph>{item.name}</Typography.Paragraph>
-                                </div>
+                                return (
+                                    <div key={id}>
+                                        <Typography.Paragraph>
+                                            {item.name}
+                                        </Typography.Paragraph>
+                                    </div>
+                                );
                             })
                         }
                   </div>

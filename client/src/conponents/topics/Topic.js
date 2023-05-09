@@ -48,7 +48,7 @@ function Topic() {
     async function OnClick(key) {
         try {
             setTopicNo(topicLength);
-            const response = await axiosClient.post("/sub/createTopic", {
+            const response = await axiosClient.post("/cse/createTopic", {
                 id: topicNo + 1,
                 subject_id: subject_id,
                 name: key.topicName,

@@ -54,7 +54,7 @@ function AddContent() {
         try {
 
             console.log(key);
-            const response = await axiosClient.post("sub/createContent", {
+            const response = await axiosClient.post("/cse/createContent", {
                 id: contentNo + 1,
                 topic_id,
                 intro: key.intro,

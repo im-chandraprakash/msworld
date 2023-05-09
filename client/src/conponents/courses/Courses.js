@@ -14,10 +14,16 @@ function Courses() {
     }, []);
 
     return (
-        <div className="course-container">
+        <div className="course-container" style={{ textAlign: "center" }}>
             <div className="card-courses">
                 {data.map((sub, id) => {
-                    return <Subcard key={id} subjectName={sub.subject} to={"/dsa"}></Subcard>;
+                    return (
+                        <Subcard
+                            key={id}
+                            subjectName={sub.subject}
+                            to={"/dsa"}
+                        ></Subcard>
+                    );
                 })}
             </div>
         </div>

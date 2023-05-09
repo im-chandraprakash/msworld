@@ -4,7 +4,7 @@ const { success, error } = require("../utils/responseWrapper");
 
 const signUpController = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, clgName } = req.body;
 
         if (!email || !password || !name) {
             return res.send(error(400, "All fields are required"));
@@ -19,6 +19,7 @@ const signUpController = async (req, res) => {
             name,
             email,
             password,
+            clgName
         });
 
         return res.send(success(201, "user created successfully"));

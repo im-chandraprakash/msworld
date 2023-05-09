@@ -9,3 +9,13 @@
     align-items: center;
     justify-content: center;
 } */ 
+
+input{
+    margin: 5px;
+    padding: 8px;
+    /* border-radius: 5px; */
+    width: 70%;
+    border: none;
+    margin-left: 50px;
+    border-bottom: 1px solid rgb(89, 155, 231);
+}

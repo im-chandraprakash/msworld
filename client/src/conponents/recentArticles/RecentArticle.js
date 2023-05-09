@@ -14,7 +14,7 @@ function RecentArticle() {
 
     }, []);
     return (
-        <div className="article-container">
+        <div className="article-container" style={{textAlign:'center'}}>
             <Typography.Title>Recent Articles</Typography.Title>
 
             {data.map((article, id) => {

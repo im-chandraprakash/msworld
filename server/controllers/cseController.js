@@ -90,7 +90,7 @@ const getAllTopics = async (req ,res) =>{
     }
 }
 const getLengthOfTopicController = async (req, res) => {
-    const length = await topic.find();
+    const length = await Topic.find();
     res.send(success(200, length));
 };
 
@@ -180,7 +180,7 @@ const getAllContents = async (req  , res) =>{
 const findTopicController = async (req, res) => {
     try {
         const { id } = req.params;
-        const data = await topic.findOne({ id });
+        const data = await Topic.findOne({ id });
         return res.send(success(200, { data }));
     } catch (e) {
          return res.send(error(400, e.message));

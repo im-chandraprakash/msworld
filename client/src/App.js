@@ -3,17 +3,12 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
-import RequireUser from "./encryption/RequireUser";
-// import OnlyIfNotLoggedIn from "./conponents/OnlyIfNotLoggedIn";
 import List from "./conponents/List";
 import AdminDashboard from "./admin/adminDashBoard/Dashboard";
-import Courses from "./conponents/courses/Courses";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
 import AddContent from "./admin/addContent/AddContent";
 import Contents from "./pages/content/Contents";
-// import ImageTest from "./ImageTest";
-import CreatePost from "./conponents/createPost/CreatePost";
 import NotFound from "./crucial/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -72,7 +67,6 @@ function App() {
                     <Route path="/adminLogin" element={<AdminLogin />} />
                 </Route>
                 {/* <Route path="/image" element = {<ImageTest/>}></Route> */}
-                <Route path="/form" element={<CreatePost />} />
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
         </div>

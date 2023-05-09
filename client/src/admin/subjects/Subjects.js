@@ -30,7 +30,7 @@ function Subjects() {
     async function OnClick(key) {
         try {
            
-            const response = await axiosClient.post("/sub/createSubject", {
+            const response = await axiosClient.post("/cse/createSubject", {
                 id: key.id,
                 subject: key.subjectName,
                 semester: key.sem,
