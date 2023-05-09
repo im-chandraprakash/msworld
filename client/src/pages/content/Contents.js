@@ -37,7 +37,6 @@ const Contents = () => {
   return (
     <Layout
       style={{ height: "100%" }}>
-      <NavBar />
       <Layout>
         <SuggestMenu />
       </Layout>
@@ -100,8 +99,12 @@ const Contents = () => {
                   {/*--------------- Main Title --------------*/}
                   {
                     topicData.map((data, id) => {
+                      var temp;
+                      if (topicId === id+1) {
+                          temp = data.name;
+                      }
                       return <div key={id}>
-                        <Typography.Title>{data.name}</Typography.Title>
+                        <Typography.Title>{temp}</Typography.Title> 
                       </div>
                     })}
                   <Divider plain />
