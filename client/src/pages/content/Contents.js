@@ -20,19 +20,22 @@ const Contents = () => {
   const subjectData = useSelector((state) => state.subjectReducer.subjects);
   const contentData = useSelector((state) => state.subjectReducer.contents);
   const [topicId, setTopicId] = useState(1);
+  const [subId, setSubId] = useState(1000);
   // let topicId = 1;
+  // let subId = 1000;
   useEffect(() => {
     dispatch(fetchContents({ topic_id: topicId }));
-    dispatch(fetchTopics({ subject_id: 1000 }));
+    dispatch(fetchTopics({ subject_id: subId }));
     dispatch(fetchSubjects({ id: 200 }));
-  }, [dispatch, topicId]);
+  }, [dispatch, topicId, subId]);
 
-  console.log("topicName is: ", topicData)
-  console.log("subdata is : ", subjectData);
-  console.log("contentdata is : ", contentData);
+  // console.log("topicName is: ", topicData)
+  // console.log("subdata is : ", subjectData);
+  // console.log("contentdata is : ", contentData);
 
   const { Content, Sider } = Layout;
   const data = topicData;
+  console.log("this id data: ",data);
 
   return (
     <Layout
@@ -45,10 +48,10 @@ const Contents = () => {
           breakpoint="lg"
           collapsedWidth="0"
           onBreakpoint={(broken) => {
-            console.log(broken);
+            // console.log(broken);
           }}
           onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
+            // console.log(collapsed, type);
           }}
         >
           <Menu
@@ -59,17 +62,21 @@ const Contents = () => {
               borderRight: 0,
             }}
             items={subjectData.map((item, index) => {
+              var temp = false;
+              if(item.id === subId){
+                temp = true;
+              }
               return {
                 key: index,
                 icon: <RightOutlined />,
                 label: item.subject,
-                children: data.map((item, index) => {
+                children: data.map((item1, index1) => {
                   return {
-                    key: index,
-                    label: item.name,
+                    key: index1,
+                    label: item1.name,
                     onClick: (click)=>{
-                      setTopicId(item.id);
-                      console.log("workig as hell : ", item.id);
+                      setTopicId(item1.id);
+                      console.log("workig as hell : ", item1.id);
                     }
                   };
                 }),
@@ -100,7 +107,7 @@ const Contents = () => {
                   {
                     topicData.map((data, id) => {
                       var temp;
-                      if (topicId === id+1) {
+                      if (topicId === data.id) {
                           temp = data.name;
                       }
                       return <div key={id}>
