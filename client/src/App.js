@@ -23,23 +23,22 @@ function App() {
         <div className="App">
             <ToastContainer />
             <Routes>
-                <Route element={<NavBar/>}>
+                <Route element={<NavBar />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/Dsa" element={<List />} />
                     <Route path="/userProfile" element={<UserProfile />} />
+                    <Route
+                        path="contents/:subject_id"
+                        element={<Contents />}
+                    />
                 </Route>
 
                 {/* Route for content page */}
-                <Route element={<Contents />}>
-                    <Route path="/contents" element={<Contents />} />
-                </Route>
-
                 {/* Route for admin page */}
                 {/* <Route element={<AdminLogin />}> */}
                 <Route element={<RequireAdmin />}>
                     <Route path="/admin" element={<AdminDashboard />}>
-
-                        <Route  element={<div>Admin Home</div>}></Route>
+                        <Route element={<div>Admin Home</div>}></Route>
                         <Route
                             path="userList"
                             element={<div>UserList</div>}

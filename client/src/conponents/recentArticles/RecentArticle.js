@@ -1,7 +1,10 @@
-import { Typography } from "antd";
+import { Card, Typography } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllTopics } from "../../store/slices/SubjectSlice";
+import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { Direction } from "react-toastify/dist/utils";
 
 function RecentArticle() {
     const dispatch = useDispatch();
@@ -11,21 +14,41 @@ function RecentArticle() {
 
     useEffect(() => {
         dispatch(fetchAllTopics());
-
     }, []);
     return (
-        <div className="article-container" style={{textAlign:'center'}}>
-            <Typography.Title>Recent Articles</Typography.Title>
+        <div
+            className="article-container"
+            style={{
+                display: "flex",
+                flexDirection: "column-reverse",
+                alignItems: "center",
+            }}
+        >
+            {/* <Typography.Title>Recent Articles</Typography.Title> */}
 
-            {data.map((article, id) => {
-                return (
-                    <div key={id}>
-                        <Typography.Paragraph>
-                            {article.name}
-                        </Typography.Paragraph>
-                    </div>
-                );
-            })}
+            <div>
+                {data.map((article, id) => {
+                    return (
+                        <div key={id}>
+                            <Card>
+                                <Link to={`contents/${article.subject_id}`}>
+                                    <Typography.Title level={4}>
+                                        {article.name}
+                                    </Typography.Title>
+                                </Link>
+
+                                <Typography.Paragraph>
+                                    {" "}
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Quas sunt nobis, eveniet
+                                    veritatis doloremque ratione modi temporibus
+                                    corrupti non aspernatur!{" "}
+                                </Typography.Paragraph>
+                            </Card>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }

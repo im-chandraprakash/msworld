@@ -7,10 +7,11 @@ import { fetchSubjects } from "../../store/slices/SubjectSlice";
 function Courses() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
+    console.log("data of subjects : ", data);
 
     useEffect(() => {
         dispatch(fetchSubjects());
-        console.log("data : ", data);
+        
     }, []);
 
     return (
@@ -21,7 +22,7 @@ function Courses() {
                         <Subcard
                             key={id}
                             subjectName={sub.subject}
-                            to={"/dsa"}
+                            to={`contents/${sub.id}`}
                         ></Subcard>
                     );
                 })}

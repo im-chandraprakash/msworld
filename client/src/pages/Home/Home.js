@@ -3,7 +3,7 @@ import Search from "../../conponents/search/Search";
 import Courses from "../../conponents/courses/Courses";
 import RecentArticle from "../../conponents/recentArticles/RecentArticle";
 import Footer from "../../conponents/footer/Footer";
-import { Carousel } from "antd";
+import { Carousel, Typography } from "antd";
 import {Image} from 'antd';
 
 function Home() {
@@ -21,6 +21,7 @@ function Home() {
         <div className="home-container">
             <Search />
             <Courses />
+            <Typography.Title style={{textAlign:'center'}}>Recent Articles</Typography.Title>
             <RecentArticle />
             <Footer />
         </div>

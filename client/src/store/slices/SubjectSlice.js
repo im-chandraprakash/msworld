@@ -111,6 +111,7 @@ const subjectSlice = createSlice({
     initialState:{
         subjectStatus:'idle',
         topicStatus:'idle',
+        contentStatus:'idle',
         subjects:[],
         topics:[],
         topicLength:0,
@@ -157,6 +158,13 @@ const subjectSlice = createSlice({
             })
             .addCase(fetchContents.fulfilled, (state, action) => {
                 state.contents = action.payload;
+                 state.contentStatus = "success";
+            })
+            .addCase(fetchContents.pending , (state , action) =>{
+                state.contentStatus = "loading"
+            })
+            .addCase(fetchContents.rejected , (state ,action)=>{
+                 state.contentStatus = "failed";
             })
             .addCase(fetchAllContents.fulfilled, (state, action) => {
                 state.allContents = action.payload;

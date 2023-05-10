@@ -15,7 +15,7 @@ function Search() {
 
     useEffect(()=>{
         dispatch(fetchAllTopics());
-        console.log("searching item is : " ,data);
+        // console.log("searching item is : " ,data);
     } , []);
 
     const searchItem = data.filter((item) =>{
