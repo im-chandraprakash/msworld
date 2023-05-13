@@ -1,13 +1,15 @@
 import React from "react";
-import "./Subcard.css";
+// import "./Subcard.css";
 import { Link } from "react-router-dom";
 import { Avatar, Card } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
+import './Subcard.scss'
 function Subcard({subjectName , topicName , url , to}) {
     return (
         <div className="card-container">
             <Card
+                className="subject-card"
                 title={subjectName}
                 bordered="false"
                 hoverable

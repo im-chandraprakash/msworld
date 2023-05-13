@@ -3,7 +3,6 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
-import List from "./conponents/List";
 import AdminDashboard from "./admin/adminDashBoard/Dashboard";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
@@ -17,6 +16,7 @@ import UserProfile from "./conponents/userProfile/UserProfile";
 import AdminLogin from "./admin/Login/Login";
 import RequireAdmin from "./encryption/RequireAdmin";
 import NavBar from "./conponents/navbar/NavBar";
+import Google from "./conponents/Google";
 
 function App() {
     return (
@@ -25,12 +25,12 @@ function App() {
             <Routes>
                 <Route element={<NavBar />}>
                     <Route path="/" element={<Home />} />
-                    <Route path="/Dsa" element={<List />} />
                     <Route path="/userProfile" element={<UserProfile />} />
                     <Route
                         path="contents/:subject_id"
                         element={<Contents />}
                     />
+                    {/* <Route path="/google" element={<Google/>}></Route> */}
                 </Route>
 
                 {/* Route for content page */}

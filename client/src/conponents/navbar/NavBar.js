@@ -1,17 +1,9 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./Navbar.css";
-import {
-    Button,
-    Layout,
-    Menu,
-    Typography,
-    Modal,
-    Avatar,
-    Divider,
-} from "antd";
+import { Button, Layout, Menu, Typography, Modal, Avatar, Divider } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { UserOutlined } from "@ant-design/icons";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 import {
     Admin_Key_Acess_Token,
     KEY_ACCESS_TOKEN,
@@ -20,6 +12,8 @@ import {
 import { axiosClient } from "../../utils/axiosClient";
 import { setItem } from "../../utils/localStorageManager";
 import { Link, Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userProfile } from "../../store/slices/userSlice";
 
 function NavBar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,53 +23,54 @@ function NavBar() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [clgName, setClgName] = useState("");
-    const [userName , setUserName] = useState("");
+    const [userName, setUserName] = useState("");
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.userReducer.profile?.avatar?.url);
 
-    async function handleSubmit(e) {}
+    console.log("user profile photo : " , data);
 
-    function handleLogInToSignUp(){
-    
-        
-            handleSignInCancel();
-            showModal();
-    
+
+    useEffect(() =>{
+        dispatch(userProfile());
+    } , [])
+
+    function handleLogInToSignUp() {
+        handleSignInCancel();
+        showModal();
     }
 
-    function handleSignUpToLogIn(val){
-
-         handleCancel();
-         showModelSignIn();
+    function handleSignUpToLogIn(val) {
+        handleCancel();
+        showModelSignIn();
     }
 
     const showModal = () => {
         setIsModalOpen(true);
     };
-     const handleOk = async (e) => {
+    const handleOk = async (e) => {
+        e.preventDefault();
 
-         e.preventDefault();
-        
-         try {
-
-             const response = await axiosClient.post("/auth/signup", {
-                 name:userName,
-                 clgName,
-                 email,
-                 password,
-             });
+        try {
+            const response = await axiosClient.post("/auth/signup", {
+                name: userName,
+                clgName,
+                email,
+                password,
+            });
 
             toast.success("Signed Up SuccessFully", {
-                position:'top-right',
+                position: "top-right",
             });
-             console.log("sign up " , response);
-         } catch (e) {
+            console.log("sign up ", response);
+        } catch (e) {
             console.log(e);
-         }finally{
+        } finally {
             setUserName("");
-            setClgName("")
-            setEmail("")
-            setPassword("")
-         }
-        
+            setClgName("");
+            setEmail("");
+            setPassword("");
+        }
+
         setIsModalOpen(false);
     };
 
@@ -105,7 +100,7 @@ function NavBar() {
         setModel(false);
     };
     return (
-        <div className="container">
+        <div className="navbar-container">
             <Layout>
                 <Header
                     style={{
@@ -167,7 +162,7 @@ function NavBar() {
                                             open={isModalOpen}
                                             onOk={handleOk}
                                             onCancel={handleCancel}
-                                            afterClose={handleSubmit}
+                                            // afterClose={handleSubmit}
                                             footer={[
                                                 <Button
                                                     key="signUp"
@@ -179,7 +174,6 @@ function NavBar() {
                                             ]}
                                         >
                                             <form onSubmit={handleOk}>
-
                                                 {/* // Sign Up Name --------------------------------------------------------- */}
                                                 <label>
                                                     {
@@ -201,9 +195,7 @@ function NavBar() {
                                                 />
                                                 <Divider></Divider>
 
-
                                                 {/* // Sign Up Email ------------------------------------------------------ */}
-
 
                                                 <label>
                                                     {
@@ -295,7 +287,7 @@ function NavBar() {
                                             open={model}
                                             onOk={handleSignInOk}
                                             onCancel={handleSignInCancel}
-                                            afterClose={handleSubmit}
+                                            // afterClose={handleSubmit}
                                             footer={[
                                                 <Button
                                                     key="logIn"
@@ -372,7 +364,7 @@ function NavBar() {
                                             style={{
                                                 backgroundColor: "#87d068",
                                             }}
-                                            icon={<UserOutlined />}
+                                            icon={!data ? <UserOutlined /> : <img width= "100%" src= {data}></img>}
                                         ></Avatar>
                                     </Link>
                                 )}

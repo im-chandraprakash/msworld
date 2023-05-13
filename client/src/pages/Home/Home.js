@@ -3,8 +3,9 @@ import Search from "../../conponents/search/Search";
 import Courses from "../../conponents/courses/Courses";
 import RecentArticle from "../../conponents/recentArticles/RecentArticle";
 import Footer from "../../conponents/footer/Footer";
-import { Carousel, Typography } from "antd";
-import {Image} from 'antd';
+import { Typography } from "antd";
+import HomeLayout from "../../conponents/homeLayout/HomeLayout";
+import './Home.scss'
 
 function Home() {
    
@@ -19,7 +20,10 @@ function Home() {
     };
     return (
         <div className="home-container">
-            <Search />
+
+            <HomeLayout/>
+            {/* <Search /> */}
+            
             <Courses />
             <Typography.Title style={{textAlign:'center'}}>Recent Articles</Typography.Title>
             <RecentArticle />

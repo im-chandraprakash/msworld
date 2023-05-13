@@ -1,0 +1,32 @@
+.home-design {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+
+    // background-color: red;
+}
+.left-part {
+    width: 60%;
+    .type-writer{
+        font-size: 4rem;
+    }
+}
+.right-part {
+    width: 40%;
+    .div-element {
+        border-radius: 33% 67% 64% 36% / 28% 30% 70% 72%;
+        background-color: #bfe7f4;
+        width: 700px;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        
+    }
+    img{
+        margin-top: 15%;
+    }
+}
