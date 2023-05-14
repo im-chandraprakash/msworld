@@ -40,17 +40,15 @@ const Contents = () => {
         dispatch(fetchSubjects());
     }, [dispatch, topicId, subId]);
 
-    console.log("topicName is: ", topicData);
-    console.log("subdata is : ", subjectData);
+    // console.log("topicName is: ", topicData);
+    // console.log("subdata is : ", subjectData);
     // console.log("contentdata is : ", contentData);
 
     const { Content, Sider } = Layout;
     const data = topicData;
     // console.log("this id data: ",data);
 
-     if (status === "loading") {
-         return <Spinner />;
-     }
+     
 
     return (
         <Layout style={{ height: "100%" }}>
@@ -136,7 +134,7 @@ const Contents = () => {
                                         }
                                         return (
                                             <div key={id}>
-                                                <Typography.Title>
+                                                <Typography.Title className="contTitle">
                                                     {temp}
                                                 </Typography.Title>
                                             </div>
@@ -144,9 +142,11 @@ const Contents = () => {
                                     })}
                                     <Divider plain />
                                     {/*------------------ image------------------*/}
+                                    <div className="contImg">
                                     <Image width={200} src={data.image.url} />
+                                    </div>
                                     {/* // -------------introduction  -----------*/}
-                                    <Typography.Paragraph>
+                                    <Typography.Paragraph className="contPara">
                                         {data.intro}
                                     </Typography.Paragraph>
                                     {
@@ -157,7 +157,7 @@ const Contents = () => {
                                                     <Typography.Title level={3}>
                                                         {subData.heading}
                                                     </Typography.Title>
-                                                    <Typography.Paragraph>
+                                                    <Typography.Paragraph className="contPara">
                                                         {subData.about}
                                                     </Typography.Paragraph>
                                                 </div>
@@ -165,10 +165,10 @@ const Contents = () => {
                                         })
                                     }
                                     {/*--------------adding Advantages-------------- */}
-                                    <ul>
-                                        <Typography.Title level={3}>
-                                            Advantages :-
-                                        </Typography.Title>
+                                    <Typography.Title level={3}>
+                                        Advantages :-
+                                    </Typography.Title>
+                                    <ul className="contPara">
                                         {data.advantages.map((subData, id1) => {
                                             return (
                                                 <div key={id1}>
@@ -180,10 +180,10 @@ const Contents = () => {
                                         })}
                                     </ul>
                                     {/* -------------adding Disadvantages------------- */}
-                                    <ul>
-                                        <Typography.Title level={3}>
-                                            Disadvantages :-
-                                        </Typography.Title>
+                                    <Typography.Title level={3}>
+                                        Disadvantages :-
+                                    </Typography.Title>
+                                    <ul className="contPara">
                                         {data.disadvantages.map(
                                             (subData, id1) => {
                                                 return (

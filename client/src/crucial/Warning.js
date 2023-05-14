@@ -1,4 +1,4 @@
-import { Result } from 'antd'
+import { Result , Button} from 'antd'
 import React from 'react'
 import { BsEmojiDizzy } from 'react-icons/bs';
 
