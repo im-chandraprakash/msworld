@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import "./Navbar.css";
+import "./Navbar.scss";
 import { Button, Layout, Menu, Typography, Modal, Avatar, Divider } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { UserOutlined } from "@ant-design/icons";
@@ -107,7 +107,7 @@ function NavBar() {
                         backgroundColor: "white",
                         display: "flex",
                         cursor: "pointer",
-                        justifyContent: "space-around",
+                        justifyContent: "space-between",
                         alignItems: "center",
                     }}
                 >
@@ -120,6 +120,15 @@ function NavBar() {
                         }}
                     >
                         <Menu
+                            style={{
+                                display:'flex',
+                                justifyContent:'center',
+                                alignItems:'center',
+                                paddingBottom:'10px',
+                                // fontSize:'5rem'
+                                
+                            }}
+                            className="menu-bar"
                             mode="horizontal"
                             disabledOverflow="true"
                             items={[

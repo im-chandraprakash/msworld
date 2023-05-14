@@ -30,7 +30,7 @@ function RecentArticle() {
                 {data.map((article, id) => {
                     return (
                         <div key={id}>
-                            <Card>
+                            <Card style={{ border: "1px solid #bfe7f4", marginBlock:'10px' }}>
                                 <Link to={`contents/${article.subject_id}`}>
                                     <Typography.Title level={4}>
                                         {article.name}

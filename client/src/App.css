@@ -41,3 +41,7 @@
 .not-found{
   font-size: 300px;
 }
+
+:root{
+  --main-color:#bfe7f4;
+}
