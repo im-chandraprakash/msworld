@@ -1,9 +1,9 @@
-.search-container{
+.search-container {
     text-align: center;
     margin: 20px;
 }
 
-button{
+button {
     padding: 3px 12px;
     font-size: 1.2rem;
     border: none;
@@ -14,28 +14,46 @@ button{
     padding-bottom: 5px;
     margin-left: 5px;
 }
-.search{
- margin-top: 30px;
- margin-bottom: 5px;
+
+.search {
+    margin-top: 30px;
+    margin-bottom: 5px;
 }
-.input-box{
+
+.input-box {
     padding: 8px 14px;
     font-size: 1.2rem;
     border: none;
     border: 0.5px solid black;
     border-radius: 10px;
     width: 400px;
-    
+
 }
-.course-btn{
+
+.course-btn {
     padding: 3px 10px;
     font-size: 0.9rem;
-    font-family:Georgia, 'Times New Roman';
+    font-family: Georgia, 'Times New Roman';
 }
-.search-box{
+
+.search-box-div {
     text-align: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    .search-box-input{
+        border: 1px solid var(--main-color);
+        color: black;
+        font-size: 5rem;
+        /* background-color: red; */
+
+        .ant-input-lg {
+            border: 1px solid var(--main-color);
+            height: 70px;
+            font-size: 414px;
+        }
+    }
+
 }

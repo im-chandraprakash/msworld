@@ -1,35 +1,49 @@
 import React from "react";
 // import "./Subcard.css";
 import { Link } from "react-router-dom";
-import { Avatar, Card } from "antd";
+import { Avatar, Button, Card, Typography } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
-import './Subcard.scss'
-function Subcard({subjectName , topicName , url , to}) {
+import "./Subcard.scss";
+function Subcard({ subjectName, topicName, url, to }) {
     return (
         <div className="card-container">
             <Card
                 className="subject-card"
-                title={subjectName}
                 bordered="false"
                 hoverable
                 type="inner"
                 size="large"
             >
-                <Meta
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "15px",
-                        justifyContent: "center",
-                    }}
-                    avatar={
-                        <Avatar size={70} src="https://shorturl.at/tERWZ" />
-                    }
-                    title={<Link to={to} state={{subjectName,}}>{subjectName}</Link>}
-                    description="welcome to the introduction of a data structurea and algorithm here we deep dive into the the new world"
-                ></Meta>
+                <div className="subcard-div">
+                    <div className="subcard-img">
+                        <img
+                            src="https://shorturl.at/tERWZ"
+                            alt={subjectName}
+                        />
+                    </div>
+
+                    <div className="subcard-about">
+                        <div>
+                            <Typography.Title level={2}>
+                                {subjectName}
+                            </Typography.Title>
+                            <Typography.Paragraph>
+                                {" "}
+                                Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Ea dolorum soluta delectus
+                                quam eveniet ipsam doloremque aperiam, aut
+                                excepturi debitis!{" "}
+                            </Typography.Paragraph>
+
+                            <Link  type="primary" to={to} state={{ subjectName }}>
+                                <Button type="primary"> 
+                                Start Reading
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </Card>
         </div>
     );

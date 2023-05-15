@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllTopics } from "../../store/slices/SubjectSlice";
 import { Navigate } from "react-router-dom";
+import './RecentArticle.scss'
 import { Link } from "react-router-dom";
 // import { Direction } from "react-toastify/dist/utils";
 
@@ -30,7 +31,9 @@ function RecentArticle() {
                 {data.map((article, id) => {
                     return (
                         <div key={id}>
-                            <Card style={{ border: "1px solid #bfe7f4", marginBlock:'10px' }}>
+                            <Card
+                                className="map-articles"
+                            >
                                 <Link to={`contents/${article.subject_id}`}>
                                     <Typography.Title level={4}>
                                         {article.name}

@@ -19,6 +19,7 @@ function HomeLayout() {
                                 loop: true,
                                 delay: 40,
                                 wrapperClassName:"type-writer",
+                                cursorClassName:'cursor-type-writer',
                                 strings: [
                                     "Welcome to Our Website.",
                                     "We are Helping Students.",

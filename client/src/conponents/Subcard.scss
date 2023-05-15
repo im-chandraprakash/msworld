@@ -1,15 +1,38 @@
-.content-container{
-
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.subContainer{
+.subContainer {
     width: 50%;
 }
 
-.subject-card{
-    // border: 1px solid blue;
-    // color: green;
+.subject-card {
+    .ant-card-meta {
+        height: 800px;
+    }
+    .meta-tag {
+        display: "flex";
+        flex-direction: "column";
+        align-items: "center";
+        gap: "15px";
+        justify-content: "center";
+    }
+}
+
+.card-container {
+    .subcard-div {
+        display: grid;
+        grid-template-columns: 35% 60%;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+
+        .subcard-img {
+            img {
+                width: 80%;
+                // height: 80%;
+                border-radius: 5%;
+            }
+        }
+
+        
+           
     
+    }
 }
