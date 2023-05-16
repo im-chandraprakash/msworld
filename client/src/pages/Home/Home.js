@@ -53,7 +53,7 @@ function Home() {
                     >
                         {data.map((sub, id) => {
                             return (
-                                <div style={{ width: "90%" }}>
+                                <div key={id} style={{ width: "90%" }}>
                                     <Subcard
                                         key={id}
                                         subjectName={sub.subject}

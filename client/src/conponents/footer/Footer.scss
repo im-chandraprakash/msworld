@@ -1,27 +1,25 @@
 .footer-container{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    justify-content: center;
     align-items: center;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    margin-bottom: 20px;   
-    background-color:  #bfe7f4;
-    margin-block: 50px 50px 10px 0;
-    overflow: hidden;
+    height: 300px;
+    background-color: rgb(213, 220, 226);
 
 }
 
 .footer-msworld{
     display: flex;
-    width: 80%;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: space-evenly
     
 }
 .table-head{
+
     font-size: 1.5rem;
-    margin-block: 10px;
-    font-weight: 400;
+    margin-block: 20px;
+    font-weight: 600;
     border-bottom: 1px solid black;
 }
 li{

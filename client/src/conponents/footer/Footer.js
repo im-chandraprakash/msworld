@@ -8,7 +8,7 @@ function Footer() {
             <div className="msworld-tag">
                 <Typography.Title>MSworld</Typography.Title>
             </div>
-            <Divider orientation="left" />
+
             <div className="footer-msworld">
                 
                 <ul>

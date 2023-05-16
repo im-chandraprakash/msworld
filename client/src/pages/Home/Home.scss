@@ -33,5 +33,25 @@
                 width: 40%;
             }
         }
+        overflow: hidden;
+    }
+    .div-element {
+        img {
+            position: absolute;
+            top: 0%;
+            animation: animate 5s ease-in-out infinite;
+        }
+    }
+
+    @keyframes animate {
+        0% {
+            top: 0%;
+        }
+        50% {
+            top: 5%;
+        }
+        100% {
+            top: 0%;
+        }
     }
 }
