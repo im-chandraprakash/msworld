@@ -1,6 +1,6 @@
-import "./Content.css";
+import "./Content.scss";
 import { RightOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme, Image } from "antd";
+import { Layout, Menu, theme, Image, Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -32,7 +32,7 @@ const Contents = () => {
     // let topicId = 1;
     // let subId = 1000;
 
-   
+
 
     useEffect(() => {
         dispatch(fetchContents({ topic_id: topicId }));
@@ -47,8 +47,14 @@ const Contents = () => {
     const { Content, Sider } = Layout;
     const data = topicData;
     // console.log("this id data: ",data);
-
-     
+    
+    //style back and next btn
+    if (topicId < 2) {
+        document.querySelector(".back-btn").style.display = "none"; 
+    }
+    else{
+        document.querySelector(".back-btn").style.display = "block";
+    }
 
     return (
         <Layout style={{ height: "100%" }}>
@@ -67,6 +73,7 @@ const Contents = () => {
                     }}
                 >
                     <Menu
+                        className="menu-bar"
                         mode="inline"
                         defaultSelectedKeys={["0"]}
                         style={{
@@ -74,38 +81,36 @@ const Contents = () => {
                             borderRight: 0,
                         }}
                         // items={subjectData.map((item, index) => {
-                        //   var temp = false;
-                        //   if (item.id === subId) {
-                        //     temp = true;
-                        //     return {
-                        //       key: index,
-                        //       icon: <RightOutlined />,
-                        //       label: item.subject,
-                        //       children: data.map((item1, index1) => {
+                        //     if (item.id === subId) {
                         //         return {
-                        //           key: index1,
-                        //           label: item1.name,
-                        //           onClick: (click) => {
-                        //             setTopicId(item1.id);
-                        //             console.log("workig as hell : ", item1.id);
-                        //           }
-                        //         };
-                        //       }),
-                        //     }
+                        //             key: index,
+                        //             icon: <RightOutlined />,
+                        //             label: item.subject,
+                        //             children: data.map((item1, index1) => {
+                        //                 return {
+                        //                     key: index1,
+                        //                     label: item1.name,
+                        //                     onClick: (click) => {
+                        //                         setTopicId(item1.id);
+                        //                         console.log("workig as hell : ", item1.id);
+                        //                     }
+                        //                 };
+                        //             }),
+                        //         }
 
-                        //   };
+                        //     };
                         // })}
 
-                        items={topicData.map((item, id) => {
-                            return {
-                                key: id,
-                                label: item.name,
-                                onClick: (click) => {
-                                    setTopicId(item.id);
-                                    console.log("workig as hell : ", item.id);
-                                },
-                            };
-                        })}
+                    items={topicData.map((item, id) => {
+                        return {
+                            key: id,
+                            label: item.name,
+                            onClick: (click) => {
+                                setTopicId(item.id);
+                                console.log("workig as hell : ", item.id);
+                            },
+                        };
+                    })}
                     />
                 </Sider>
                 <Layout
@@ -125,7 +130,7 @@ const Contents = () => {
 
                         {contentData.map((data, id) => {
                             return (
-                                <Card key={id}>
+                                <div key={id}>
                                     {/*--------------- Main Title --------------*/}
                                     {topicData.map((data, id) => {
                                         var temp;
@@ -143,7 +148,7 @@ const Contents = () => {
                                     <Divider plain />
                                     {/*------------------ image------------------*/}
                                     <div className="contImg">
-                                    <Image width={200} src={data.image.url} />
+                                        <Image width={200} src={data.image.url} />
                                     </div>
                                     {/* // -------------introduction  -----------*/}
                                     <Typography.Paragraph className="contPara">
@@ -196,9 +201,19 @@ const Contents = () => {
                                             }
                                         )}
                                     </ul>
-                                </Card>
+                                </div>
                             );
                         })}
+                        <Button type="primary" className="back-btn" onClick={(click)=>{
+                            if (topicId > 1) {
+                                setTopicId(topicId-1);
+                                document.querySelector(".menu-bar").defaultSelectedKeys = `{["${topicId-1}"]}`;
+                            }
+                            }}>Back</Button>
+                        <Button type="primary" className="next-btn" onClick={(click)=>{
+                            setTopicId(topicId+1);
+                            document.querySelector(".menu-bar").defaultSelectedKeys = `{["${topicId+1}"]}`;
+                            }}>Next</Button>
                     </Content>
                 </Layout>
             </Layout>
