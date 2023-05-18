@@ -1,35 +1,121 @@
 .home-design {
     width: 90vw;
-    height: 90vh;
+    height: 93vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    overflow: hidden;
 
     // background-color: red;
+
+    .left-part {
+        width: 60%;
+        .type-writer {
+            font-size: 4rem;
+        }
+        .cursor-type-writer {
+            font-size: 4rem;
+        }
+        .about-app-para {
+            font-size: 1.1rem;
+            width: 90%;
+        }
+    }
+
+    .right-part {
+        .div-element {
+            border-radius: 33% 67% 64% 36% / 28% 30% 70% 72%;
+            background-color: #bfe7f4;
+            width: 700px;
+            height: 700px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            img {
+                position: relative;
+                top: 0%;
+                // animation: animate 5s ease-in-out infinite;
+                z-index: 10;
+                // width: 100px;
+                // height: 100px;
+            }
+            @keyframes animate {
+                0% {
+                    top: 0%;
+                }
+                50% {
+                    top: 5%;
+                }
+                100% {
+                    top: 0%;
+                }
+            }
+        }
+        img {
+            margin-top: 15%;
+        }
+    }
 }
-.left-part {
-    width: 60%;
-    .type-writer{
-        font-size: 4rem;
-    }
-    .cursor-type-writer{
-        font-size: 4rem;
-    }
-}
-.right-part {
-    width: 40%;
-    .div-element {
-        border-radius: 33% 67% 64% 36% / 28% 30% 70% 72%;
-        background-color: #bfe7f4;
-        width: 700px;
-        height: 700px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        
-    }
-    img{
-        margin-top: 15%;
+
+@media only screen and (max-width: 600px) {
+    .home-design {
+        // overflow: hidden;
+        width: 100%;
+        display: block;
+        // height: 200vh;
+        .left-part {
+            box-sizing: border-box;
+            width: 100%;
+            // margin: 10px;
+            // margin-top: 30px;
+            padding: 30px;
+            .type-writer {
+                font-size: 2.5rem;
+                font-weight: 600;
+            }
+            .cursor-type-writer {
+                font-size: 2.5rem;
+            }
+            .sub-heading {
+                font-size: 30px;
+                text-align: center;
+            }
+            .about-app-para {
+                width: 100%;
+                text-align: center;
+                font-weight: 500;
+                color: #433c3c;
+            }
+            .explore-btn {
+                padding-bottom: 35px;
+                padding-inline: 25px;
+
+                text-align: center;
+                margin-left: 40px;
+
+                // padding-top: -20px;
+                span {
+                    font-size: 20px;
+                }
+            }
+        }
+        .right-part {
+            display: none;
+            // width: 100%;
+            // display: flex;
+            // justify-content: center;
+            // .div-element {
+            //     width: 500px;
+            //     height: 500px;
+
+            //     img {
+            //         position: relative;
+            //         top: 0%;
+            //         // animation: animate 5s ease-in-out infinite;
+            //         width: 300px;
+            //         height: 300px;
+            //     }
+            // }
+        }
     }
 }

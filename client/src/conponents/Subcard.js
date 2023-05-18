@@ -25,7 +25,7 @@ function Subcard({ subjectName, topicName, url, to }) {
 
                     <div className="subcard-about">
                         <div>
-                            <Typography.Title level={2}>
+                            <Typography.Title level={2} className="subcard-about-head">
                                 {subjectName}
                             </Typography.Title>
                             <Typography.Paragraph>
@@ -37,7 +37,7 @@ function Subcard({ subjectName, topicName, url, to }) {
                             </Typography.Paragraph>
 
                             <Link  type="primary" to={to} state={{ subjectName }}>
-                                <Button type="primary"> 
+                                <Button type="primary" className="reading-btn"> 
                                 Start Reading
                                 </Button>
                             </Link>

@@ -17,9 +17,7 @@ function UserProfile() {
     const [clgName, setClgName] = useState(data?.clgName);
     const [image, setImage] = useState(data?.avatar?.url);
 
-    console.log("user data : ", data.name);
-
-    const [loadPage, setLoadPage] = useState(data);
+    console.log("user data : ", data);
 
     useEffect(() => {
         dispatch(userProfile());
@@ -27,7 +25,7 @@ function UserProfile() {
         setClgName(data.clgName);
         setImage(data.avatar?.url);
         setSem(data.semester);
-    }, [loadPage, data.name]);
+    }, [ data.name]);
 
     if (status === "loading") {
         return <Spinner></Spinner>;
@@ -67,11 +65,6 @@ function UserProfile() {
             <div className="userProfile-subContainer">
                 <div
                     className="user-image"
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
                 >
                     <div className="profile-img">
                         {!image ? (
@@ -86,7 +79,7 @@ function UserProfile() {
                             <>
                                 <Image
                                     className="image"
-                                    width={200}
+                                    // width={200}
                                     src={image}
                                 ></Image>
 
@@ -106,6 +99,7 @@ function UserProfile() {
                         <Form.Item
                             className="input-wrapper"
                             label={
+                                
                                 <Typography.Title level={3}>
                                     User Name :
                                 </Typography.Title>
@@ -126,7 +120,7 @@ function UserProfile() {
                         <Form.Item
                             className="input-wrapper"
                             label={
-                                <Typography.Title level={3}>
+                                <Typography.Title level={3} >
                                     Collage Name :
                                 </Typography.Title>
                             }

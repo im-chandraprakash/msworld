@@ -26,7 +26,7 @@ function Search() {
     });
     return (
         <div className="search-container">
-            <Typography.Title level={3}>
+            <Typography.Title level={3} className="search-head">
                 Hello, What Do you Want to Learn?
             </Typography.Title>
             <div className="search-box-div">
@@ -34,26 +34,11 @@ function Search() {
                     <Form.Item>
                         <Input
                             className="search-box-input"
-                            style={{
-                                fontSize: "1.5rem",
-                                color:'black'
-                                // border: `1px solid ${--main - color}`,
-                            }}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Type something here .... "
                         />
                     </Form.Item>
-                    {/* <Form.Item>
-                          <Tooltip title="search">
-                              <Button
-                                  //   type="primary"
-                                  //   shape="circle"
-                                  icon={<SearchOutlined />}
-                              >
-                                  Search
-                              </Button>
-                          </Tooltip>
-                      </Form.Item> */}
+                   
                 </Form>
 
                 <div className="searched-items">

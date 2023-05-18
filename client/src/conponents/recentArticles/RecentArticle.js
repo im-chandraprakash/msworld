@@ -19,13 +19,7 @@ function RecentArticle() {
     return (
         <div
             className="article-container"
-            style={{
-                display: "flex",
-                flexDirection: "column-reverse",
-                alignItems: "center",
-            }}
         >
-            {/* <Typography.Title>Recent Articles</Typography.Title> */}
 
             <div>
                 {data.map((article, id) => {

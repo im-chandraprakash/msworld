@@ -11,24 +11,59 @@
     grid-template-columns: 35% 60%;
     padding: 40px 15px;
     column-gap: 20px;
-
+    .profile-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
-.input{
+.input {
     font-size: 1.1rem;
     margin-left: 20px;
 }
-.user-details{
+.user-details {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-content: center;
 }
-.image{
+.image {
     border-radius: 30px;
 }
-.input-wrapper{
+.input-wrapper {
     width: 80%;
     display: flex;
     flex-direction: column;
 }
 
+@media only screen and (max-width: 600px) {
+    .userProfile-container {
+        width: 100%;
+        margin-top: 50px;
+
+        .userProfile-subContainer {
+            width: 100%;
+            margin-inline: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .profile-img {
+                // display: none;
+                margin-bottom: 30px;
+                .image {
+                    width: 100px;
+                }
+            }
+            .user-details {
+                .userDetails {
+                }
+            }
+        }
+       .user-details .input-wrapper .ant-typography {
+            font-size: 20px;
+        }
+    }
+}

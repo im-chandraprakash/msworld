@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
 import AdminDashboard from "./admin/adminDashBoard/Dashboard";
 import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
@@ -17,6 +15,8 @@ import AdminLogin from "./admin/Login/Login";
 import RequireAdmin from "./encryption/RequireAdmin";
 import NavBar from "./conponents/navbar/NavBar";
 import Google from "./conponents/Google";
+import Quiz from "./admin/quizes/Quiz";
+import AddQuiz from "./admin/quizes/addQuiz/AddQuiz";
 
 function App() {
     return (
@@ -56,16 +56,15 @@ function App() {
                             path="subjects/:subject_id/:topic_id"
                             element={<AddContent />}
                         ></Route>
+                        <Route path="quiz" element={<Quiz/>}></Route>
+                        <Route path="quiz/:id" element={<AddQuiz/>}></Route>
                     </Route>
                 </Route>
                 {/* </Route> */}
 
                 <Route element={<OnlyIfNotLoggedIn />}>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
                     <Route path="/adminLogin" element={<AdminLogin />} />
                 </Route>
-                {/* <Route path="/image" element = {<ImageTest/>}></Route> */}
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
         </div>

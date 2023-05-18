@@ -10,48 +10,13 @@
         width: 100%;
         // margin-block: 50px;
         padding-block: 50px;
-    }
-    .carousel {
-        margin: 0;
-        height: "160px";
-        color: "#fff";
-        line-height: "160px";
-        text-align: "center";
-        background-color: "#364d79";
-    }
+    } 
 
-    .home-subjects {
-        width: 100%;
-        background-color: #cad0dc;
-        display: flex;
-        justify-content: center;
-        padding-block: 100px;
-        .crausal-subjects {
-            width: 80%;
+}
 
-            .subjects-crausal {
-                width: 40%;
-            }
-        }
-        overflow: hidden;
-    }
-    .div-element {
-        img {
-            position: absolute;
-            top: 0%;
-            animation: animate 5s ease-in-out infinite;
-        }
-    }
-
-    @keyframes animate {
-        0% {
-            top: 0%;
-        }
-        50% {
-            top: 5%;
-        }
-        100% {
-            top: 0%;
-        }
+@media only screen and (max-width:600px){
+    
+    .home-container{
+        width: 100vw;
     }
 }

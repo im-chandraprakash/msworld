@@ -3,6 +3,7 @@ import "./Navbar.scss";
 import { Button, Layout, Menu, Typography, Modal, Avatar, Divider } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { UserOutlined } from "@ant-design/icons";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { toast } from "react-toastify";
 import {
     Admin_Key_Acess_Token,
@@ -18,6 +19,7 @@ import { userProfile } from "../../store/slices/userSlice";
 function NavBar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [model, setModel] = useState(false);
+    const [hamburger, setHamburger] = useState(false);
     const user = getItem(KEY_ACCESS_TOKEN);
     const admin = getItem(Admin_Key_Acess_Token);
     const [email, setEmail] = useState("");
@@ -25,14 +27,16 @@ function NavBar() {
     const [clgName, setClgName] = useState("");
     const [userName, setUserName] = useState("");
     const dispatch = useDispatch();
+
     const data = useSelector((state) => state.userReducer.profile?.avatar?.url);
 
-    console.log("user profile photo : " , data);
+    console.log("user profile photo : ", data);
 
-
-    useEffect(() =>{
-        dispatch(userProfile());
-    } , [])
+    useEffect(() => {
+        if (user) {
+            dispatch(userProfile());
+        }
+    }, []);
 
     function handleLogInToSignUp() {
         handleSignInCancel();
@@ -42,6 +46,14 @@ function NavBar() {
     function handleSignUpToLogIn(val) {
         handleCancel();
         showModelSignIn();
+    }
+
+    const showHamburger = () => {
+        setHamburger(true);
+    };
+
+    const handleCancelHamburger = () =>{
+        setHamburger(false)
     }
 
     const showModal = () => {
@@ -99,36 +111,38 @@ function NavBar() {
     const handleSignInCancel = () => {
         setModel(false);
     };
+
+    function onClickHamberger() {}
     return (
         <div className="navbar-container">
             <Layout>
-                <Header
-                    style={{
-                        backgroundColor: "white",
-                        display: "flex",
-                        cursor: "pointer",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                    }}
-                >
+                <Header className="navbar-header">
                     <Typography.Title>Msworld</Typography.Title>
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            fontSize: "100px",
-                        }}
-                    >
+
+                    <div className="hamburger-menu">
+                        <GiHamburgerMenu onClick={showHamburger} />
+
+                        <Modal
+                            title="hamburger"
+                            open={hamburger}
+                            className="hamburger-model"
+                            // onOk={handleSignInOk}
+                            onCancel={handleCancelHamburger}
+                            // afterClose={handleSubmit}
+                           
+                        >
+                            <ul >
+                                <li className="hamburger-links" >About</li>
+                                <li className="hamburger-links" >Course</li>
+                                <li className="hamburger-links" >Practice</li>
+                                <li className="hamburger-links" >Quiz</li>
+                            </ul>
+                        </Modal>
+                          
+                    </div>
+                    <div className="navbar-right-part">
                         <Menu
-                            style={{
-                                display:'flex',
-                                justifyContent:'center',
-                                alignItems:'center',
-                                paddingBottom:'10px',
-                                // fontSize:'5rem'
-                                
-                            }}
-                            className="menu-bar"
+                            className="menu-navbar-header"
                             mode="horizontal"
                             disabledOverflow="true"
                             items={[
@@ -152,16 +166,12 @@ function NavBar() {
                         ></Menu>
 
                         {!admin ? (
-                            <div>
+                            <div className="login-signup-div">
                                 {!user && !admin ? (
                                     <div>
                                         <Button
                                             type="primary"
-                                            style={{
-                                                padding: "10px 15px",
-                                                width: "120px",
-                                                height: "45px",
-                                            }}
+                                            className="signup-btn"
                                             onClick={showModal}
                                         >
                                             SignUp
@@ -195,7 +205,7 @@ function NavBar() {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    className="userName"
+                                                    className="input"
                                                     onChange={(e) => {
                                                         setUserName(
                                                             e.target.value
@@ -217,7 +227,7 @@ function NavBar() {
                                                 </label>
                                                 <input
                                                     type="email"
-                                                    className="email"
+                                                    className="input"
                                                     id="email"
                                                     onChange={(e) => {
                                                         setEmail(
@@ -237,7 +247,7 @@ function NavBar() {
                                                 </label>
                                                 <input
                                                     type="password"
-                                                    className="password"
+                                                    className="input"
                                                     id="password"
                                                     onChange={(e) =>
                                                         setPassword(
@@ -257,7 +267,7 @@ function NavBar() {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    className="text-input"
+                                                    className="input"
                                                     id="text-input"
                                                     onChange={(e) =>
                                                         setClgName(
@@ -282,11 +292,7 @@ function NavBar() {
 
                                         <Button
                                             type="primary"
-                                            style={{
-                                                padding: "10px 15px",
-                                                width: "120px",
-                                                height: "45px",
-                                            }}
+                                            className="signin-btn"
                                             onClick={showModelSignIn}
                                         >
                                             LogIn
@@ -320,7 +326,7 @@ function NavBar() {
                                                 </label>
                                                 <input
                                                     type="email"
-                                                    className="email"
+                                                    className="input"
                                                     id="email"
                                                     onChange={(e) => {
                                                         setEmail(
@@ -343,7 +349,7 @@ function NavBar() {
                                                 </label>
                                                 <input
                                                     type="password"
-                                                    className="password"
+                                                    className="input"
                                                     id="password"
                                                     onChange={(e) =>
                                                         setPassword(
@@ -373,7 +379,16 @@ function NavBar() {
                                             style={{
                                                 backgroundColor: "#87d068",
                                             }}
-                                            icon={!data ? <UserOutlined /> : <img width= "100%" src= {data}></img>}
+                                            icon={
+                                                !data ? (
+                                                    <UserOutlined />
+                                                ) : (
+                                                    <img
+                                                        width="100%"
+                                                        src={data}
+                                                    ></img>
+                                                )
+                                            }
                                         ></Avatar>
                                     </Link>
                                 )}

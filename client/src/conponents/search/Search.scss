@@ -42,11 +42,13 @@ button {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
     .search-box-input{
         border: 1px solid var(--main-color);
         color: black;
-        font-size: 5rem;
+        font-size: 1.5rem;
+        width: 100%;
         /* background-color: red; */
 
         .ant-input-lg {
@@ -56,4 +58,12 @@ button {
         }
     }
 
+}
+
+@media only screen and (max-width:600px) {
+    
+    .search-container{
+        
+        
+    }
 }

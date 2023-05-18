@@ -1,6 +1,3 @@
-.subContainer {
-    width: 50%;
-}
 
 .subject-card {
     .ant-card-meta {
@@ -34,5 +31,18 @@
         
            
     
+    }
+}
+
+@media only screen and (max-width:600px){
+
+    .card-container{
+        width: 100%;
+        .subject-card{
+            width: 100%;
+            .subcard-about-head{
+                font-size: 23px;
+            }
+        }
     }
 }
