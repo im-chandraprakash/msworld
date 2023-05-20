@@ -24,19 +24,19 @@ const quizSchema = new mongoose.Schema(
                     type: String,
                     required: true,
                 },
-                option1: {
+                a: {
                     type: String,
                     required: true,
                 },
-                option2: {
+                b: {
                     type: String,
                     required: true,
                 },
-                option3: {
+                c: {
                     type: String,
                     required: true,
                 },
-                option4: {
+                d: {
                     type: String,
                     required: true,
                 },

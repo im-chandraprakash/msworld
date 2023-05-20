@@ -29,7 +29,7 @@ function Quiz() {
         e.preventDefault();
         try {
             const response = await axiosClient.post("/quiz/createQuiz", {
-                id: 1,
+                id: 10,
                 name: quizName,
                 startTime,
                 endTime,

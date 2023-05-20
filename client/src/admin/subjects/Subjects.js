@@ -4,7 +4,7 @@ import { fetchSubjects } from "../../store/slices/SubjectSlice";
 import { Button, Card, Form, Input, Typography } from "antd";
 import { Divider} from "antd";
 import { axiosClient } from "../../utils/axiosClient";
-import "./Subjects.css";
+import "./Subjects.scss";
 import Subcard from "../../conponents/Subcard";
 import Spinner from "../../crucial/Spinner";
 import {toast} from 'react-toastify';
@@ -125,14 +125,18 @@ function Subjects() {
 
             <Divider orientation="center"> The Courses are : </Divider>
 
-            <div className="grid-container" style={{paddingInline:"200px"}}>
+            <div className="grid-container" style={{paddingInline:"200px" , }}>
                 {data.map((sub, id) => {
                     return (
                         <Subcard
+                        
+                            style={{boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
                             subjectName={sub.subject}
                             key={id}
-                            className="card-course"
+                            className="card-subjects"
                             to={`${sub.id}`}
+
+                        
                         ></Subcard>
                     );
                 })}

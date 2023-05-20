@@ -28,41 +28,27 @@ const getAllQuizController = async (req, res) => {
     }
 };
 
-// const addQuesionsToQuiz = async (req, res) => {
-//     try {
-//         const { quesions } = req.body;
+const addQuesionsToQuiz = async (req, res) => {
+    try {
+        const { quizQuestions , id } = req.body;
 
-//         const user = await User.findById(req._id);
+        const data = await Quiz.find({id});
+        const quiz = data[0];
+        console.log("All Questions" , quizQuestions);
 
-//         if (name) {
-//             user.name = name;
-//         }
-//         if (clgName) {
-//             user.clgName = clgName;
-//         }
-//         if (semester) {
-//             user.semester = semester;
-//         }
-//         if (avatar) {
-//             const cloudImg = await cloudinary.uploader.upload(avatar, {
-//                 public_id: `${Date.now()}`,
-//                 resource_type: "auto",
-//                 folder: "Profile Images",
-//             });
+        if (quizQuestions) {
+            quiz.quizQuestions = quizQuestions;
+        }
+        await quiz.save();
 
-//             user.avatar = {
-//                 url: cloudImg.secure_url,
-//                 public_id: cloudImg.public_id,
-//             };
-//         }
-//         await user.save();
-//         return res.send(success(200, { user }));
-//     } catch (e) {
-//         return res.send(error(500, e.message));
-//     }
-// };
+        return res.send(success(200, { quiz }));
+    } catch (e) {
+        return res.send(error(500, e.message));
+    }
+};
 
 module.exports = {
     createQuizController,
     getAllQuizController,
+    addQuesionsToQuiz,
 };

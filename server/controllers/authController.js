@@ -32,6 +32,9 @@ const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        // console.log("Email :" , email);
+        // console.log("Password :" , password);
+
         if (!email || !password) {
             return res.send(error(400, "All fields are required"));
         }

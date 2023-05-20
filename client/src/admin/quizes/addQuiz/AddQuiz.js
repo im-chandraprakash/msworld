@@ -1,15 +1,33 @@
 import Typography from "antd/es/typography/Typography";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./AddQuiz.scss";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Space } from "antd";
+import { axiosClient } from "../../../utils/axiosClient";
+import {toast} from 'react-toastify';
 
 function AddQuiz() {
     const { id } = useParams();
+    const [question , setQuestion] = useState();
 
-    const onFinish = (values) => {
-        console.log("Received values of form:", values);
+    const onFinish = async (values) => {
+        // console.log("Received values of form:", values);
+        // console.log("Received values of form:", values.quizQuestions);
+        setQuestion(values.quizQuestions);
+
+        console.log("question :" ,question);
+
+        const response = await axiosClient.put("quiz/addQuizQuestions",{
+            quizQuestions:question,
+            id:10,
+        });
+
+          toast.success("Question Added SuccessFully", {
+              position: "top-right",
+          });
+
+        console.log("final :" , response);
     };
     return (
         <div className="addQuiz-container">
@@ -24,7 +42,7 @@ function AddQuiz() {
                     }}
                     autoComplete="off"
                 >
-                    <Form.List name="users">
+                    <Form.List name="quizQuestions">
                         {(fields, { add, remove }) => (
                             <>
                                 {fields.map(({ key, name, ...restField }) => (
@@ -41,7 +59,7 @@ function AddQuiz() {
                                     >
                                         <Form.Item
                                             {...restField}
-                                            name={[name, `Question${key}`]}
+                                            name={[name, "question"]}
                                             label={
                                                 <p className="q-label">
                                                     Question-{key + 1}
@@ -64,10 +82,10 @@ function AddQuiz() {
                                         <Form.Item
                                             className="option"
                                             {...restField}
-                                            name={[name, "option1"]}
+                                            name={[name, "a"]}
                                             label={
                                                 <p className="label">
-                                                    option-1
+                                                    a
                                                 </p>
                                             }
                                         >
@@ -76,32 +94,30 @@ function AddQuiz() {
                                                 className="input"
                                             />
                                         </Form.Item>
-
                                         <Form.Item
                                             {...restField}
                                             className="option"
                                             label={
                                                 <p className="label">
-                                                    option-2
+                                                    b
                                                 </p>
                                             }
-                                            name={[name, "option2"]}
+                                            name={[name, "b"]}
                                         >
                                             <Input
                                                 placeholder="option2"
                                                 className="input"
                                             />
                                         </Form.Item>
-
                                         <Form.Item
                                             label={
                                                 <p className="label">
-                                                    option-3
+                                                    c
                                                 </p>
                                             }
                                             className="option"
                                             {...restField}
-                                            name={[name, "option3"]}
+                                            name={[name, "c"]}
                                         >
                                             <Input
                                                 placeholder="option 3"
@@ -111,16 +127,38 @@ function AddQuiz() {
                                         <Form.Item
                                             label={
                                                 <p className="label">
-                                                    option-2
+                                                    d
                                                 </p>
                                             }
                                             className="option"
                                             {...restField}
-                                            name={[name, "option4"]}
+                                            name={[name, "d"]}
                                         >
                                             <Input
                                                 placeholder="option 4"
                                                 className="input"
+                                            />
+                                        </Form.Item>{" "}
+                                        <Form.Item
+                                            {...restField}
+                                            name={[name, 'answer']}
+                                            label={
+                                                <p className="A-label">
+                                                    Answer
+                                                </p>
+                                            }
+                                            className="answer"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message:
+                                                        "Missing Answer",
+                                                },
+                                            ]}
+                                        >
+                                            <Input
+                                                placeholder="Question"
+                                                className="q-input"
                                             />
                                         </Form.Item>
                                         <Form.Item
