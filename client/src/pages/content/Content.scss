@@ -1,8 +1,16 @@
+:root{
+  --titleSize: "1rem",
+}
+.contTitle {
+  text-align: center;
+  font-size: var(--titleSize);
+  color: grey !important;
+}
 .contImg {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  transform: translateX(-50px);
   .ant-image-img {
     display: block;
     width: 300px;
@@ -18,17 +26,11 @@
     height: 300px;
   }
 }
-
-.contTitle {
-  padding-left: 100px;
-  text-align: center;
-}
-
 .contPara {
   margin-left: 20px;
   box-shadow: 0 3px 6px rgba(182, 182, 182, 0.16),
     0 3px 6px rgba(182, 182, 182, 0.23);
-  border: 1px solid #dcdcdc;
+  // border: 1px solid #dcdcdc;
   padding: 20px;
   text-align: justify;
 }
@@ -40,4 +42,12 @@
 .next-btn {
   float: right;
   margin-top: 50px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .ant-layout .midSection .css-dev-only-do-not-override-yp8pcc{
+    width: 100%;
+    background-color: aqua
+  };
 }

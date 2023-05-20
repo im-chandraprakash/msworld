@@ -1,6 +1,6 @@
 import "./Content.scss";
 import { RightOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme, Image, Button } from "antd";
+import { Layout, Menu, theme, Image, Button, Slider } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -29,6 +29,10 @@ const Contents = () => {
     const status = useSelector((state) => state.subjectReducer.contentStatus);
     const [topicId, setTopicId] = useState(1);
     const [subId, setSubId] = useState(subject_id);
+
+    const [selectedMenuKey, setSelectedMenuKey] = useState(`0`);
+    const [isBackButtonVisible, setIsBackButtonVisible] = useState(true);
+    
     // let topicId = 1;
     // let subId = 1000;
 
@@ -38,6 +42,14 @@ const Contents = () => {
         dispatch(fetchContents({ topic_id: topicId }));
         dispatch(fetchTopics({ subject_id: subId }));
         dispatch(fetchSubjects());
+
+        // To hide the back btn
+        if (topicId === 1) {
+            setIsBackButtonVisible(false);
+        }
+        else{
+            setIsBackButtonVisible(true);
+        }
     }, [dispatch, topicId, subId]);
 
     // console.log("topicName is: ", topicData);
@@ -46,19 +58,31 @@ const Contents = () => {
 
     const { Content, Sider } = Layout;
     const data = topicData;
-    
+
+    const siderStyle = {
+        textAlign: 'center',
+        lineHeight: '120px',
+        color: '#fff',
+        backgroundColor: 'transparent',
+    };
+
     return (
         <Layout style={{ height: "100%" }}>
             <Layout>
                 <SuggestMenu />
             </Layout>
-            <Layout>
+            <Layout
+                style={{
+                    paddingTop: "12px",
+                }}
+            >
                 <Sider
                     breakpoint="lg"
                     collapsedWidth="0"
                     onBreakpoint={(broken) => {
                         // console.log(broken);
                     }}
+                    width="20%"
                     onCollapse={(collapsed, type) => {
                         // console.log(collapsed, type);
                     }}
@@ -66,7 +90,8 @@ const Contents = () => {
                     <Menu
                         className="menu-bar"
                         mode="inline"
-                        defaultSelectedKeys={["0"]}
+                        defaultSelectedKeys={[`0`]}
+                        selectedKeys={[`${selectedMenuKey}`]}
                         style={{
                             height: "100%",
                             borderRight: 0,
@@ -92,21 +117,23 @@ const Contents = () => {
                         //     };
                         // })}
 
-                    items={topicData.map((item, id) => {
-                        return {
-                            key: id,
-                            label: item.name,
-                            onClick: (click) => {
-                                setTopicId(item.id);
-                                console.log("workig as hell : ", item.id);
-                            },
-                        };
-                    })}
+                        items={topicData.map((item, id) => {
+                            return {
+                                key: id,
+                                label: item.name,
+                                onClick: (click) => {
+                                    setTopicId(item.id);
+                                    console.log("workig as hell : ", item.id);
+                                },
+                            };
+                        })}
                     />
                 </Sider>
                 <Layout
+                    className="midSection"
                     style={{
-                        padding: "0 24px 24px",
+                        padding: "0 18px 18px",
+                        width: "60%",
                     }}
                 >
                     <Content
@@ -137,14 +164,14 @@ const Contents = () => {
                                         );
                                     })}
                                     <Divider plain />
-                                    {/*------------------ image------------------*/}
-                                    <div className="contImg">
-                                        <Image width={200} src={data.image.url} />
-                                    </div>
                                     {/* // -------------introduction  -----------*/}
                                     <Typography.Paragraph className="contPara">
                                         {data.intro}
                                     </Typography.Paragraph>
+                                    {/*------------------ image------------------*/}
+                                    <div className="contImg">
+                                        <Image width={200} src={data.image.url} />
+                                    </div>
                                     {
                                         // _--------adding subtitle and its para--------
                                         data.content.map((subData, id1) => {
@@ -195,17 +222,34 @@ const Contents = () => {
                                 </div>
                             );
                         })}
-                        <Button type="primary" className="back-btn" onClick={(click)=>{
-                            if (topicId > 1) {
-                                setTopicId(topicId-1);
-                                document.querySelector(".menu-bar").defaultSelectedKeys = `{["${topicId-1}"]}`;
+
+                        {/* Back and Next Button */}
+                        <Button
+                        style={
+                            {
+                                display: isBackButtonVisible ? "inline-block" : "none",
                             }
-                            }}>Back</Button>
-                        <Button type="primary" className="next-btn" onClick={(click)=>{
-                            setTopicId(topicId+1);
-                            document.querySelector(".menu-bar").defaultSelectedKeys = `{["${topicId+1}"]}`;
-                            }}>Next</Button>
+                        } type="primary" className="back-btn" onClick={(click) => {
+                            if (topicId > 1) {
+                                setTopicId(topicId - 1);
+                                setSelectedMenuKey(Number(selectedMenuKey) - 1);
+                            }
+                        }}>Back</Button>
+                        <Button type="primary" className="next-btn" onClick={(click) => {
+                            setTopicId(topicId + 1);
+                            setSelectedMenuKey(Number(selectedMenuKey) + 1);
+                        }}>Next</Button>
                     </Content>
+                </Layout>
+                <Layout
+                    style={{
+                        width: "20%",
+                    }
+
+                }
+                    className="rightSection"
+                >
+                    <Sider style={siderStyle}></Sider>
                 </Layout>
             </Layout>
         </Layout>
