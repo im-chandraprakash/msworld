@@ -5,7 +5,7 @@ import { Avatar, Button, Card, Typography } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
 import "./Subcard.scss";
-function Subcard({ subjectName, topicName, url, to }) {
+function Subcard({ subjectName, topicName, url, to,btnName }) {
     return (
         <div className="card-container">
             <Card
@@ -38,7 +38,7 @@ function Subcard({ subjectName, topicName, url, to }) {
 
                             <Link  type="primary" to={to} state={{ subjectName }}>
                                 <Button type="primary" className="reading-btn"> 
-                                Start Reading
+                                {btnName ? btnName : "Start Reading"}
                                 </Button>
                             </Link>
                         </div>

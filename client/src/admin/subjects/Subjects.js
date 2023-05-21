@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSubjects } from "../../store/slices/SubjectSlice";
 import { Button, Card, Form, Input, Typography } from "antd";
-import { Divider} from "antd";
+import { Divider } from "antd";
 import { axiosClient } from "../../utils/axiosClient";
 import "./Subjects.scss";
 import Subcard from "../../conponents/Subcard";
 import Spinner from "../../crucial/Spinner";
-import {toast} from 'react-toastify';
-
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 function Subjects() {
@@ -22,23 +22,21 @@ function Subjects() {
         console.log(data);
     }, [dispatch, subject]);
 
-
-    if(status === "loading"){
-        return <Spinner/>
+    if (status === "loading") {
+        return <Spinner />;
     }
 
     async function OnClick(key) {
         try {
-           
             const response = await axiosClient.post("/cse/createSubject", {
                 id: key.id,
                 subject: key.subjectName,
                 semester: key.sem,
             });
-            
+
             console.log(response);
-            toast.success("Subject Added SuccessFully" , {
-                position:'top-right'
+            toast.success("Subject Added SuccessFully", {
+                position: "top-right",
             });
             setSubject(subject + 1);
         } catch (error) {
@@ -55,23 +53,22 @@ function Subjects() {
     // }
     return (
         <div className="subject-container">
-            <Title>Subjects</Title>
+            <Title className="title-name">Subjects</Title>
 
             <Card
-                title="Add Subject"
                 bordered="true"
                 className="card-subject"
-                headStyle={{ fontSize: "2rem", width:"900px" }}
+                headStyle={{ fontSize: "2rem", width: "900px" }}
             >
                 <Form
                     name="basic"
                     size="large"
-                    className="font-size"
+                    className="subject-form"
                     onFinish={OnClick}
-                    style={{ fontSize: "5rem", width: "100%" }}
                 >
                     <Form.Item
-                        label="Subject ID"
+                        className="form-item"
+                        label={<p className="form-item-label">Subject ID</p>}
                         name="id"
                         rules={[
                             {
@@ -84,7 +81,8 @@ function Subjects() {
                     </Form.Item>
 
                     <Form.Item
-                        label="Semester "
+                        className="form-item"
+                        label={<p className="form-item-label">Semester</p>}
                         name="sem"
                         rules={[
                             {
@@ -97,9 +95,9 @@ function Subjects() {
                     </Form.Item>
 
                     <Form.Item
-                        label="Subject Name :"
+                        label={<p className="form-item-label">Subject Name</p>}
                         name="subjectName"
-                        className="font-size"
+                        className="form-item"
                         rules={[
                             {
                                 required: true,
@@ -112,32 +110,33 @@ function Subjects() {
 
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
-                            Submit
+                            Create
                         </Button>
                     </Form.Item>
                 </Form>
             </Card>
 
-            <Card
-            headStyle={{width:"800px"}}>
-                <p>{subject}</p>
-            </Card>
-
             <Divider orientation="center"> The Courses are : </Divider>
 
-            <div className="grid-container" style={{paddingInline:"200px" , }}>
+            <div className="grid-container">
                 {data.map((sub, id) => {
                     return (
-                        <Subcard
-                        
-                            style={{boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
-                            subjectName={sub.subject}
-                            key={id}
-                            className="card-subjects"
-                            to={`${sub.id}`}
-
-                        
-                        ></Subcard>
+                        <div className="card-div-subjects" key={id}>
+                            <div className="card-img">
+                                <img
+                                    src="https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg"
+                                    alt="subject image"
+                                />
+                            </div>
+                            <div className="subject-card-about">
+                                <Link className="link link-btn" to= {`${sub.id}`}>{sub.subject}</Link>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Impedit, maxime.
+                                    Perferendis natus maiores eaque ad.
+                                </p>
+                            </div>
+                        </div>
                     );
                 })}
             </div>

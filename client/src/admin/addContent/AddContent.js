@@ -77,8 +77,8 @@ function AddContent() {
         }
     }
     return (
-        <div className="content-container">
-            <div className="subContainer">
+        <div className="content-container" style={{width:'90%'}}>
+            <div className="subContainer" style={{marginLeft:'100px' ,width:'60%'}}>
                 <Typography.Title>Topic Name : {topicName}</Typography.Title>
                 <Typography.Title level={2}>Write your Content here : </Typography.Title>
                

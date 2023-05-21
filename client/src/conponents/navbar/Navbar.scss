@@ -31,7 +31,22 @@
         .navbar-right-part {
             display: flex;
             align-items: center;
-            font-size: 100px;
+            // font-size: 100px;
+            // background-color:#2c0357;
+
+            .quiz-div{
+                // margin-right: -30px;
+                .quiz-link{
+                    background-color: #2c0357;
+                    padding: 6px 15px;
+                    // margin-right: -10px;
+                    // z-index: 10;
+                    color: white;
+                    border-radius: 10px;
+                    font-size: 1.2rem;
+                }
+
+            }
         }
     }
 }

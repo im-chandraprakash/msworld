@@ -1,27 +1,103 @@
-.subject-container{
-   width: 80%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
+.subject-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-}
-.font-size{
-    font-size: 1.3rem;
-}
-.card{
-    width: 50%;
-}
-.grid-container{
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(3 , 1fr);
-    gap: 30px;
+    .card-subject {
+        width: 50%;
+        font-size: 2rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 
-    .card-subjects{
-        width: 100%;
-        
-       
+        .subject-form {
+            .form-item .form-item-label {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .grid-container {
+        width: 80%;
+        // height: 40%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+
+        .card-div-subjects {
+            display: flex;
+            column-gap: 20px;
+            border: 1px solid var(--main-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+            .card-img {
+                img {
+                    width: 120px;
+                }
+            }
+            .subject-card-about {
+                // margin: 0;
+                .link {
+                    margin: 0;
+                    font-size: 20px;
+                    // padding: ;
+                }
+                p {
+                    margin: 0;
+                    margin-top: 5px;
+                }
+            }
+        }
+        .card-div-subjects:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
     }
 }
 
+@media only Screen and (max-width: 600px) {
+    .subject-container {
+        width: 100%;
+        .ant-typography {
+            font-size: 30px;
+            // background-color: red;
+        }
+        .card-subject {
+            width: 100%;
+            .subject-form {
+                .form-item .form-item-label {
+                    font-size: 18px;
+                }
+            }
+        }
+        .card-subject {
+            width: 85%;
+            //  padding-inline: 50px;
+            box-sizing: border-box;
+            .form-item-label {
+                margin: 0;
+                padding: 0;
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+        .grid-container {
+            grid-template-columns: 100%;
+            .card-div-subjects {
+                padding: 10px 15px;
+                .card-img img {
+                    width: 100px;
+                    margin-top: 7px;
+                }
+                .subject-card-about {
+                    .link {
+                        font-size: 17px;
+                    }
+                    p {
+                    }
+                }
+            }
+        }
+    }
+}

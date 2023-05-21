@@ -141,11 +141,17 @@ function NavBar() {
                           
                     </div>
                     <div className="navbar-right-part">
+                        <div className="quiz-div">
+                            <Link className="quiz-link" to="/tryQuiz">Quiz</Link>
+                        </div>
                         <Menu
                             className="menu-navbar-header"
                             mode="horizontal"
                             disabledOverflow="true"
                             items={[
+                                {
+                                //    label:{}
+                                },
                                 {
                                     label: "Courses",
                                     key: "courses",

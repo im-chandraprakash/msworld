@@ -17,6 +17,7 @@ import NavBar from "./conponents/navbar/NavBar";
 import Google from "./conponents/Google";
 import Quiz from "./admin/quizes/Quiz";
 import AddQuiz from "./admin/quizes/addQuiz/AddQuiz";
+import TryQuiz from "./conponents/playQuiz/TryQuiz";
 
 function App() {
     return (
@@ -26,10 +27,9 @@ function App() {
                 <Route element={<NavBar />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/userProfile" element={<UserProfile />} />
-                    <Route
-                        path="contents/:subject_id"
-                        element={<Contents />}
-                    />
+                    <Route path="contents/:subject_id" element={<Contents />} />
+
+                    <Route path="/tryQuiz" element={ <TryQuiz/> }></Route>
                     {/* <Route path="/google" element={<Google/>}></Route> */}
                 </Route>
 
@@ -56,8 +56,8 @@ function App() {
                             path="subjects/:subject_id/:topic_id"
                             element={<AddContent />}
                         ></Route>
-                        <Route path="quiz" element={<Quiz/>}></Route>
-                        <Route path="quiz/:id" element={<AddQuiz/>}></Route>
+                        <Route path="quiz" element={<Quiz />}></Route>
+                        <Route path="quiz/:id" element={<AddQuiz />}></Route>
                     </Route>
                 </Route>
                 {/* </Route> */}
