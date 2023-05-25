@@ -18,6 +18,6 @@ const subjectSchema = mongoose.Schema({
         type: Date,
         default: Date,
     },
-});
+}) ;
 
 module.exports = mongoose.model("subject", subjectSchema);

@@ -8,7 +8,7 @@
     flex-direction: column;
 
     .quiz-questions {
-        width: 80%;
+        width: 50%;
         // height: 500px;
         background-color: red;
         margin-bottom: 50px;
@@ -60,4 +60,45 @@
     .A-label {
         font-size: 20px;
     }
+}
+
+@media only screen and (max-width:600px){
+    .addQuiz-container{
+
+        .ant-typography{
+            font-size: 30px;
+        }
+        .quiz-questions{
+            width: 70%;
+            margin: 0;
+            padding: 30px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            .antd-form-quiz{
+                
+            }
+        }
+        .quiz-create-btn{
+            margin-bottom: 0;
+        }
+    }
+    .q-input{
+
+    }
+    
+.question {
+    .q-label {
+        font-size: 20px;
+    }
+    .q-input {
+        width: 100%;
+    }
+}
+
+.option {
+    .input {
+        width: 300px;
+    }
+}
+
 }

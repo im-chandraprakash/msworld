@@ -6,7 +6,7 @@ import Subjects from "./admin/subjects/Subjects";
 import Topic from "./conponents/topics/Topic";
 import AddContent from "./admin/addContent/AddContent";
 import Contents from "./pages/content/Contents";
-import NotFound from "./crucial/NotFound";
+import NotFound from "./crucial/not found/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OnlyIfNotLoggedIn from "./encryption/OnlyIfNotLoggedIn";
@@ -18,6 +18,7 @@ import Google from "./conponents/Google";
 import Quiz from "./admin/quizes/Quiz";
 import AddQuiz from "./admin/quizes/addQuiz/AddQuiz";
 import TryQuiz from "./conponents/playQuiz/TryQuiz";
+import BranchAll from "./admin/all branch/BranchAll";
 
 function App() {
     return (
@@ -58,6 +59,7 @@ function App() {
                         ></Route>
                         <Route path="quiz" element={<Quiz />}></Route>
                         <Route path="quiz/:id" element={<AddQuiz />}></Route>
+                        <Route path="branch" element={<BranchAll/>}></Route>
                     </Route>
                 </Route>
                 {/* </Route> */}

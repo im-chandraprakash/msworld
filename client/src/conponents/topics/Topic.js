@@ -7,16 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosClient } from "../../utils/axiosClient";
 import "./Topic.scss";
 import Spinner from "../../crucial/Spinner";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 import Typography from "antd/es/typography/Typography";
-
-
 
 function Topic() {
     const { subject_id } = useParams();
     const dispatch = useDispatch();
     const location = useLocation();
-    const {subjectName} = location.state ? location.state : "";
+    const { subjectName } = location.state ? location.state : "";
     const data = useSelector((state) => state.subjectReducer.topics);
     const status = useSelector((state) => state.subjectReducer.topicStatus);
     const topicLength = useSelector(
@@ -40,9 +38,8 @@ function Topic() {
         }
     }, [dispatch, topicNo, topicLength]);
 
-
-    if(status === "loading"){
-        return <Spinner/>
+    if (status === "loading") {
+        return <Spinner />;
     }
 
     async function OnClick(key) {
@@ -57,15 +54,15 @@ function Topic() {
                 // subject_id: "400",
                 // name: "second program",
             });
-            toast.success(`${key.topicName} Added Successfully`,{
-                position:'top-right'
-            })
+            toast.success(`${key.topicName} Added Successfully`, {
+                position: "top-right",
+            });
             setTopicNo(topicLength + 1);
         } catch (e) {
             console.log(e);
-             toast.error("something went wrong", {
-                 position: "top-right",
-             });
+            toast.error("something went wrong", {
+                position: "top-right",
+            });
         }
     }
     return (
@@ -73,23 +70,26 @@ function Topic() {
             <Typography.Title>Subject : {subjectName} </Typography.Title>
 
             <div className="topic-subContainer">
-                <h1 className="items">{}</h1>
-                <h2>{topicNo}</h2>
                 <Card
-                    title="Add Subject Topics"
+                    // title="Add Subject Topics"
+                    className="topic-card"
                     bordered="true"
                     headStyle={{ fontSize: "1.5rem" }}
                 >
                     <Form
+                        className="topic-form"
                         name="basic"
                         size="large"
-                        className="font-size"
                         onFinish={OnClick}
                     >
                         <Form.Item
-                            label="Enter Topic Name :"
+                            className="topic-form-item"
+                            label={
+                                <p className="form-item-label">
+                                    Enter Topic Name :{" "}
+                                </p>
+                            }
                             name="topicName"
-                            className="font-size"
                             rules={[
                                 {
                                     required: true,
@@ -102,7 +102,7 @@ function Topic() {
 
                         <Form.Item>
                             <Button type="primary" htmlType="submit">
-                                Submit
+                                Create
                             </Button>
                         </Form.Item>
                     </Form>
@@ -112,6 +112,7 @@ function Topic() {
                     return (
                         <Card key={id} className="topics">
                             <Link
+                                className="topic-link"
                                 to={`${topic.id}`}
                                 state={{ topicName: topic.name }}
                             >

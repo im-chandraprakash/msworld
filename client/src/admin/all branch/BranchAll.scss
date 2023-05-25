@@ -1,0 +1,80 @@
+.branch-container {
+    margin: 30px;
+
+    .for-mobile {
+        height: 80px;
+        margin-block: 50px;
+        border: 1px solid var(--main-color);
+        padding: 25px;
+        .create-btn {
+            height: 50px;
+
+            span {
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    .all-branch-div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        border-radius: 15px;
+        margin-inline: 75px;
+        .select-branch {
+            // margin-inline: 50px;
+            width: 90%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            .branch-img-div {
+                img {
+                    width: 100%;
+                    height: 90%;
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .branch-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .for-mobile {
+            display: flex;
+            justify-content: end;
+
+            .ant-btn {
+                height: 35px;
+                margin: 0;
+                padding: 0;
+                padding-inline: 10px;
+                span {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+        .select-branch {
+            width: 80%;
+            border: 1px solid var(--main-color);
+            padding-block: 25px;
+            margin-block: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            text-align: center;
+            .branch-img-div {
+                img {
+                    width: 60%;
+                }
+            }
+            .branch-name-div {
+                .ant-typography {
+                    margin: 0;
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}

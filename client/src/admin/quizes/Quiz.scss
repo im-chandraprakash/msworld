@@ -48,3 +48,45 @@
     font-size: 1.3rem;
     margin-top: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    .quiz-container {
+        .plus-icon-div {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgb(107, 47, 107);
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            font-size: 100px;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            z-index: 10;
+
+            .plus-icon {
+                font-size: 30px;
+            }
+        }
+
+        .all-quizs {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+
+            .quiz-div {
+                .quiz-card {
+                    grid-template-columns: 80%;
+                }
+            }
+        }
+        .quiz-div .quiz-card img {
+            width: 50%;
+        }
+        .ant-typography{
+            margin-top: 0px;
+            margin-bottom: 15px;
+        }
+    }
+}

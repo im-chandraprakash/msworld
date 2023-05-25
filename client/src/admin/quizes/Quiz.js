@@ -110,14 +110,6 @@ function Quiz() {
                         />
                     </form>
                 </Modal>
-
-                {/* <div>
-                    {Array.isArray(data)
-                        ? data.map((val, id) => {
-                              return <div key={id}></div>;
-                          })
-                        : console.log("hello")}
-                </div> */}
             </div>
 
             <div className="all-quizs">

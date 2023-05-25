@@ -5,29 +5,29 @@ import "./AddQuiz.scss";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Space } from "antd";
 import { axiosClient } from "../../../utils/axiosClient";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 
 function AddQuiz() {
     const { id } = useParams();
-    const [question , setQuestion] = useState();
+    const [question, setQuestion] = useState();
 
     const onFinish = async (values) => {
         // console.log("Received values of form:", values);
         // console.log("Received values of form:", values.quizQuestions);
         setQuestion(values.quizQuestions);
 
-        console.log("question :" ,question);
+        console.log("question :", question);
 
-        const response = await axiosClient.put("quiz/addQuizQuestions",{
-            quizQuestions:question,
-            id:10,
+        const response = await axiosClient.put("quiz/addQuizQuestions", {
+            quizQuestions: question,
+            id: 10,
         });
 
-          toast.success("Question Added SuccessFully", {
-              position: "top-right",
-          });
+        toast.success("Question Added SuccessFully", {
+            position: "top-right",
+        });
 
-        console.log("final :" , response);
+        console.log("final :", response);
     };
     return (
         <div className="addQuiz-container">
@@ -36,10 +36,7 @@ function AddQuiz() {
                 <Form
                     name="dynamic_form_nest_item"
                     onFinish={onFinish}
-                    className="antd-form"
-                    style={{
-                        maxWidth: 600,
-                    }}
+                    className="antd-form-quiz"
                     autoComplete="off"
                 >
                     <Form.List name="quizQuestions">
@@ -51,10 +48,6 @@ function AddQuiz() {
                                         className="space-element"
                                         direction="vertical"
                                         key={key}
-                                        style={{
-                                            display: "flex",
-                                            marginBottom: 8,
-                                        }}
                                         align="baseline"
                                     >
                                         <Form.Item
@@ -83,11 +76,7 @@ function AddQuiz() {
                                             className="option"
                                             {...restField}
                                             name={[name, "a"]}
-                                            label={
-                                                <p className="label">
-                                                    a
-                                                </p>
-                                            }
+                                            label={<p className="label">a</p>}
                                         >
                                             <Input
                                                 placeholder="option1"
@@ -97,11 +86,7 @@ function AddQuiz() {
                                         <Form.Item
                                             {...restField}
                                             className="option"
-                                            label={
-                                                <p className="label">
-                                                    b
-                                                </p>
-                                            }
+                                            label={<p className="label">b</p>}
                                             name={[name, "b"]}
                                         >
                                             <Input
@@ -110,11 +95,7 @@ function AddQuiz() {
                                             />
                                         </Form.Item>
                                         <Form.Item
-                                            label={
-                                                <p className="label">
-                                                    c
-                                                </p>
-                                            }
+                                            label={<p className="label">c</p>}
                                             className="option"
                                             {...restField}
                                             name={[name, "c"]}
@@ -125,11 +106,7 @@ function AddQuiz() {
                                             />
                                         </Form.Item>
                                         <Form.Item
-                                            label={
-                                                <p className="label">
-                                                    d
-                                                </p>
-                                            }
+                                            label={<p className="label">d</p>}
                                             className="option"
                                             {...restField}
                                             name={[name, "d"]}
@@ -141,7 +118,7 @@ function AddQuiz() {
                                         </Form.Item>{" "}
                                         <Form.Item
                                             {...restField}
-                                            name={[name, 'answer']}
+                                            name={[name, "answer"]}
                                             label={
                                                 <p className="A-label">
                                                     Answer
@@ -151,8 +128,7 @@ function AddQuiz() {
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message:
-                                                        "Missing Answer",
+                                                    message: "Missing Answer",
                                                 },
                                             ]}
                                         >
@@ -184,8 +160,12 @@ function AddQuiz() {
                         )}
                     </Form.List>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            Submit
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            className="quiz-create-btn"
+                        >
+                            Crate
                         </Button>
                     </Form.Item>
                 </Form>

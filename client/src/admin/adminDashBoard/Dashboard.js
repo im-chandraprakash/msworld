@@ -5,6 +5,7 @@ import {
     ProfileOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    BranchesOutlined,
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import { Button, Layout, Menu, Slider, Space, Drawer, Typography } from "antd";
@@ -126,6 +127,17 @@ function Dashboard() {
                                             ),
                                             key: "quiz",
                                         },
+                                        {
+                                            label: "Branch",
+                                            icon: (
+                                                <BranchesOutlined
+                                                    style={{
+                                                        fontSize: "1.3rem",
+                                                    }}
+                                                />
+                                            ),
+                                            key: "branch",
+                                        },
                                     ]}
                                 ></Menu>
                             </Drawer>
@@ -134,7 +146,9 @@ function Dashboard() {
                             MsTechWorld
                         </Typography.Title>
                     </div>
-                    <Outlet />
+                    <div style={{ width: "100%" }}>
+                        <Outlet />
+                    </div>
                 </div>
 
                 <Menu
@@ -189,10 +203,21 @@ function Dashboard() {
                             ),
                             key: "quiz",
                         },
+                        {
+                            label: "Branch",
+                            icon: (
+                                <BranchesOutlined
+                                    style={{
+                                        fontSize: "1.3rem",
+                                    }}
+                                />
+                            ),
+                            key: "branch",
+                        },
                     ]}
                 ></Menu>
             </div>
-            <div className="outlet">
+            <div className="outlet" style={{ width: "100%" }}>
                 <Outlet />
             </div>
         </div>

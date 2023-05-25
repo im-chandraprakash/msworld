@@ -1,0 +1,129 @@
+.content-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // gap: 10px;
+    .subContainer {
+        width: 60%;
+
+        .content-form {
+            display: flex;
+            row-gap: 15px;
+            flex-direction: column;
+        }
+        .head-tittle {
+            font-size: 28px;
+            font-weight: 800px;
+        }
+        .ant-card-body {
+            background-color: #f1f6f9;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .ant-card-body {
+            .ant-typography {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                margin: 8px;
+            }
+        }
+    }
+}
+.form-item {
+    .form-text-area {
+        text-align: center;
+        margin-left: 25px;
+        width: 60%;
+        background-color: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    // margin-inline: 10px;
+}
+
+.field-item-head {
+    width: 350px;
+    margin-left: 10px;
+}
+.field-item-about {
+    width: 400px;
+    margin-left: 10px;
+    margin-block: 0;
+}
+
+.advantage-space {
+    display: flex;
+    justify-content: center;
+    .advantage-field {
+        width: 350px;
+    }
+}
+.disadvantage-space {
+    display: flex;
+    justify-content: center;
+    .disadvantage-field {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .content-container {
+        // background-color: aliceblue;
+        .subContainer {
+            width: 90%;
+            .content-form {
+                display: flex;
+                row-gap: 15px;
+                flex-direction: column;
+            }
+            .head-tittle {
+                font-size: 28px;
+                font-weight: 800px;
+            }
+            .ant-card-body {
+                background-color: #e2e2e2;
+                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                padding: 0;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    .form-item {
+        .form-text-area {
+            text-align: center;
+            margin-left: 25px;
+            width: 90%;
+            background-color: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+        // margin-inline: 10px;
+    }
+
+    .field-item-head {
+        width: 350px;
+        margin-left: 10px;
+    }
+    .field-item-about {
+        width: 400px;
+        margin-left: 10px;
+        margin-block: 0;
+    }
+
+    .advantage-space {
+        display: flex;
+        justify-content: center;
+        .advantage-field {
+            width: 350px;
+        }
+    }
+    .disadvantage-space {
+        display: flex;
+        justify-content: center;
+        .disadvantage-field {
+            width: 350px;
+        }
+    }
+}

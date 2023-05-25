@@ -1,17 +1,95 @@
-.topic-container{
+.topic-container {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.topic-subContainer{
+.topic-subContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // row-gap: 50px;
 
-    width: 50%;
+    .topic-card{
+        margin-bottom: 30px;
+    }
+
+    .ant-card {
+
+        width: 60%;
+        // margin-bottom: 50px;
+        // background-color: red;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        // .top
+        .ant-card-body{
+            // margin-bottom: 50px;
+        }
+    }
+
+    .ant-col .ant-form-item-required .form-item-label {
+        font-size: 20px;
+    }
+
+    .topics {
+        margin-bottom: 10px;
+        // width: 100%;
+        .topic-link {
+            font-size: 17px;
+            font-weight: 1000px;
+        }
+    }
+    // .topic-card {
+    //     .topic-form {
+    //         .input {
+    //             border: 1px solid var(--main-color);
+    //             // background-color: red;
+    //             // color: red;
+    //         }
+    //     }
+    // }
 }
-// .items{
-//     align-self: auto;
-// }
-// .topics{
-//     align-self:stretch;
-// }
+
+@media only screen and (max-width: 600px) {
+    .topic-container {
+        // width: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+
+        .topic-subContainer {
+
+            .ant-card {
+                margin-bottom: 50px;
+                // background-color: red;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                // .top
+            }
+
+            .ant-col .ant-form-item-required .form-item-label {
+                font-size: 20px;
+            }
+
+            .topics {
+                margin-bottom: 10px;
+                width: 80%;
+                .topic-link {
+                    font-size: 17px;
+                    font-weight: 1000px;
+                }
+            }
+            .topic-card {
+                .topic-form {
+                    .input {
+                        border: 1px solid var(--main-color);
+                        // background-color: red;
+                        // color: red;
+                    }
+                }
+            }
+        }
+    }
+}
