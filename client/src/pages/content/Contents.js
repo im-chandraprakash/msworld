@@ -84,7 +84,25 @@ const Contents = () => {
                     }}
                     width="20%"
                     onCollapse={(collapsed, type) => {
-                        // console.log(collapsed, type);
+                        var x = window.matchMedia("(max-width: 600px)")
+                        console.log(collapsed, type, x.matches);
+                        const mid = document.querySelector(".ant-layout.midSection.css-dev-only-do-not-override-yp8pcc");
+                        const left = document.querySelector(".ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-below");
+                        if (x.matches) {
+                            if (collapsed) {
+                                mid.style.display = "block";
+                            }
+                            else{
+                                mid.style.display = "none";
+                                left.style.flex = "0 0 90% !important";
+                                left.style.maxWidth = "100%";
+                                left.style.width = "100%";
+                                left.style.display = "block";
+                            }
+                        }
+                        else{
+                            mid.style.display = "block";
+                        }
                     }}
                 >
                     <Menu
