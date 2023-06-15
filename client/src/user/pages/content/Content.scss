@@ -1,6 +1,14 @@
 :root{
-  --titleSize: "1rem",
+  --titleSize: 1rem;
+  --fontRegular: 1.5rem;
 }
+// variables -------------------
+$contPara: '.ant-typography.contPara.css-dev-only-do-not-override-yp8pcc';
+$rightSection: ".ant-layout.ant-layout-has-sider.rightSection.css-dev-only-do-not-override-yp8pcc";
+$leftSider: ".ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-below";
+
+// -----------------------------
+
 .contTitle {
   text-align: center;
   font-size: var(--titleSize);
@@ -33,7 +41,12 @@
   // border: 1px solid #dcdcdc;
   padding: 20px;
   text-align: justify;
+  font-size: var(--fontRegular);
 }
+// #{$contPara} {
+//   font-size: var(--fontRegular);
+// }
+
 
 .back-btn {
   float: left;
@@ -46,8 +59,21 @@
 
 
 @media only screen and (max-width: 600px) {
-  .ant-layout .midSection .css-dev-only-do-not-override-yp8pcc{
-    width: 100%;
-    background-color: aqua
-  };
+  .contPara{
+    font-size: 1.2rem;
+  }
+  // #{$leftSider}{
+  //   flex: 0 0 90% !important;
+  //   max-width: 100% !important;
+  //   width: 100% !important;
+  //   display: block;
+  // }
+}
+@media only screen and (max-width: 992px) {
+  #{$rightSection}{
+    display: none !important;
+  }
+  .contPara{
+    font-size: 1.2rem;
+  }
 }
