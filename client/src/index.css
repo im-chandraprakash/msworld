@@ -14,3 +14,25 @@ code {
 *{
   font-size: 1.001rem;
 }
+
+.not-found {
+  font-size: 300px;
+}
+
+:root {
+  --main-color: #bfe7f4;
+  /* --link-color: rgb(38, 16, 94); */
+
+}
+
+.link-btn {
+  border: none;
+  text-decoration: none;
+  /* background-color: rgb(47, 4, 156); */
+  /* padding: 5px 10px; */
+  color: rgb(47, 4, 156);
+  font-weight: 600px;
+
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

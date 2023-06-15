@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "./AddQuiz.scss";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Space } from "antd";
-import { axiosClient } from "../../../utils/axiosClient";
+import { axiosClient } from "../../../shared/utils/axiosClient";
 import { toast } from "react-toastify";
 
 function AddQuiz() {
