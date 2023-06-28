@@ -19,7 +19,7 @@ function Subjects() {
 
     useEffect(() => {
         dispatch(fetchSubjects());
-        console.log(data);
+        // console.log(data);
     }, [dispatch, subject]);
 
     if (status === "loading") {
@@ -34,13 +34,13 @@ function Subjects() {
                 semester: key.sem,
             });
 
-            console.log(response);
+            // console.log(response);
             toast.success("Subject Added SuccessFully", {
                 position: "top-right",
             });
             setSubject(subject + 1);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             toast.error("something went wrong", {
                 position: "top-right",
             });

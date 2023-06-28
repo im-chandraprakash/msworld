@@ -11,7 +11,8 @@ import {
 import { Divider, Typography } from "antd";
 // import Card from "antd/es/card/Card";
 import SuggestMenu from "./SuggestMenu";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 // import {toast} from 'react-toastify';
 // import Spinner from "../../templates/Spinner";
 
@@ -22,12 +23,14 @@ const Contents = () => {
     } = theme.useToken();
 
     const { subject_id } = useParams();
+    const location = useLocation();
+
     const dispatch = useDispatch();
     const topicData = useSelector((state) => state.subjectReducer.topics);
     const subjectData = useSelector((state) => state.subjectReducer.subjects);
     const contentData = useSelector((state) => state.subjectReducer.contents);
     const status = useSelector((state) => state.subjectReducer.contentStatus);
-    const [topicId, setTopicId] = useState(1);
+    const [topicId, setTopicId] = useState((location?.state?.topic_id)? location.state.topic_id : 1);
     const [subId, setSubId] = useState(subject_id);
 
     const [selectedMenuKey, setSelectedMenuKey] = useState(`0`);
@@ -35,6 +38,9 @@ const Contents = () => {
 
     // let topicId = 1;
     // let subId = 1000;
+
+    // console.log("Subject id & location ", subject_id , location?.state);
+    console.log("Content data " , contentData);
 
     useEffect(() => {
         dispatch(fetchContents({ topic_id: topicId }));
@@ -81,23 +87,25 @@ const Contents = () => {
                     }}
                     width="20%"
                     onCollapse={(collapsed, type) => {
-                        var x = window.matchMedia("(max-width: 600px)")
+                        var x = window.matchMedia("(max-width: 600px)");
                         console.log(collapsed, type, x.matches);
-                        const mid = document.querySelector(".ant-layout.midSection.css-dev-only-do-not-override-yp8pcc");
-                        const left = document.querySelector(".ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-below");
+                        const mid = document.querySelector(
+                            ".ant-layout.midSection.css-dev-only-do-not-override-yp8pcc"
+                        );
+                        const left = document.querySelector(
+                            ".ant-layout-sider.ant-layout-sider-dark.ant-layout-sider-below"
+                        );
                         if (x.matches) {
                             if (collapsed) {
                                 mid.style.display = "block";
-                            }
-                            else{
+                            } else {
                                 mid.style.display = "none";
                                 left.style.flex = "0 0 90% !important";
                                 left.style.maxWidth = "100%";
                                 left.style.width = "100%";
                                 left.style.display = "block";
                             }
-                        }
-                        else{
+                        } else {
                             mid.style.display = "block";
                         }
                     }}
@@ -138,7 +146,7 @@ const Contents = () => {
                                 label: item.name,
                                 onClick: (click) => {
                                     setTopicId(item.id);
-                                    console.log("workig as hell : ", item.id);
+                                    // console.log("workig as hell : ", item.id);
                                 },
                             };
                         })}
@@ -282,6 +290,9 @@ const Contents = () => {
                     <Sider style={siderStyle}></Sider>
                 </Layout>
             </Layout>
+            <div>
+                <Footer/>
+            </div>
         </Layout>
     );
 };

@@ -1,18 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./user/pages/Home/Home";
 import AdminDashboard from "./admin/pages/adminDashBoard/Dashboard";
-// import Subjects from "./admin/subjects/Subjects";
 import Subjects from "./admin/components/subjects/Subjects";
 import Topic from "./user/components/topics/Topic";
 import AddContent from "./admin/components/addContent/AddContent";
-// import Contents from "./pages/content/Contents";
 import Contents from "./user/pages/content/Contents";
 import NotFound from "./shared/templates/not found/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OnlyIfNotLoggedIn from "./shared/encryption/OnlyIfNotLoggedIn";
 import UserProfile from "./user/components/userProfile/UserProfile";
-// import AdminLogin from "./admin/Login/Login";
 import AdminLogin from "./admin/pages/Login/Login.js";
 import RequireAdmin from "./shared/encryption/RequireAdmin";
 import NavBar from "./user/components/navbar/NavBar";
@@ -21,6 +18,8 @@ import AddQuiz from "./admin/quizes/addQuiz/AddQuiz";
 import TryQuiz from "./user/components/playQuiz/TryQuiz";
 import BranchAll from "./admin/components/all branch/BranchAll";
 import Semesters from "./admin/components/semesters/Semesters";
+import Footer from "./user/components/footer/Footer";
+import Statics from "./admin/components/statics/Statics";
 
 function App() {
     return (
@@ -33,6 +32,7 @@ function App() {
                     <Route path="contents/:subject_id" element={<Contents />} />
 
                     <Route path="/tryQuiz" element={<TryQuiz />}></Route>
+
                     {/* <Route path="/google" element={<Google/>}></Route> */}
                 </Route>
 
@@ -42,16 +42,11 @@ function App() {
                 <Route element={<RequireAdmin />}>
                     <Route path="/admin" element={<AdminDashboard />}>
                         <Route element={<div>Admin Home</div>}></Route>
-                        <Route path="" element={<NotFound />}></Route>
                         <Route
-                            path="userList"
-                            element={<div>UserList</div>}
+                            path=""
+                            element={<Statics/>}
                         ></Route>
-                        <Route
-                            path="profile"
-                            element={<div>Profile</div>}
-                        ></Route>
-                        <Route path="subjects" element={<Subjects />}></Route>
+                        <Route path=":subjects" element={<Subjects />}></Route>
                         <Route
                             path="subjects/:subject_id"
                             element={<Topic />}
@@ -62,14 +57,13 @@ function App() {
                         ></Route>
                         <Route path="quiz" element={<Quiz />}></Route>
                         <Route path="quiz/:id" element={<AddQuiz />}></Route>
-                        <Route path="branch" element={<BranchAll />}></Route>
+                        <Route path=":branch" element={<BranchAll />}></Route>
                         <Route
-                            path="branch/semsters"
+                            path="branch/semester"
                             element={<Semesters />}
                         ></Route>
                     </Route>
                 </Route>
-                {/* </Route> */}
 
                 <Route element={<OnlyIfNotLoggedIn />}>
                     <Route path="/adminLogin" element={<AdminLogin />} />

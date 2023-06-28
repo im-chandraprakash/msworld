@@ -1,20 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosClient } from "../../utils/axiosClient";
 
-const getUserData = createAsyncThunk("/" , async ()=>{
+// const getUserData = createAsyncThunk("/" , async ()=>{
 
-    const response = await axiosClient("/");
-    console.log(response.result);
-})
+//     const response = await axiosClient("/");
+//     // console.log(response.result);
+// })
 
 const statusSlice = createSlice({
     name:"statusSlice",
     initialState:{
         userProfileStatus:'null',
+        lastRoute:'null'
     },
-    extraReducers:function(builder){
-
-        builder.addCase()
+    reducers:{
+        setLastRoute(state , action){
+            state.lastRoute = action.payload;
+        }
     }
-    
 })
+
+export default statusSlice.reducer;
+export const {setLastRoute} = statusSlice.actions; 

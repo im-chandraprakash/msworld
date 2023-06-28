@@ -2,14 +2,30 @@
     width: 100%;
     display: flex;
     justify-content: center;
+ 
     // gap: 10px;
     .subContainer {
-        width: 60%;
+        width: 70%;
+        // padding: 50px;
 
         .content-form {
             display: flex;
             row-gap: 15px;
             flex-direction: column;
+            // text-align: center;
+            // padding-left: 200px;
+            padding: 50px;
+            width: 100%;
+
+            .ant-card-body{
+                // background-color: red;
+                padding: 20px;
+                text-align: center;
+            }
+            .submit-btn{
+                text-align: left;
+                
+            }
         }
         .head-tittle {
             font-size: 28px;

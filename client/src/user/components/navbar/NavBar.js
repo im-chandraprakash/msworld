@@ -30,7 +30,7 @@ function NavBar() {
 
     const data = useSelector((state) => state.userReducer.profile?.avatar?.url);
 
-    console.log("user profile photo : ", data);
+    // console.log("user profile photo : ", data);
 
     useEffect(() => {
         if (user) {
@@ -73,7 +73,7 @@ function NavBar() {
             toast.success("Signed Up SuccessFully", {
                 position: "top-right",
             });
-            console.log("sign up ", response);
+            // console.log("sign up ", response);
         } catch (e) {
             console.log(e);
         } finally {

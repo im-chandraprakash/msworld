@@ -9,16 +9,39 @@ import {
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import { Button, Layout, Menu, Slider, Space, Drawer, Typography } from "antd";
-import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import {
+    Outlet,
+    Route,
+    Routes,
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import { HiPuzzlePiece } from "react-icons/hi2";
-import Item from "antd/es/list/Item";
 import "./Dashboard.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { setLastRoute } from "../../../shared/store/slices/StatusSlice";
 
 function Dashboard() {
+
+    // const dispatch = useDispatch();
+    const location = useLocation();
+    const params = useParams();
     const [current, setCurrent] = useState("mail");
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    const [selectedKey , setSelectedKey] = useState("/admin");
+    // const lastRoute = useSelector((state) => state.statusReducer.lastRoute);
+    const lastRoute = location.pathname.substring(
+        location.pathname.lastIndexOf("/") + 1
+    );
+    const paramsCheck = useState(
+        params?.subjects ? `/admin/${params.subjects}` : "/admin"
+    );
+
+    console.log("params value is :", params);
+    // console.log("last route :", lastRoute);
 
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
@@ -32,10 +55,9 @@ function Dashboard() {
         setOpen(true);
     }
     function OnClick(e) {
-
-        // if( e.key == "home") return;
+        setSelectedKey(e.key);
         navigate(e.key);
-        console.log(e.key);
+        // dispatch(setLastRoute(e.key))
     }
     return (
         <div className="admin-dashboard" style={{ display: "flex" }}>
@@ -158,15 +180,15 @@ function Dashboard() {
                     className="admin-menu"
                     style={{ fontSize: "1.5rem", padding: "8px 12px" }}
                     onClick={OnClick}
-                    defaultSelectedKeys={"/admin"}
-                    defaultOpenKeys={"/admin"}
+                    // defaultSelectedKeys={paramsCheck}
+                    selectedKeys={selectedKey}
+                    // defaultOpenKeys={true}
                     inlineCollapsed={collapsed}
                     items={[
                         {
                             label: "Home",
                             className: "menu-labels",
-                        
-                            // key:"/",
+
                             icon: (
                                 <HomeOutlined style={{ fontSize: "1.3rem" }} />
                             ),
@@ -179,32 +201,14 @@ function Dashboard() {
                                     style={{ fontSize: "1.3rem" }}
                                 />
                             ),
-                            key: "subjects",
-                        },
-                        {
-                            label: "Add content",
-                            icon: (
-                                <UserAddOutlined
-                                    style={{ fontSize: "1.3rem" }}
-                                />
-                            ),
-                            key: "addContent",
-                        },
-                        {
-                            label: "Profile",
-                            icon: (
-                                <ProfileOutlined
-                                    style={{ fontSize: "1.3rem" }}
-                                />
-                            ),
-                            key: "profile",
+                            key: "/admin/subjects",
                         },
                         {
                             label: "Quiz",
                             icon: (
                                 <HiPuzzlePiece style={{ fontSize: "1.3rem" }} />
                             ),
-                            key: "quiz",
+                            key: "/admin/quiz",
                         },
                         {
                             label: "Branch",
@@ -215,16 +219,12 @@ function Dashboard() {
                                     }}
                                 />
                             ),
-                            key: "branch",
+                            key: "/admin/branch",
                         },
                     ]}
                 ></Menu>
             </div>
             <div className="outlet" style={{ width: "100%" }}>
-               
-                        
-
-
                 <Outlet />
             </div>
         </div>

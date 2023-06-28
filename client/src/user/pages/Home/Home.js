@@ -2,16 +2,14 @@ import React, { useEffect } from "react";
 import RecentArticle from "../../components/recentArticles/RecentArticle";
 import Footer from "../../components/footer/Footer";
 import { Typography } from "antd";
-// import HomeLayout from "../../conponents/homeLayout/HomeLayout";
-import HomeLayout from "../../components/homeLayout/HomeLayout";
+import LandingPage from "../../components/landing page/LandingPage";
 import "./Home.scss";
-// import Courses from "../../conponents/courses/Courses";
 import Courses from "../../components/courses/Courses";
 
 function Home() {
     return (
         <div className="home-container">
-            <HomeLayout />
+            <LandingPage />
             <Courses />
             <div className="home-middle">
                 {/* <Courses /> */}
@@ -20,8 +18,7 @@ function Home() {
                 </Typography.Title>
                 <RecentArticle />
             </div>
-
-            <Footer />
+                <Footer />
         </div>
     );
 }

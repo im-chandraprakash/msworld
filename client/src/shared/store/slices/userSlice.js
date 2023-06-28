@@ -3,7 +3,7 @@ import { axiosClient } from "../../utils/axiosClient";
 
 export const userProfile = createAsyncThunk("/user/getMyInfo", async () => {
     const response = await axiosClient.get("/user/getMyInfo");
-    console.log(response.result);
+    // console.log(response.result);
     return response.result.user;
 });
 const userSlice = createSlice({

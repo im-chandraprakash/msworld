@@ -118,28 +118,30 @@ function BranchAll() {
                 </Modal>
             </div>
 
-            <div className="all-branch-div">
-                {data?.map((subData, id) => {
-                    return (
-                        <div key={id} className="select-branch">
-                            <div className="branch-img-div">
-                                <img
-                                    src={
-                                        subData?.image?.url
-                                            ? subData.image.url
-                                            : "https://crc.losrios.edu/crc/main/img/page-assets/Body-Office-UniversalDetail-940x529/cac/business-and-computer-science-body.png"
-                                    }
-                                    alt="branch-img"
-                                />
+            <div className="sub-branch">
+                <div className="all-branch-div">
+                    {data?.map((subData, id) => {
+                        return (
+                            <div key={id} className="select-branch">
+                                <div className="branch-img-div">
+                                    <img
+                                        src={
+                                            subData?.image?.url
+                                                ? subData.image.url
+                                                : "https://crc.losrios.edu/crc/main/img/page-assets/Body-Office-UniversalDetail-940x529/cac/business-and-computer-science-body.png"
+                                        }
+                                        alt="branch-img"
+                                    />
+                                </div>
+                                <div className="branch-name-div">
+                                    <Typography.Title level={3}>
+                                        {subData.branchName}
+                                    </Typography.Title>
+                                </div>
                             </div>
-                            <div className="branch-name-div">
-                                <Typography.Title level={3}>
-                                    {subData.branchName}
-                                </Typography.Title>
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

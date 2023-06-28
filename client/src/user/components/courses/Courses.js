@@ -11,7 +11,7 @@ import Typography from "antd/es/typography/Typography";
 function Courses() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
-    console.log("data of subjects carausal : ", data);
+    // console.log("data of subjects carausal : ", data);
 
     useEffect(() => {
         dispatch(fetchSubjects());

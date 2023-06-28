@@ -1,11 +1,11 @@
 import React from "react";
-import "./HomeLayout.scss";
+import "./LandingPage.scss";
 import { Typography, Image, Button } from "antd";
 // import Search from "../../../user/conponents/search/Search";
 import Search from "../search/Search";
 import Typewriter from "typewriter-effect";
 
-function HomeLayout() {
+function LandingPage() {
     return (
         <div className="home-design">
             <div className="left-part">
@@ -61,4 +61,4 @@ function HomeLayout() {
     );
 }
 
-export default HomeLayout;
+export default LandingPage;

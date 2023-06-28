@@ -18,7 +18,7 @@ function UserProfile() {
     const [clgName, setClgName] = useState(data?.clgName);
     const [image, setImage] = useState(data?.avatar?.url);
 
-    console.log("user data : ", data);
+    // console.log("user data : ", data);
 
     useEffect(() => {
         dispatch(userProfile());

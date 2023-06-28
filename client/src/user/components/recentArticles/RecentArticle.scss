@@ -8,10 +8,19 @@
         border: "1px solid #bfe7f4";
         margin-block: 20px;
         background-color: #fff;
+      
+        .ant-typography{
+            margin: 8px;
+        }
     }
     .map-articles:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
         cursor: pointer;
+    }
+
+    .pagination-bar{
+        text-align: center;
+        // font-size: 4rem;
     }
 }

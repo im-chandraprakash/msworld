@@ -1,5 +1,5 @@
-import { Card, Typography } from "antd";
-import React, { useEffect } from "react";
+import { Card, Pagination, Typography } from "antd";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchAllTopics } from "../../store/slices/SubjectSlice";
 import { fetchAllTopics } from "../../../shared/store/slices/SubjectSlice";
@@ -9,18 +9,29 @@ import { Link } from "react-router-dom";
 // import { Direction } from "react-toastify/dist/utils";
 
 function RecentArticle() {
+
     const dispatch = useDispatch();
-    const data = useSelector((state) => state.subjectReducer.allTopics);
-    // const data1 = data.slice(0 , 10);
-    // data.splice(1);
+    const articles = useSelector((state) => state.subjectReducer.allTopics);
+    const [currentPage, setCurrentPage] = useState(1);
+    const listPerArticle = 5;
 
     useEffect(() => {
         dispatch(fetchAllTopics());
     }, []);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    // Logic to calculate the current page items
+    const indexOfLastItem = currentPage * listPerArticle;
+    const indexOfFirstItem = indexOfLastItem - listPerArticle;
+    const currentArticles = articles.slice(indexOfFirstItem, indexOfLastItem);
+
     return (
         <div className="article-container">
             <div>
-                {data.map((article, id) => {
+                {currentArticles.map((article, id) => {
                     return (
                         <div key={id}>
                             <Card className="map-articles">
@@ -41,6 +52,14 @@ function RecentArticle() {
                         </div>
                     );
                 })}
+                <Pagination
+                    className="pagination-bar"
+                    current={currentPage}
+                    total={articles.length}
+                    pageSize={listPerArticle}
+                    onChange={handlePageChange}
+                    responsive="true"
+                />
             </div>
         </div>
     );

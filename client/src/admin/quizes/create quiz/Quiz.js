@@ -16,7 +16,7 @@ function Quiz() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.quizReducer.allQuizes);
 
-    console.log("data", data);
+    // console.log("data", data);
     useEffect(() => {
         dispatch(allQuizes());
     }, []);
@@ -115,7 +115,7 @@ function Quiz() {
             <div className="all-quizs">
                 {data.map((val, id) => {
                     return (
-                        <div className="quiz-div">
+                        <div className="quiz-div" key={id}>
                             <Card className="quiz-card">
                                 <div>
                                     <img

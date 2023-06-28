@@ -27,8 +27,8 @@ function AddContent() {
         (state) => state.subjectReducer.contentLength
     );
 
-    console.log(data);
-    console.log("Link props is : ", topicName);
+    // console.log(data);
+    // console.log("Link props is : ", topicName);
 
     useEffect(() => {
         dispatch(findTopicName({ id: topic_id }));
@@ -42,14 +42,14 @@ function AddContent() {
         fileReader.onload = () => {
             if (fileReader.readyState === fileReader.DONE) {
                 setImage(fileReader.result);
-                console.log("img data", fileReader.result);
+                // console.log("img data", fileReader.result);
             }
         };
     };
 
     async function onSubmit(key) {
         try {
-            console.log(key);
+            // console.log(key);
             const response = await axiosClient.post("/cse/createContent", {
                 id: contentNo + 1,
                 topic_id,
@@ -64,9 +64,9 @@ function AddContent() {
             toast.success("Content Added SuccessFully", {
                 position: "top-right",
             });
-            console.log("the api :", response);
+            // console.log("the api :", response);
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             toast.error("something went wrong", {
                 position: "top-right",
             });
@@ -315,7 +315,8 @@ function AddContent() {
                             <Input className="form-text-area" />
                         </Form.Item>
                     </Card>
-                    <Form.Item>
+
+                    <Form.Item className="submit-btn">
                         <Button
                             type="primary"
                             htmlType="submit"

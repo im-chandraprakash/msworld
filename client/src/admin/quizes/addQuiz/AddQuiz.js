@@ -16,7 +16,7 @@ function AddQuiz() {
         // console.log("Received values of form:", values.quizQuestions);
         setQuestion(values.quizQuestions);
 
-        console.log("question :", question);
+        // console.log("question :", question);
 
         const response = await axiosClient.put("quiz/addQuizQuestions", {
             quizQuestions: question,
@@ -27,7 +27,7 @@ function AddQuiz() {
             position: "top-right",
         });
 
-        console.log("final :", response);
+        // console.log("final :", response);
     };
     return (
         <div className="addQuiz-container">

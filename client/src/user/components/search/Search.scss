@@ -44,12 +44,40 @@ button {
     align-items: center;
     width: 100%;
 
+
+    .search-item-div{
+
+        width: 60%;
+        // height: 300px;
+        position: relative;
+        background-color: rgb(231, 235, 234);
+        border-radius: 10px;
+
+        .search-items{
+        
+            width: 100%;
+            height: 100%;
+            position: static;
+            margin: 0px;
+            padding: 10px 5px;
+
+            &:hover{
+                background-color: rgb(201, 217, 213);
+            }
+            
+        }
+    }
+
     .search-box-input{
-        border: 1px solid var(--main-color);
+        border: 3px solid #1890ff;
         color: black;
         font-size: 1.5rem;
         width: 100%;
         /* background-color: red; */
+
+        &::placeholder{
+            color: rgb(119, 113, 113);
+        }
 
         .ant-input-lg {
             border: 1px solid var(--main-color);

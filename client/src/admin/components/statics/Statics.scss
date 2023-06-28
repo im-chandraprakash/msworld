@@ -1,0 +1,51 @@
+.container {
+    .static-container {
+        .static-row {
+            width: 100%;
+               margin-block: 15px;
+            .static-column {
+                width: 30%;
+            }
+        }
+
+        .ant-statistic-title {
+            color: black;
+            font-size: 1.5rem;
+        }
+        .ant-statistic-content-value-int {
+            color: black;
+            font-size: 1.5rem;
+        }
+        .icon {
+            font-size: 3rem;
+            text-align: center;
+            color: #1677ff;
+        }
+        .ant-card-body{
+            padding: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        .static-container {
+            .static-row {
+                width: 100%;
+                .static-column {
+                    width: 100%;
+                    margin-block: 5px;
+                }
+            }
+            .ant-statistic-title {
+                font-size: 1rem;
+            }
+            .ant-statistic-content-value-int {
+                font-size: 1rem;
+            }
+            .icon {
+                font-size: 2rem;
+            }
+        }
+    }
+}
