@@ -39,9 +39,9 @@ app.use(
 
 cloudinary.config({
     secure: true,
-    cloud_name: "dkp7kraja",
-    api_key: "238432174138763",
-    api_secret: "DeHMIYfihSpyjfCWR3sTOQSZhnY",
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET_KEY,
 });
 
 app.use("/auth", authRouter);
