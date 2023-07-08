@@ -5,7 +5,7 @@ import { Avatar, Button, Card, Typography } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
 import "./Subcard.scss";
-function Subcard({ subjectName, topicName, url, to,btnName }) {
+function Subcard({ subjectName, topicName, url, to, btnName }) {
     return (
         <div className="card-container">
             <Card
@@ -13,7 +13,6 @@ function Subcard({ subjectName, topicName, url, to,btnName }) {
                 bordered="false"
                 hoverable
                 type="inner"
-                size="large"
             >
                 <div className="subcard-div">
                     <div className="subcard-img">
@@ -25,22 +24,35 @@ function Subcard({ subjectName, topicName, url, to,btnName }) {
 
                     <div className="subcard-about">
                         <div>
-                            <Typography.Title level={2} className="subcard-about-head">
-                                {subjectName}
-                            </Typography.Title>
-                            <Typography.Paragraph>
-                                {" "}
-                                Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Ea dolorum soluta delectus
-                                quam eveniet ipsam doloremque aperiam, aut
-                                excepturi debitis!{" "}
-                            </Typography.Paragraph>
+                            <div>
+                                <Typography.Title
+                                    level={4}
+                                    className="subcard-about-head"
+                                >
+                                    {subjectName}
+                                </Typography.Title>
+                                <Typography.Paragraph>
+                                    {" "}
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Ea dolorum soluta delectus
+                                </Typography.Paragraph>
+                            </div>
 
-                            <Link  type="primary" to={to} state={{ subjectName }}>
-                                <Button type="primary" className="reading-btn"> 
-                                {btnName ? btnName : "Start Reading"}
-                                </Button>
-                            </Link>
+                            <div>
+                                <Link
+                                    type="primary"
+                                    to={to}
+                                    state={{ subjectName }}
+                                    className="card-btn-link"
+                                >
+                                    <Button
+                                        type="primary"
+                                        className="reading-btn"
+                                    >
+                                        {btnName ? btnName : "Start Reading"}
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

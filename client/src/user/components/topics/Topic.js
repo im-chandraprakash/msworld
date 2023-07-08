@@ -70,7 +70,7 @@ function Topic() {
     }
     return (
         <div className="topic-container">
-            <Typography.Title>Subject : {subjectName} </Typography.Title>
+            {/* <Typography.Title>Subject : {subjectName} </Typography.Title> */}
 
             <div className="topic-subContainer">
                 <Card
@@ -89,7 +89,7 @@ function Topic() {
                             className="topic-form-item"
                             label={
                                 <p className="form-item-label">
-                                    Enter Topic Name :{" "}
+                                    Enter Topic Name {" "}
                                 </p>
                             }
                             name="topicName"
@@ -104,7 +104,7 @@ function Topic() {
                         </Form.Item>
 
                         <Form.Item>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" className="create-btn">
                                 Create
                             </Button>
                         </Form.Item>

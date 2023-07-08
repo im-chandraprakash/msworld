@@ -2,11 +2,25 @@
     width: 100%;
     display: flex;
     justify-content: center;
- 
+
+    margin-top: 20px;
     // gap: 10px;
     .subContainer {
-        width: 70%;
+        width: 80%;
         // padding: 50px;
+
+        .ant-form {
+            padding: 0;
+            margin: 0;
+            .ant-card {
+                .ant-card-body {
+                    background-color: #e2e2e2;
+                    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+            }
+        }
 
         .content-form {
             display: flex;
@@ -17,14 +31,13 @@
             padding: 50px;
             width: 100%;
 
-            .ant-card-body{
+            .ant-card-body {
                 // background-color: red;
                 padding: 20px;
                 text-align: center;
             }
-            .submit-btn{
+            .submit-btn {
                 text-align: left;
-                
             }
         }
         .head-tittle {
@@ -46,13 +59,16 @@
                 margin: 8px;
             }
         }
+        .ant-typography{
+            font-size: 17px;
+        }
     }
 }
 .form-item {
     .form-text-area {
         text-align: center;
         margin-left: 25px;
-        width: 60%;
+        width: 80%;
         background-color: #ffffff;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     }
@@ -86,9 +102,10 @@
 
 @media only screen and (max-width: 600px) {
     .content-container {
+        width: 100%;
         // background-color: aliceblue;
         .subContainer {
-            width: 90%;
+            width: 100%;
             .content-form {
                 display: flex;
                 row-gap: 15px;
@@ -98,11 +115,17 @@
                 font-size: 28px;
                 font-weight: 800px;
             }
-            .ant-card-body {
-                background-color: #e2e2e2;
-                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-                padding: 0;
-                box-sizing: border-box;
+
+            .ant-form {
+                padding: 30px;
+                .ant-card {
+                    .ant-card-body {
+                        background-color: #e2e2e2;
+                        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                }
             }
         }
     }

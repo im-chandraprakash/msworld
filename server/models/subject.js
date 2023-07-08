@@ -7,12 +7,15 @@ const subjectSchema = mongoose.Schema({
     },
     subject: {
         type: String,
-        required: true,
-        lowercase: true,
+        required: true
     },
     semester: {
         type: Number,
         required: true,
+    },
+    description:{
+        type:String,
+        required:true,
     },
     date: {
         type: Date,

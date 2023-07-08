@@ -12,10 +12,6 @@ function Home() {
             <LandingPage />
             <Courses />
             <div className="home-middle">
-                {/* <Courses /> */}
-                <Typography.Title style={{ textAlign: "center" }}>
-                    Recent Articles
-                </Typography.Title>
                 <RecentArticle />
             </div>
                 <Footer />

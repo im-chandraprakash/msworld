@@ -10,7 +10,7 @@ function RequireAdmin() {
     // if(user){
     //     <Navigate to="/"/>
     // }
-    return <div>{admin ? <Outlet /> : <Navigate to={"/"} />}</div>;
+    return <div>{admin ? <Outlet /> : <Navigate to={"/adminLogin"} />}</div>;
 }
 
 export default RequireAdmin;

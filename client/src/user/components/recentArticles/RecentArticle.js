@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 // import { Direction } from "react-toastify/dist/utils";
 
 function RecentArticle() {
-
     const dispatch = useDispatch();
     const articles = useSelector((state) => state.subjectReducer.allTopics);
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,23 +30,28 @@ function RecentArticle() {
     return (
         <div className="article-container">
             <div>
+                <Typography.Title level={2} style={{ textAlign: "center" }}>
+                    Recent Articles
+                </Typography.Title>
                 {currentArticles.map((article, id) => {
                     return (
                         <div key={id}>
                             <Card className="map-articles">
-                                <Link to={`contents/${article.subject_id}`}>
-                                    <Typography.Title level={4}>
-                                        {article.name}
-                                    </Typography.Title>
-                                </Link>
+                                <div>
+                                    <Link to={`contents/${article.subject_id}`}>
+                                        <Typography.Title className="article-head">
+                                            {article.name}
+                                        </Typography.Title>
+                                    </Link>
 
-                                <Typography.Paragraph>
-                                    {" "}
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Quas sunt nobis, eveniet
-                                    veritatis doloremque ratione modi temporibus
-                                    corrupti non aspernatur!{" "}
-                                </Typography.Paragraph>
+                                    <Typography.Paragraph>
+                                        {" "}
+                                        Lorem ipsum dolor, sit amet consectetur
+                                        adipisicing elit. Quas sunt nobis,
+                                        eveniet veritatis doloremque ratione
+                                        modi temporibus corrupti non aspernatur!{" "}
+                                    </Typography.Paragraph>
+                                </div>
                             </Card>
                         </div>
                     );

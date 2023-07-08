@@ -36,15 +36,15 @@ function Search() {
     return (
         <div className="search-container">
             <Typography.Title level={3} className="search-head">
-                Hello, What Do you Want to Learn?
+                What Do you Want to Learn?
             </Typography.Title>
             <div className="search-box-div">
-                <Form size="large" style={{ display: "flex" }}>
+                <Form>
                     <Form.Item>
                         <Input
                             className="search-box-input"
                             onChange={(e) => onChange(e)}
-                            placeholder="Type something here .... "
+                            placeholder="start searching here .... "
                         />
                     </Form.Item>
                 </Form>

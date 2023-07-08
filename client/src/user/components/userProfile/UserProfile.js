@@ -12,6 +12,7 @@ function UserProfile() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.userReducer.profile);
     const status = useSelector((state) => state.userReducer.profileStatus);
+    const [count , setCount]= useState(1);
 
     const [Name, setName] = useState(data?.name);
     const [sem, setSem] = useState(data?.semester);
@@ -46,6 +47,7 @@ function UserProfile() {
             toast.success("Profile Update SuccessFully", {
                 position: "top-right",
             });
+            setCount(count+1);
         } catch (e) {}
     }
 
@@ -75,12 +77,17 @@ function UserProfile() {
                                 onChange={handleImageChange}
                             />
                         ) : (
-                            <>
-                                <Image
-                                    className="image"
-                                    // width={200}
-                                    src={image}
-                                ></Image>
+                            <div className="user-profile-image-div">
+                                <div className="user-profile-img">
+                                    <Image
+                                        width={200}
+                                        height={200}
+                                        className="image"
+                                        // width={200}
+                                        src={image}
+                                    ></Image>
+                                </div>
+                                <label htmlFor="inputImg" className="input-label">Change</label>
 
                                 <input
                                     className="inputImg"
@@ -89,17 +96,17 @@ function UserProfile() {
                                     accept="image/*"
                                     onChange={handleImageChange}
                                 />
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>
                 <div className="user-details">
-                    <Form name="userDetails" onFinish={handleSubmit}>
+                    <Form name="userDetails" onFinish={handleSubmit} className="user-detail-form">
                         <Form.Item
                             className="input-wrapper"
                             label={
                                 <Typography.Title level={3}>
-                                    User Name :
+                                    User Name 
                                 </Typography.Title>
                             }
                             name="name"

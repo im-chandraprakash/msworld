@@ -5,14 +5,21 @@
     align-items: center;
 
     .card-subject {
-        width: 50%;
-        font-size: 2rem;
+        width: 55%;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 
         .subject-form {
             .form-item .form-item-label {
-                font-size: 20px;
+                font-size: 17px;
                 font-weight: 600;
+            }
+            .create-btn{
+                margin: 0;
+                padding: 3px 8px;
+                span{
+                    margin-top: -12px;
+
+                }
             }
         }
     }
@@ -33,14 +40,14 @@
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
             .card-img {
                 img {
-                    width: 120px;
+                    width: 100px;
                 }
             }
             .subject-card-about {
                 // margin: 0;
                 .link {
                     margin: 0;
-                    font-size: 20px;
+                    // font-size: 20px;
                     // padding: ;
                 }
                 p {
@@ -101,3 +108,17 @@
         }
     }
 }
+
+// .form-input-div{
+//     // background-color: blue;
+//     width: 100%;
+    
+//     // align-items: right;
+//     // text-align: center;
+//     display: flex;
+//     justify-content: right;
+
+//     .form-input{
+//         width: 50%;
+//     }
+// }

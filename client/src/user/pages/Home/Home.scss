@@ -6,10 +6,12 @@
     // overflow: hidden;
 
     .home-middle {
-        background-color: #ebf1fc;
+       
+        background-color: #F2F7FD;
         width: 100%;
         // margin-block: 50px;
         padding-block: 50px;
+       
     } 
 
 }
@@ -18,5 +20,10 @@
     
     .home-container{
         width: 100vw;
+
+        .home-middle{
+             display: flex;
+        justify-content: center;
+        }
     }
 }

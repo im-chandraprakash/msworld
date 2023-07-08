@@ -1,21 +1,38 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .article-container {
+    width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    justify-content: center;
+    // flex-direction: column-reverse;
     align-items: center;
     margin-inline: 25px;
     .map-articles {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         border: "1px solid #bfe7f4";
-        margin-block: 20px;
-        background-color: #fff;
+        margin-block: 15px;
+        padding-block: 10px;
+        background-color: #f5fefdb8;
       
         .ant-typography{
-            margin: 8px;
+            margin: 0;
+            
+        }
+
+        .ant-card-body{
+            padding: 0;
+            margin: 9px;
+        }
+        .article-head{
+            font-size: 16px;
         }
     }
     .map-articles:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         cursor: pointer;
     }
 
@@ -23,4 +40,11 @@
         text-align: center;
         // font-size: 4rem;
     }
+}
+
+@media only screen and (max-width:600px){
+    
+  .article-container{
+      width: 85%;
+  }
 }

@@ -6,7 +6,7 @@ function Footer() {
     return (
         <div className="footer-container" style={{ textAlign: "center" }}>
             <div className="msworld-tag">
-                <Typography.Title>MSworld</Typography.Title>
+                <Typography.Title level={2}>MSworld</Typography.Title>
             </div>
 
             <div className="footer-msworld">

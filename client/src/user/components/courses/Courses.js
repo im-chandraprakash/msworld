@@ -38,8 +38,9 @@ function Courses() {
     return (
         <div className="home-subjects">
             <div className="crausal-subjects">
-                <Typography.Title
-                    style={{ textAlign: "center", marginBottom: "50px" }}
+                <Typography.Title level={2}
+                    style={{ textAlign: "left", marginBottom: "50px" }}
+                    className="heading"
                 >
                     Subjects
                 </Typography.Title>

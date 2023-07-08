@@ -111,34 +111,12 @@ function Dashboard() {
                                                     }}
                                                 />
                                             ),
-                                            key: "home",
+                                            key: "/admin",
                                         },
                                         {
                                             label: "Subjects",
                                             icon: <DashboardOutlined />,
-                                            key: "subjects",
-                                        },
-                                        {
-                                            label: "Add content",
-                                            icon: (
-                                                <UserAddOutlined
-                                                    style={{
-                                                        fontSize: "1.3rem",
-                                                    }}
-                                                />
-                                            ),
-                                            key: "addContent",
-                                        },
-                                        {
-                                            label: "Profile",
-                                            icon: (
-                                                <ProfileOutlined
-                                                    style={{
-                                                        fontSize: "1.3rem",
-                                                    }}
-                                                />
-                                            ),
-                                            key: "profile",
+                                            key: "/admin/subjects",
                                         },
                                         {
                                             label: "Quiz",
@@ -178,7 +156,6 @@ function Dashboard() {
                 <Menu
                     theme="dark"
                     className="admin-menu"
-                    style={{ fontSize: "1.5rem", padding: "8px 12px" }}
                     onClick={OnClick}
                     // defaultSelectedKeys={paramsCheck}
                     selectedKeys={selectedKey}

@@ -117,12 +117,14 @@ function NavBar() {
         <div className="navbar-container">
             <Layout>
                 <Header className="navbar-header">
-                    <Typography.Title>Msworld</Typography.Title>
+                    <Typography.Title className="logo flex">
+                        Msworld
+                    </Typography.Title>
 
                     <div className="hamburger-menu">
                         <GiHamburgerMenu onClick={showHamburger} />
 
-                        <Modal
+                        {/* <Modal
                             title="hamburger"
                             open={hamburger}
                             className="hamburger-model"
@@ -136,7 +138,7 @@ function NavBar() {
                                 <li className="hamburger-links">Practice</li>
                                 <li className="hamburger-links">Quiz</li>
                             </ul>
-                        </Modal>
+                        </Modal> */}
                     </div>
                     <div className="navbar-right-part">
                         <div className="quiz-div">
@@ -152,29 +154,29 @@ function NavBar() {
                                 {
                                     //    label:{}
                                 },
-                                {
-                                    label: "Courses",
-                                    key: "courses",
-                                },
-                                {
-                                    label: "Jobs",
-                                    key: "jobs",
-                                },
-                                {
-                                    label: "Tutorials",
-                                    key: "tutorials",
-                                },
-                                {
-                                    label: "Practice",
-                                    key: "practice",
-                                },
+                                // {
+                                //     label: "Courses",
+                                //     key: "courses",
+                                // },
+                                // {
+                                //     label: "Jobs",
+                                //     key: "jobs",
+                                // },
+                                // {
+                                //     label: "Tutorials",
+                                //     key: "tutorials",
+                                // },
+                                // {
+                                //     label: "Practice",
+                                //     key: "practice",
+                                // },
                             ]}
                         ></Menu>
 
                         {!admin ? (
                             <div className="login-signup-div">
                                 {!user && !admin ? (
-                                    <div>
+                                    <div className="login-signup-wrapper">
                                         <Button
                                             type="primary"
                                             className="signup-btn"
@@ -183,11 +185,12 @@ function NavBar() {
                                             SignUp
                                         </Button>
                                         <Modal
-                                            title="Sign Up Modal"
+                                            // title="Sign Up Modal"
                                             open={isModalOpen}
                                             onOk={handleOk}
                                             onCancel={handleCancel}
                                             // afterClose={handleSubmit}
+                                            className="login-signup-modals"
                                             footer={[
                                                 <Button
                                                     key="signUp"
@@ -198,9 +201,12 @@ function NavBar() {
                                                 </Button>,
                                             ]}
                                         >
-                                            <form onSubmit={handleOk}>
+                                            <form
+                                                onSubmit={handleOk}
+                                                className="form-input"
+                                            >
                                                 {/* // Sign Up Name --------------------------------------------------------- */}
-                                                <label>
+                                                <label className="label-name">
                                                     {
                                                         <Typography.Title
                                                             level={4}
@@ -218,11 +224,10 @@ function NavBar() {
                                                         );
                                                     }}
                                                 />
-                                                <Divider></Divider>
 
                                                 {/* // Sign Up Email ------------------------------------------------------ */}
 
-                                                <label>
+                                                <label className="label-name">
                                                     {
                                                         <Typography.Title
                                                             level={4}
@@ -241,8 +246,8 @@ function NavBar() {
                                                         );
                                                     }}
                                                 />
-                                                <Divider></Divider>
-                                                <label>
+
+                                                <label className="label-name">
                                                     {
                                                         <Typography.Title
                                                             level={4}
@@ -261,8 +266,8 @@ function NavBar() {
                                                         )
                                                     }
                                                 />
-                                                <Divider></Divider>
-                                                <label>
+
+                                                <label className="label-name">
                                                     {
                                                         <Typography.Title
                                                             level={4}
@@ -282,18 +287,20 @@ function NavBar() {
                                                     }
                                                 />
                                             </form>
-
-                                            <Typography.Title level={5}>
-                                                {" "}
-                                                Already have a Account
+                                            <div className="dont-have-ac">
+                                                <Typography.Title level={5}>
+                                                    {" "}
+                                                    Already have a Account ? 👉
+                                                </Typography.Title>
                                                 <Button
+                                                    className="btn-as-link"
                                                     onClick={
                                                         handleSignUpToLogIn
                                                     }
                                                 >
                                                     Log in
                                                 </Button>
-                                            </Typography.Title>
+                                            </div>
                                         </Modal>
 
                                         <Button
@@ -304,10 +311,11 @@ function NavBar() {
                                             LogIn
                                         </Button>
                                         <Modal
-                                            title="Login Modal"
+                                            // title="Login "
                                             open={model}
                                             onOk={handleSignInOk}
                                             onCancel={handleSignInCancel}
+                                            className="login-signup-modals"
                                             // afterClose={handleSubmit}
                                             footer={[
                                                 <Button
@@ -319,8 +327,14 @@ function NavBar() {
                                                 </Button>,
                                             ]}
                                         >
-                                            <form onSubmit={handleSignInOk}>
-                                                <label htmlFor="email">
+                                            <form
+                                                onSubmit={handleSignInOk}
+                                                className="form-input"
+                                            >
+                                                <label
+                                                    htmlFor="email"
+                                                    className="label-name"
+                                                >
                                                     {
                                                         <Typography.Title
                                                             level={4}
@@ -343,7 +357,10 @@ function NavBar() {
 
                                                 <br />
 
-                                                <label htmlFor="password">
+                                                <label
+                                                    htmlFor="password"
+                                                    className="label-name"
+                                                >
                                                     {
                                                         <Typography.Title
                                                             level={4}
@@ -365,17 +382,20 @@ function NavBar() {
                                                 />
                                             </form>
 
-                                            <Typography.Title level={5}>
-                                                {" "}
-                                                Don't have an Account
+                                            <div className="dont-have-ac">
+                                                <Typography.Title>
+                                                    {" "}
+                                                    Already have a Account ? 👉
+                                                </Typography.Title>
                                                 <Button
+                                                    className="btn-as-link"
                                                     onClick={() =>
                                                         handleLogInToSignUp()
                                                     }
                                                 >
                                                     SignUp
                                                 </Button>
-                                            </Typography.Title>
+                                            </div>
                                         </Modal>
                                     </div>
                                 ) : (
@@ -404,7 +424,6 @@ function NavBar() {
                         )}
                     </div>
                 </Header>
-                <hr />
             </Layout>
 
             <div>

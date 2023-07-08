@@ -72,7 +72,7 @@ const Contents = () => {
     return (
         <Layout style={{ height: "100%" }}>
             <Layout>
-                <SuggestMenu />
+                {/* <SuggestMenu /> */}
             </Layout>
             <Layout
                 style={{
@@ -118,6 +118,7 @@ const Contents = () => {
                         style={{
                             height: "100%",
                             borderRight: 0,
+    
                         }}
                         // items={subjectData.map((item, index) => {
                         //     if (item.id === subId) {
@@ -180,7 +181,7 @@ const Contents = () => {
                                         }
                                         return (
                                             <div key={id}>
-                                                <Typography.Title className="contTitle">
+                                                <Typography.Title level={3} className="contTitle">
                                                     {temp}
                                                 </Typography.Title>
                                             </div>

@@ -29,35 +29,27 @@ function App() {
                 <Route element={<NavBar />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/userProfile" element={<UserProfile />} />
-                    <Route path="contents/:subject_id" element={<Contents />} />
-
+                    <Route path="/contents/:subject_id" element={<Contents />} />
                     <Route path="/tryQuiz" element={<TryQuiz />}></Route>
-
-                    {/* <Route path="/google" element={<Google/>}></Route> */}
                 </Route>
-
-                {/* Route for content page */}
-                {/* Route for admin page */}
-                {/* <Route element={<AdminLogin />}> */}
                 <Route element={<RequireAdmin />}>
                     <Route path="/admin" element={<AdminDashboard />}>
-                        <Route element={<div>Admin Home</div>}></Route>
                         <Route
-                            path=""
+                            path="/admin"
                             element={<Statics/>}
                         ></Route>
-                        <Route path=":subjects" element={<Subjects />}></Route>
+                        <Route path="/admin/subjects" element={<Subjects />}></Route>
                         <Route
-                            path="subjects/:subject_id"
+                            path="/admin/subjects/:subject_id"
                             element={<Topic />}
                         ></Route>
                         <Route
-                            path="subjects/:subject_id/:topic_id"
+                            path="/admin/subjects/:subject_id/:topic_id"
                             element={<AddContent />}
                         ></Route>
-                        <Route path="quiz" element={<Quiz />}></Route>
-                        <Route path="quiz/:id" element={<AddQuiz />}></Route>
-                        <Route path=":branch" element={<BranchAll />}></Route>
+                        <Route path="/admin/quiz" element={<Quiz />}></Route>
+                        <Route path="/admin/quiz/:id" element={<AddQuiz />}></Route>
+                        <Route path="/admin/branch" element={<BranchAll />}></Route>
                         <Route
                             path="branch/semester"
                             element={<Semesters />}

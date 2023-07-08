@@ -6,17 +6,11 @@
         // position: fixed;
         z-index: 10;
         .admin-menu {
-            // .menu-labels {
-            // width: 300px;
             background-color: aliceblue;
             color: black;
             height: 100%;
-            // width: 350px;
-            width: 350px;
-            // font-size: 2.5rem;
-            // font-size: 100px;
-            // overflow: auto;
-            // height: 100vh;
+            width: 320px;
+            padding: 8px 12px;
         }
         .for-mobile {
             display: none;
@@ -25,8 +19,8 @@
 }
 .admin-menu .ant-menu-item {
     .ant-menu-title-content {
-        padding-right: 70px;
-        font-size: 20px;
+        padding-right: 60px;
+        font-size: 17px;
     }
     .anticon svg {
         font-size: 20px;

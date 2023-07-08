@@ -42,3 +42,8 @@ code {
 .container{
   margin:20px 30px;
 }
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

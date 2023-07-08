@@ -9,6 +9,7 @@ import "./Subjects.scss";
 import Spinner from "../../../shared/templates/Spinner";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import TextArea from "antd/es/input/TextArea";
 
 const { Title } = Typography;
 function Subjects() {
@@ -16,6 +17,8 @@ function Subjects() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.subjectReducer.subjects);
     const status = useSelector((state) => state.subjectReducer.subjectStatus);
+
+    console.log("subject data is : ", data);
 
     useEffect(() => {
         dispatch(fetchSubjects());
@@ -32,6 +35,7 @@ function Subjects() {
                 id: key.id,
                 subject: key.subjectName,
                 semester: key.sem,
+                description: key.description,
             });
 
             // console.log(response);
@@ -58,11 +62,9 @@ function Subjects() {
             <Card
                 bordered="true"
                 className="card-subject"
-                headStyle={{ fontSize: "2rem", width: "900px" }}
             >
                 <Form
                     name="basic"
-                    size="large"
                     className="subject-form"
                     onFinish={OnClick}
                 >
@@ -105,11 +107,35 @@ function Subjects() {
                             },
                         ]}
                     >
-                        <Input />
+                        <div className="form-input-div">
+                            <Input className="form-input" />
+                        </div>
+                    </Form.Item>
+
+                    <Form.Item
+                        label={
+                            <p className="form-item-label">
+                                Subject Description
+                            </p>
+                        }
+                        name="description"
+                        className="form-item"
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Give short Description about Subjects",
+                            },
+                        ]}
+                    >
+                        <div className="form-input-div">
+                            <TextArea className="form-input" />
+                        </div>
+                        
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit" className="create-btn">
                             Create
                         </Button>
                     </Form.Item>
@@ -135,11 +161,16 @@ function Subjects() {
                                 >
                                     {sub.subject}
                                 </Link>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Impedit, maxime.
-                                    Perferendis natus maiores eaque ad.
-                                </p>
+
+                                {sub?.description ? (
+                                    <p>{sub?.description}</p>
+                                ) : (
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Impedit, maxime.
+                                        Perferendis natus maiores eaque ad.
+                                    </p>
+                                )}
                             </div>
                         </div>
                     );

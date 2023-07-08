@@ -1,5 +1,5 @@
 .home-design {
-    width: 90vw;
+    width: 90%;
     height: 93vh;
     display: flex;
     justify-content: space-around;
@@ -8,114 +8,140 @@
     // background-color: red;
 
     .left-part {
-        width: 60%;
-        .type-writer {
-            font-size: 4rem;
-        }
-        .cursor-type-writer {
-            font-size: 4rem;
-        }
-        .about-app-para {
-            font-size: 1.1rem;
-            width: 90%;
+        width: 65%;
+        height: 65%;
+        .left-div {
+            width: 100%;
+            .type-writer {
+                font-size: 3rem;
+                
+            }
+            .cursor-type-writer {
+                font-size: 2.9rem;
+            }
+            .about-app-para {
+                font-size: 1.1rem;
+                width: 90%;
+            }
+            .sub-heading {
+
+                font-size: 2rem;
+                border-top: 3px solid black;
+                padding-top: 20px;
+                margin-top: 3px;
+                // overflow: hidden;
+                width: 90%;
+            }
         }
     }
 
     .right-part {
-        .div-element {
-            border-radius: 33% 67% 64% 36% / 28% 30% 70% 72%;
-            background-color: #bfe7f4;
-            width: 700px;
-            height: 700px;
-            display: flex;
-            justify-content: center;
-            text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        height: 100%;
+        .div-element-image {
+            width: 95%;
+            height: 85%;
+            .div-element {
+                border-radius: 33% 67% 64% 36% / 28% 30% 70% 72%;
+                background-color: #bfe7f4;
+                width: 100%;
+                height: 95%;
+                display: flex;
+                justify-content: center;
+                text-align: center;
 
+                img {
+                    width: 65%;
+                    height: 75%;
+                    position: relative;
+                    top: 0%;
+                    // animation: animate 5s ease-in-out infinite;
+                    z-index: 10;
+                    // width: 100px;
+                    // height: 100px;
+                }
+            }
             img {
-                position: relative;
-                top: 0%;
-                // animation: animate 5s ease-in-out infinite;
-                z-index: 10;
-                // width: 100px;
-                // height: 100px;
+                margin-top: 15%;
             }
-            @keyframes animate {
-                0% {
-                    top: 0%;
-                }
-                50% {
-                    top: 5%;
-                }
-                100% {
-                    top: 0%;
-                }
-            }
-        }
-        img {
-            margin-top: 15%;
         }
     }
 }
 
 @media only screen and (max-width: 600px) {
+
+
+    *{
+        box-sizing: border-box;
+    }
     .home-design {
         // overflow: hidden;
         width: 100%;
         display: block;
-        // height: 200vh;
+        height: 100%;
+        margin: 15px 15px;
+        box-sizing: border-box;
         .left-part {
-            box-sizing: border-box;
             width: 100%;
-            // margin: 10px;
-            // margin-top: 30px;
-            padding: 30px;
-            .type-writer {
-                font-size: 2.5rem;
-                font-weight: 600;
-            }
-            .cursor-type-writer {
-                font-size: 2.5rem;
-            }
-            .sub-heading {
-                font-size: 30px;
-                text-align: center;
-            }
-            .about-app-para {
+            height: 100%;
+            
+            .left-div {
+                // box-sizing: border-box;
                 width: 100%;
-                text-align: center;
-                font-weight: 500;
-                color: #433c3c;
-            }
-            .explore-btn {
-                padding-bottom: 35px;
-                padding-inline: 25px;
-
-                text-align: center;
-                margin-left: 40px;
-
-                // padding-top: -20px;
-                span {
-                    font-size: 20px;
+                // margin: 10px;
+                // margin-top: 30px;
+                padding-inline: 20px;
+                // padding: 30px;
+                .type-writer {
+                    font-size: 2.4rem;
+                    font-weight: 500;
                 }
+                .cursor-type-writer {
+                    font-size: 2.5rem;
+                }
+                .sub-heading {
+                    font-size: 26px;
+                    text-align: center;
+                }
+                .about-app-para {
+                    width: 100%;
+                    text-align:justify;
+                    font-weight: 400;
+                    color: #433c3c;
+                    padding-inline: 30px;
+                }
+               
             }
         }
-        .right-part {
-            display: none;
-            // width: 100%;
-            // display: flex;
+       .right-part {
+        width: 100%;
+        .div-element-image {
+            
+            width: 60%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
             // justify-content: center;
-            // .div-element {
-            //     width: 500px;
-            //     height: 500px;
 
-            //     img {
-            //         position: relative;
-            //         top: 0%;
-            //         // animation: animate 5s ease-in-out infinite;
-            //         width: 300px;
-            //         height: 300px;
-            //     }
-            // }
+            .div-element {
+                width: 100%;
+                margin-bottom: 25px;
+
+                // img {
+                //     width: 65%;
+                //     height: 75%;
+                //     position: relative;
+                //     top: 0%;
+                //     // animation: animate 5s ease-in-out infinite;
+                //     z-index: 10;
+                //     // width: 100px;
+                //     // height: 100px;
+                // }
+            }
         }
+    }
     }
 }

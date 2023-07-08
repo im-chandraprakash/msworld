@@ -134,7 +134,7 @@ function BranchAll() {
                                     />
                                 </div>
                                 <div className="branch-name-div">
-                                    <Typography.Title level={3}>
+                                    <Typography.Title level={4}>
                                         {subData.branchName}
                                     </Typography.Title>
                                 </div>

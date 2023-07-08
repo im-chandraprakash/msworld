@@ -4,9 +4,13 @@
     background-color: #cad0dc;
     display: flex;
     justify-content: center;
-    padding-block: 100px;
+    padding-block: 40px;
     .crausal-subjects {
         width: 80%;
+
+        .heading{
+            text-decoration: underline;
+        }
 
         .subjects-crausal {
             width: 80%;

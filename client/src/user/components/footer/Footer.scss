@@ -9,13 +9,17 @@
 
     background-color: rgb(213, 220, 226);
 
+    .msword-tag {
+        border-bottom: 1px solid black;
+    }
+
     .footer-msworld {
         display: flex;
         width: 100%;
         justify-content: space-evenly;
 
         .table-head {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             margin-block: 20px;
             font-weight: 600;
             border-bottom: 1px solid black;

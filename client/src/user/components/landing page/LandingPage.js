@@ -9,12 +9,11 @@ function LandingPage() {
     return (
         <div className="home-design">
             <div className="left-part">
-                <div>
+                <div className="left-div">
                     <div className="typewriter-effect">
                         {/* <h1> */}
 
                         <Typewriter
-                            style={{ fontSize: "5rem" }}
                             options={{
                                 autoStart: true,
                                 loop: true,
@@ -22,39 +21,38 @@ function LandingPage() {
                                 wrapperClassName: "type-writer",
                                 cursorClassName: "cursor-type-writer",
                                 strings: [
-                                    "Welcome to Our Website.",
-                                    "We are Helping Students.",
-                                    "To achive Good Marks.",
+                                    "Prepare with curated materials.",
+                                    "Boost your exam performance.",
+                                    "Stay updated with resources.",
                                 ],
                             }}
                         />
                     </div>
                     <Typography.Title className="sub-heading">
-                        Your Examination Score is Our Achievement{" "}
+                        Maximize Your Exam Success: Unleash Your Learning
+                        Potential
                     </Typography.Title>
                     <Typography.Paragraph className="about-app-para" level={3}>
                         {" "}
-                        Our MsWorld Website will you All content you need to
-                        score great marks in Exam. Here you will get Every
-                        Branch subject as per CSVTU Syllabus in this platform.
-                        You don't need to worry about Notes , Quesiton paper and
-                        etc.
+                        Resource for comprehensive exam preparation materials
+                        and high-quality Notes. Boost your academic success with
+                        our curated content and interactive features. Ace your
+                        exams with confidence using our trusted educational
+                        platform.
                     </Typography.Paragraph>
-
-                    <Button className="explore-btn" type="primary">
-                        Explore
-                    </Button>
                     <Search />
                 </div>
             </div>
             <div className="right-part">
-                <div className="div-element">
-                    <img
-                        src="/msWorldPicture.png"
-                        width={400}
-                        height={500}
-                        alt="study Logo"
-                    />
+                <div className="div-element-image">
+                    <div className="div-element">
+                        <img
+                            src="/msWorldPicture.png"
+                            width={400}
+                            height={500}
+                            alt="study Logo"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

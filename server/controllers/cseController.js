@@ -19,9 +19,9 @@ const getAllSubjectController = async (req, res) => {
 
 const createSubjectController = async (req, res) => {
     try {
-        const { subject, id, semester } = req.body;
+        const { subject, id, semester,description } = req.body;
 
-        if (!subject || !id || !semester) {
+        if (!subject || !id || !semester || !description) {
             return res.send(error(400, "All fields are required"));
         }
 
@@ -35,6 +35,7 @@ const createSubjectController = async (req, res) => {
             id,
             subject,
             semester,
+            description,
         });
 
         return res.send(success(200, { data }));
