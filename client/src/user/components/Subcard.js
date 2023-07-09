@@ -5,7 +5,8 @@ import { Avatar, Button, Card, Typography } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
 import "./Subcard.scss";
-function Subcard({ subjectName, topicName, url, to, btnName }) {
+// import subImg  from '../../../public/images/tree.png'
+function Subcard({ subjectName, topicName, url, to, btnName , desc }) {
     return (
         <div className="card-container">
             <Card
@@ -17,7 +18,7 @@ function Subcard({ subjectName, topicName, url, to, btnName }) {
                 <div className="subcard-div">
                     <div className="subcard-img">
                         <img
-                            src="https://shorturl.at/tERWZ"
+                            src="images\tree.png"
                             alt={subjectName}
                         />
                     </div>
@@ -32,9 +33,7 @@ function Subcard({ subjectName, topicName, url, to, btnName }) {
                                     {subjectName}
                                 </Typography.Title>
                                 <Typography.Paragraph>
-                                    {" "}
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Ea dolorum soluta delectus
+                                  {desc}
                                 </Typography.Paragraph>
                             </div>
 

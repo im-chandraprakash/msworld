@@ -57,10 +57,13 @@ function Courses() {
                                 key={id}
                                 style={{ width: "90%" }}
                             >
+
+                               
                                 <Subcard
                                     key={id}
                                     subjectName={sub.subject}
                                     to={`contents/${sub.id}`}
+                                    desc={sub.description}
                                 ></Subcard>
                             </div>
                         );

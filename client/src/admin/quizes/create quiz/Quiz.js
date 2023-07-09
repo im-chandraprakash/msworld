@@ -117,8 +117,9 @@ function Quiz() {
                     return (
                         <div className="quiz-div" key={id}>
                             <Card className="quiz-card">
-                                <div>
+                                <div className="image-div">
                                     <img
+                                        className="quiz-image"
                                         src="https://nie-images.s3.amazonaws.com/gall_content/2017/6/2017_6$largeimg20_Jun_2017_124615393.jpg"
                                         alt="quiz image"
                                     />

@@ -116,7 +116,7 @@ function AddContent() {
                                                     name={[name, "heading"]}
                                                     rules={[
                                                         {
-                                                            required: true,
+                                                            // required: true,
                                                             message:
                                                                 "Can't be heading empty",
                                                         },
@@ -132,7 +132,7 @@ function AddContent() {
                                                     name={[name, "about"]}
                                                     rules={[
                                                         {
-                                                            required: true,
+                                                            // required: true,
                                                             message:
                                                                 "Can't be empty",
                                                         },
@@ -196,7 +196,7 @@ function AddContent() {
                             className="form-item"
                             rules={[
                                 {
-                                    required: true,
+                                    // required: true,
                                     message: "can't be empty",
                                 },
                             ]}
@@ -225,7 +225,7 @@ function AddContent() {
                                                     name={[name, "points"]}
                                                     rules={[
                                                         {
-                                                            required: true,
+                                                            // required: true,
                                                             message:
                                                                 "field can't empty",
                                                         },
@@ -276,7 +276,7 @@ function AddContent() {
                                                     name={[name, "points"]}
                                                     rules={[
                                                         {
-                                                            required: true,
+                                                            // required: true,
                                                             message:
                                                                 "field can't empty",
                                                         },

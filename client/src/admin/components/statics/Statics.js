@@ -18,13 +18,13 @@ function Statics() {
                     <Col  className="static-column">
                         <Card>
                             <ImBooks className="icon" />
-                            <Statistic title="Total Subjects" value={20} />
+                            <Statistic title="Total Subjects" value={3} />
                         </Card>
                     </Col>
                     <Col  className="static-column">
                         <Card>
                             <BiGitBranch className="icon" />
-                            <Statistic title="Total Branch " value={20} />
+                            <Statistic title="Total Branch " value={9} />
                         </Card>
                     </Col>
                 </Row>
@@ -32,7 +32,7 @@ function Statics() {
                     <Col className="static-column">
                         <Card>
                             <BiGitBranch className="icon" />
-                            <Statistic title="Total Contents" value={30} />
+                            <Statistic title="Total Contents" value={10} />
                         </Card>
                     </Col>
                 </Row>

@@ -16,7 +16,7 @@ const contentSchema = new mongoose.Schema(
         },
         intro: {
             type: String,
-            required: true,
+            // required: true,
         },
         content: [
             {
@@ -36,13 +36,13 @@ const contentSchema = new mongoose.Schema(
         },
         details: {
             type: String,
-            required: true,
+            // required: true,
         },
         advantages: [
             {
                 points: {
                     type: String,
-                    required: true,
+                    // required: true,
                 },
             },
         ],
@@ -50,7 +50,7 @@ const contentSchema = new mongoose.Schema(
             {
                 points: {
                     type: String,
-                    required: true,
+                    // required: true,
                 },
             },
         ],

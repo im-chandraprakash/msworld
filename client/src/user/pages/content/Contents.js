@@ -30,7 +30,9 @@ const Contents = () => {
     const subjectData = useSelector((state) => state.subjectReducer.subjects);
     const contentData = useSelector((state) => state.subjectReducer.contents);
     const status = useSelector((state) => state.subjectReducer.contentStatus);
-    const [topicId, setTopicId] = useState((location?.state?.topic_id)? location.state.topic_id : 1);
+    const [topicId, setTopicId] = useState(
+        location?.state?.topic_id ? location.state.topic_id : 1
+    );
     const [subId, setSubId] = useState(subject_id);
 
     const [selectedMenuKey, setSelectedMenuKey] = useState(`0`);
@@ -40,7 +42,7 @@ const Contents = () => {
     // let subId = 1000;
 
     // console.log("Subject id & location ", subject_id , location?.state);
-    console.log("Content data " , contentData);
+    console.log("Content data ", contentData);
 
     useEffect(() => {
         dispatch(fetchContents({ topic_id: topicId }));
@@ -71,9 +73,7 @@ const Contents = () => {
 
     return (
         <Layout style={{ height: "100%" }}>
-            <Layout>
-                {/* <SuggestMenu /> */}
-            </Layout>
+            <Layout>{/* <SuggestMenu /> */}</Layout>
             <Layout
                 style={{
                     paddingTop: "12px",
@@ -118,7 +118,6 @@ const Contents = () => {
                         style={{
                             height: "100%",
                             borderRight: 0,
-    
                         }}
                         // items={subjectData.map((item, index) => {
                         //     if (item.id === subId) {
@@ -181,7 +180,10 @@ const Contents = () => {
                                         }
                                         return (
                                             <div key={id}>
-                                                <Typography.Title level={3} className="contTitle">
+                                                <Typography.Title
+                                                    level={3}
+                                                    className="contTitle"
+                                                >
                                                     {temp}
                                                 </Typography.Title>
                                             </div>
@@ -195,7 +197,7 @@ const Contents = () => {
                                     {/*------------------ image------------------*/}
                                     <div className="contImg">
                                         <Image
-                                            width={200}
+                                            width={100}
                                             src={data.image.url}
                                         />
                                     </div>
@@ -215,37 +217,61 @@ const Contents = () => {
                                         })
                                     }
                                     {/*--------------adding Advantages-------------- */}
-                                    <Typography.Title level={3}>
+                                    {data.advantages.length > 0 ? (
+                                        <div>
+                                            <Typography.Title level={3}>
+                                                Advantages :-
+                                            </Typography.Title>
+
+                                            <ul className="contPara">
+                                                {data.advantages.map(
+                                                    (subData, id1) => {
+                                                        return (
+                                                            <div key={id1}>
+                                                                <li key={id1}>
+                                                                    {
+                                                                        subData.points
+                                                                    }
+                                                                </li>
+                                                            </div>
+                                                        );
+                                                    }
+                                                )}
+                                            </ul>
+                                        </div>
+                                    ) : (
+                                        " "
+                                    )}
+                                    {/* <Typography.Title level={3}>
                                         Advantages :-
-                                    </Typography.Title>
-                                    <ul className="contPara">
-                                        {data.advantages.map((subData, id1) => {
-                                            return (
-                                                <div key={id1}>
-                                                    <li key={id1}>
-                                                        {subData.points}
-                                                    </li>
-                                                </div>
-                                            );
-                                        })}
-                                    </ul>
+                                    </Typography.Title> */}
+
                                     {/* -------------adding Disadvantages------------- */}
-                                    <Typography.Title level={3}>
-                                        Disadvantages :-
-                                    </Typography.Title>
-                                    <ul className="contPara">
-                                        {data.disadvantages.map(
-                                            (subData, id1) => {
-                                                return (
-                                                    <div key={id1}>
-                                                        <li key={id1}>
-                                                            {subData.points}
-                                                        </li>
-                                                    </div>
-                                                );
-                                            }
-                                        )}
-                                    </ul>
+
+                                    {data?.disadvantages.length > 0 ? (
+                                        <div>
+                                            <Typography.Title level={3}>
+                                                Disadvantages :-
+                                            </Typography.Title>
+                                            <ul className="contPara">
+                                                {data.disadvantages.map(
+                                                    (subData, id1) => {
+                                                        return (
+                                                            <div key={id1}>
+                                                                <li key={id1}>
+                                                                    {
+                                                                        subData.points
+                                                                    }
+                                                                </li>
+                                                            </div>
+                                                        );
+                                                    }
+                                                )}
+                                            </ul>
+                                        </div>
+                                    ) : (
+                                        " "
+                                    )}
                                 </div>
                             );
                         })}
@@ -292,7 +318,7 @@ const Contents = () => {
                 </Layout>
             </Layout>
             <div>
-                <Footer/>
+                <Footer />
             </div>
         </Layout>
     );
