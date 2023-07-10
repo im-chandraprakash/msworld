@@ -32,6 +32,6 @@ https://res.cloudinary.com/dkp7kraja/video/upload/v1688895653/Video/new_msword_h
    - Admin Panel
    - Add Content
 
-# This project contain few bugs in which We are working further.
+
  
 
