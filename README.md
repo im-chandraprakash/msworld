@@ -1,7 +1,9 @@
 
 
 # Output
-Here is the Output of my project Posterz-Ecommerce website (:
+Here is the Output of my MsWorld(Educational) project (:
+This project is created by me and my classmate https://github.com/manav-gopal who is responsibel for creating the main page which is Content page of the user panel only.
+
 # Video 
 https://res.cloudinary.com/dkp7kraja/video/upload/v1688895653/Video/new_msword_ht77ko.mp4
 
@@ -25,11 +27,11 @@ https://res.cloudinary.com/dkp7kraja/video/upload/v1688895653/Video/new_msword_h
 
 
 # Features
-
-
-
    - Responsive for all devices
-   - Add to cart
-   - Checkout
-   - Sorting
+   - User Panel
+   - Admin Panel
+   - Add Content
+
+# This project contain few bugs in which We are working further.
+ 
 
